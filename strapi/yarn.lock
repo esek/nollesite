@@ -993,6 +993,13 @@
   dependencies:
     "@ucast/mongo2js" "^1.3.0"
 
+"@ckeditor/ckeditor5-react@^3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-react/-/ckeditor5-react-3.0.3.tgz#7b2d2634bd70a1efcb837dde5a9ac3ed2d839fbc"
+  integrity sha512-Zaazd9Brg64v1Q2qQNtbfryWeVLzXWlNbswLsOYwNgvHlxroa8+F7ZE33M2O8zxcL6sQHZ1vCNkQOPRUBG8pqA==
+  dependencies:
+    prop-types "^15.7.2"
+
 "@colors/colors@1.5.0":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@colors/colors/-/colors-1.5.0.tgz#bb504579c1cae923e6576a4f5da43d25f97bdbd9"
@@ -1201,6 +1208,11 @@
   integrity sha512-dX43Z5IvMaW7fwzU8farosYjKNGfRb2HB/DgjVBHeJZ/NSnuuaujPPx0YOdcAq+n3mqn70tyCde2HM1mqbhiuw==
   dependencies:
     prop-types "^15.8.1"
+
+"@icons/material@^0.2.4":
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@icons/material/-/material-0.2.4.tgz#e90c9f71768b3736e76d7dd6783fc6c2afa88bc8"
+  integrity sha512-QPcGmICAPbGLGb6F/yNf/KzKqvFx8z5qx3D1yFqVAjoFmXK35EgyW+cJ57Te3CNsmzblwtzakLGFqHPqrfb4Tw==
 
 "@internationalized/number@^3.0.2":
   version "3.0.4"
@@ -1535,7 +1547,7 @@
     lodash "4.17.21"
     umzug "2.3.0"
 
-"@strapi/design-system@0.0.1-alpha.76":
+"@strapi/design-system@0.0.1-alpha.76", "@strapi/design-system@^0.0.1-alpha.70":
   version "0.0.1-alpha.76"
   resolved "https://registry.yarnpkg.com/@strapi/design-system/-/design-system-0.0.1-alpha.76.tgz#7463bd71fc1fb7e512c4f014d947eefe40b3f131"
   integrity sha512-DShLA2iRleIVqsrUX8ilQP88+P+ml4HRzHczQqSZ3hAZumD/zDbuYmnCuHdl2SfTEU+iuhDXPkI3r6wObfXMxw==
@@ -1574,7 +1586,7 @@
     plop "2.7.6"
     pluralize "8.0.0"
 
-"@strapi/helper-plugin@4.0.8":
+"@strapi/helper-plugin@4.0.8", "@strapi/helper-plugin@^4.0.0":
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/@strapi/helper-plugin/-/helper-plugin-4.0.8.tgz#02ac37d065c47142ab3b70ea0f4552812e649d33"
   integrity sha512-G6DR1iAcZj5gc0UtC4h/TfI4v73/3m2MJpgRjzeIAtUww1kS4lQ55MlwH+//LiB6rro9rEqL5O3XcqJTBTgoFg==
@@ -3192,6 +3204,11 @@ cipher-base@^1.0.0, cipher-base@^1.0.1, cipher-base@^1.0.3:
   dependencies:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
+
+ckeditor5-build-strapi-wysiwyg@^2.0.0-rc.1:
+  version "2.0.0-rc.1"
+  resolved "https://registry.yarnpkg.com/ckeditor5-build-strapi-wysiwyg/-/ckeditor5-build-strapi-wysiwyg-2.0.0-rc.1.tgz#5dd69d784df82157b971fabb62d73d1f41216660"
+  integrity sha512-X4qbUxVP2D6JvZTr/nLSltkPoFDhSxtvTtzcNr8i0JvPstrFqEmFgcc/OhHK5O6cQWNzf9T7u+0JD2If4wGt4w==
 
 class-utils@^0.3.5:
   version "0.3.6"
@@ -6407,7 +6424,7 @@ lodash.once@^4.0.0:
   resolved "https://registry.yarnpkg.com/lodash.once/-/lodash.once-4.1.1.tgz#0dd3971213c7c56df880977d504c88fb471a97ac"
   integrity sha1-DdOXEhPHxW34gJd9UEyI+0cal6w=
 
-lodash@4.17.21, lodash@^4.17.11, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.17.4:
+lodash@4.17.21, lodash@^4.0.1, lodash@^4.17.11, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.17.4:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -6596,6 +6613,11 @@ match-sorter@^6.0.2:
   dependencies:
     "@babel/runtime" "^7.12.5"
     remove-accents "0.4.2"
+
+material-colors@^1.2.1:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/material-colors/-/material-colors-1.2.6.tgz#6d1958871126992ceecc72f4bcc4d8f010865f46"
+  integrity sha512-6qE4B9deFBIa9YSpOc9O0Sgc43zTeVYbgDT5veRKSlB2+ZuHNoVVxA1L/ckMUayV9Ay9y7Z/SZCLcGteW9i7bg==
 
 md5.js@^1.3.4:
   version "1.3.5"
@@ -7998,6 +8020,19 @@ rc@^1.2.7, rc@^1.2.8:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-color@^2.19.3:
+  version "2.19.3"
+  resolved "https://registry.yarnpkg.com/react-color/-/react-color-2.19.3.tgz#ec6c6b4568312a3c6a18420ab0472e146aa5683d"
+  integrity sha512-LEeGE/ZzNLIsFWa1TMe8y5VYqr7bibneWmvJwm1pCn/eNmrabWDh659JSPn9BuaMpEfU83WTOJfnCcjDZwNQTA==
+  dependencies:
+    "@icons/material" "^0.2.4"
+    lodash "^4.17.15"
+    lodash-es "^4.17.15"
+    material-colors "^1.2.1"
+    prop-types "^15.5.10"
+    reactcss "^1.2.0"
+    tinycolor2 "^1.4.1"
+
 react-copy-to-clipboard@^5.0.3:
   version "5.0.4"
   resolved "https://registry.yarnpkg.com/react-copy-to-clipboard/-/react-copy-to-clipboard-5.0.4.tgz#42ec519b03eb9413b118af92d1780c403a5f19bf"
@@ -8222,6 +8257,13 @@ react@^17.0.2:
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
+
+reactcss@^1.2.0:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/reactcss/-/reactcss-1.2.3.tgz#c00013875e557b1cf0dfd9a368a1c3dab3b548dd"
+  integrity sha512-KiwVUcFu1RErkI97ywr8nvx8dNOpT03rbnma0SSalTYjkrPYaEajR4a/MRt6DZ46K6arDRbWMNHF+xH7G7n/8A==
+  dependencies:
+    lodash "^4.0.1"
 
 readable-stream@^2.0.1, readable-stream@^2.0.6, readable-stream@^2.3.5:
   version "2.3.7"
@@ -9159,6 +9201,18 @@ std-env@^2.2.1:
   dependencies:
     ci-info "^3.1.1"
 
+strapi-plugin-ckeditor5@^2.0.0-rc.2:
+  version "2.0.0-rc.2"
+  resolved "https://registry.yarnpkg.com/strapi-plugin-ckeditor5/-/strapi-plugin-ckeditor5-2.0.0-rc.2.tgz#6c2a5ff22d0dbb56c8553c2ef4668e6f4a9a084a"
+  integrity sha512-nZlQDr089GXcZxQHaz+ynykQNhoT0XOVBNPYRHZ/P7qJ66yOv2P/236gxC7bTE0ePCKZ6FPN2E6v1PrRwTNyhg==
+  dependencies:
+    "@ckeditor/ckeditor5-react" "^3.0.3"
+    "@strapi/design-system" "^0.0.1-alpha.70"
+    "@strapi/helper-plugin" "^4.0.0"
+    ckeditor5-build-strapi-wysiwyg "^2.0.0-rc.1"
+    react "^17.0.2"
+    react-dom "^17.0.2"
+
 stream-browserify@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/stream-browserify/-/stream-browserify-3.0.0.tgz#22b0a2850cdf6503e73085da1fc7b7d0c2122f2f"
@@ -9467,6 +9521,11 @@ tiny-warning@^1.0.0, tiny-warning@^1.0.2, tiny-warning@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/tiny-warning/-/tiny-warning-1.0.3.tgz#94a30db453df4c643d0fd566060d60a875d84754"
   integrity sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA==
+
+tinycolor2@^1.4.1:
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/tinycolor2/-/tinycolor2-1.4.2.tgz#3f6a4d1071ad07676d7fa472e1fac40a719d8803"
+  integrity sha512-vJhccZPs965sV/L2sU4oRQVAos0pQXwsvTLkWYdqJ+a8Q5kPFzJTuOFwy7UniPli44NKQGAglksjvOcpo95aZA==
 
 title-case@^2.1.0:
   version "2.1.1"

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "page",
     "pluralName": "pages",
-    "displayName": "Pages"
+    "displayName": "Pages",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -33,21 +34,34 @@
           "localized": true
         }
       },
-      "type": "integer",
-      "default": 2022,
+      "type": "string",
+      "regex": "^\\d{4}$",
+      "default": "2022",
+      "minLength": 4,
+      "maxLength": 4,
       "required": true
     },
     "logo": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": true,
+      "required": true,
+      "allowedTypes": ["images"],
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
-      },
+      }
+    },
+    "primaryColor": {
+      "type": "string",
+      "required": true
+    },
+    "secondaryColor": {
+      "type": "string",
+      "required": true
+    },
+    "accentColor": {
+      "type": "string",
       "required": true
     },
     "section": {
@@ -71,6 +85,17 @@
         }
       },
       "component": "nollekamp.nollekamp"
+    },
+    "phos": {
+      "displayName": "phoset",
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "phoset.phoset"
     }
   }
 }
