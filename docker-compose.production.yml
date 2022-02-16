@@ -7,6 +7,14 @@ services:
       - ./strapi/.env
     environment:
       DB_HOST: postgres
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      STRAPI_HOST: '0.0.0.0'
+      STRAPI_PORT: '1337'
+      STRAPI_APP_KEYS: ${STRAPI_APP_KEYS}
+      API_TOKEN_SALT: ${API_TOKEN_SALT}
+      JWT_SECRET: ${JWT_SECRET}
     volumes:
       - ./strapi:/srv/strapi
     networks:
