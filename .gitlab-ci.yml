@@ -8,7 +8,7 @@
   variables:
     DOCKER_HOST: ssh://root@$DESTINATION_HOST
   before_script:
-    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - 'which ssh-agent || (apk add openssh)'
     - eval $(ssh-agent -s)
     - echo "$SSH_PRIVATE_KEY" | ssh-add - > /dev/null
     - mkdir -p ~/.ssh
@@ -17,7 +17,7 @@
 
 docker-build:
   # Use the official docker image.
-  image: docker:latest
+  image: docker/compose:latest
   stage: build
   #services:
   #  - docker:dind
