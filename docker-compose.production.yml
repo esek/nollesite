@@ -9,9 +9,9 @@ services:
       DB_HOST: postgres
     volumes:
       - ./strapi:/srv/strapi
-    ports:
-      - '1337:1337'
     networks:
       - traefik
       - nollning
     restart: always
+    label:
+      - "traefik.http.routers.strapi.rule=Host(\`admin.nollning.esek.se\`)"

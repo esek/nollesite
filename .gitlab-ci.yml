@@ -34,14 +34,19 @@ docker-build:
         tag=":$CI_COMMIT_REF_SLUG"
         echo "Running on branch '$CI_COMMIT_BRANCH': tag = $tag"
       fi
+    
+    - cd strapi
+    - docker build --pull -t "$CI_REGISTRY_IMAGE-strapi${tag}" .
+    - docker push "$CI_REGISTRY_IMAGE-strapi${tag}"
+    - docker image prune -af --filter "until=48h"
+
+    - cd ../web
     - docker build --pull -t "$CI_REGISTRY_IMAGE${tag}" .
     - docker push "$CI_REGISTRY_IMAGE${tag}"
     - docker image prune -af --filter "until=48h"
   # Run this job in a branch where a Dockerfile exists
   rules:
     - if: $CI_COMMIT_BRANCH
-      exists:
-        - Dockerfile
 
 deploy image:
   image: docker:latest
@@ -49,67 +54,16 @@ deploy image:
   extends: .remote_docker
   script:
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker pull $CI_REGISTRY_IMAGE-strapi:latest
     - docker pull $CI_REGISTRY_IMAGE:latest
 
-    # Remove old container
-    - docker stop barskerm 2> /dev/null || true
-    - docker rm --force barskerm 2> /dev/null || true
-    - docker image prune -f --filter "label=project=barskerm"
+    # Strip port open
+    - sed -i '17,18d' docker-compose.yml
 
-    - docker run
-      --name barskerm
-      --label "traefik.http.routers.barskerm.rule=Host(\`pub.esek.se\`, \`barskerm.esek.se\`)"
-      --network=traefik
-      -d $CI_REGISTRY_IMAGE:latest
+    # Remove old container
+    - docker-compose up -f docker-compose.yml -f docker-compose.production.yml -d
   environment:
     name: production
-    url: https://pub.esek.se
+    url: https://nollning.esek.se
   only:
     - main
-
-deploy review:
-  image: docker:latest
-  stage: deploy
-  extends: .remote_docker
-  script:
-    - echo "Deploying review for $CI_COMMIT_BRANCH at commit $CI_COMMIT_SHORT_SHA"
-    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
-    - docker pull $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
-
-    # Remove old container
-    - docker stop barskerm-$CI_COMMIT_REF_SLUG 2> /dev/null || true
-    - docker rm --force barskerm-$CI_COMMIT_REF_SLUG 2> /dev/null || true
-    - docker image prune -f --filter "label=project=barskerm"
-
-    - docker run
-      --name barskerm-$CI_COMMIT_REF_SLUG
-      --network=traefik
-      --label "project=barskerm-$CI_COMMIT_REF_SLUG"
-      -d $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
-  environment:
-    name: review/$CI_COMMIT_REF_SLUG
-    url: https://barskerm-$CI_COMMIT_REF_SLUG.esek.se
-    on_stop: 'stop review'
-  rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-      when: never
-    - if: $CI_MERGE_REQUEST_ID
-
-stop review:
-  image: docker:latest
-  stage: deploy
-  extends: .remote_docker
-  script:
-    - echo "Removing review deploy for $CI_COMMIT_BRANCH at commit $CI_COMMIT_SHORT_SHA"
-
-    # Remove old container
-    - docker stop barskerm-$CI_COMMIT_REF_SLUG 2> /dev/null || true
-    - docker rm --force barskerm-$CI_COMMIT_REF_SLUG 2> /dev/null || true
-    - docker image prune -f --filter "label=project=barkskerm"
-  environment:
-    name: review/$CI_COMMIT_REF_SLUG
-    action: stop
-  rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-      when: never
-    - if: $CI_MERGE_REQUEST_ID
