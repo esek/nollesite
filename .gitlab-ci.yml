@@ -59,6 +59,8 @@ deploy image:
 
     # Strip port open
     - sed -i '17,18d' docker-compose.yml
+    - touch .env
+    - touch strapi/.env
 
     # Remove old container
     - docker-compose -f docker-compose.yml -f docker-compose.production.yml up -d --force-recreate
