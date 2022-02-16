@@ -22,4 +22,4 @@ services:
       - nollning
     restart: always
     labels:
-      - "traefik.http.routers.strapi.rule=Host(`nollning.esek.se`) && Path(`/admin`)"
+      - "traefik.http.routers.strapi.rule=Host(`nollning.esek.se`) && PathPrefix(`/admin`)"
