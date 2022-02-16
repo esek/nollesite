@@ -16,7 +16,7 @@ services:
       API_TOKEN_SALT: ${API_TOKEN_SALT}
       JWT_SECRET: ${JWT_SECRET}
     volumes:
-      - ./strapi:/srv/strapi
+      - /srv/strapi:/app
     networks:
       - traefik
       - nollning
