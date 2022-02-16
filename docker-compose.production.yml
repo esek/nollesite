@@ -7,7 +7,7 @@ services:
       - ./strapi/.env
     environment:
       DB_HOST: postgres
-      DB_USER: ${DB_USER}
+      DB_USERNAME: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: ${DB_NAME}
       STRAPI_HOST: '0.0.0.0'
