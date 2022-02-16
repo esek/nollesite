@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  strapi:
+    build: ./strapi
+    env_file:
+      - ./strapi/.env
+    environment:
+      DB_HOST: postgres
+    volumes:
+      - ./strapi:/srv/strapi
+    ports:
+      - '1337:1337'
+    networks:
+      - traefik
+      - nollning
+    restart: always

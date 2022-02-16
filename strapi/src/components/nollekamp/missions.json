@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_nollekamp_missions",
+  "info": {
+    "displayName": "missions",
+    "icon": "briefcase"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "points": {
+      "type": "integer"
+    }
+  }
+}

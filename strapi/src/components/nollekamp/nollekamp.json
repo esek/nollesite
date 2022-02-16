@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_nollekamp_nollekamps",
+  "info": {
+    "displayName": "nollekamp",
+    "icon": "trophy"
+  },
+  "options": {},
+  "attributes": {
+    "section": {
+      "type": "component",
+      "repeatable": false,
+      "component": "section.section"
+    },
+    "mission": {
+      "displayName": "missions",
+      "type": "component",
+      "repeatable": true,
+      "component": "nollekamp.missions"
+    }
+  }
+}
