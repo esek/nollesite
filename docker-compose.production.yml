@@ -13,5 +13,5 @@ services:
       - traefik
       - nollning
     restart: always
-    label:
+    labels:
       - "traefik.http.routers.strapi.rule=Host(`admin.nollning.esek.se`)"
