@@ -13,16 +13,17 @@ WORKDIR $WORKING_DIR
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
-COPY package*.json ./
+COPY package.json ./
+COPY yarn.lock ./
 
-RUN npm ci
+RUN yarn install --frozen-lockfile
 # If you are building your code for production
 # RUN npm ci --only=production
 
 # Bundle app source
 COPY . .
 
-RUN npm run build
+RUN yarn build
 
 
 ##
@@ -38,7 +39,8 @@ WORKDIR $WORKING_DIR
 
 COPY --from=BUILD_IMAGE $WORKING_DIR/.next ./.next
 COPY --from=BUILD_IMAGE $WORKING_DIR/package*.json ./
-RUN npm ci --production
+COPY --from=BUILD_IMAGE $WORKING_DIR/yarn.lock ./
+RUN yarn install --frozen-lockfile --production
 
 EXPOSE 3000
-CMD [ "npm", "run", "start" ]
+CMD [ "yarn", "start" ]
