@@ -5,6 +5,7 @@ services:
     image: '${CI_REGISTRY_IMAGE}/strapi'
     env_file:
       - ./strapi/.env
+      - ./web/.env
     environment:
       DB_HOST: postgres
       DB_USERNAME: ${DB_USER}
@@ -15,11 +16,10 @@ services:
       STRAPI_APP_KEYS: ${STRAPI_APP_KEYS}
       API_TOKEN_SALT: ${API_TOKEN_SALT}
       JWT_SECRET: ${JWT_SECRET}
-    volumes:
-      - /srv/strapi:/app
+      NEXT_PUBLIC_STRAPI_URL: ${NEXT_PUBLIC_STRAPI_URL}
     networks:
       - traefik
       - nollning
     restart: always
     labels:
-      - 'traefik.http.routers.strapi.rule=Host(`nollning-admin.esek.se`)'
+      - 'traefik.http.routers.strapi.rule=Host(`${NEXT_PUBLIC_STRAPI_URL}`)'
