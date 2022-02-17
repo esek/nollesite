@@ -59,6 +59,7 @@ deploy image:
 
     # Strip port open
     - sed -i '17,18d' docker-compose.yml
+    - sed 's|./postgres|/srv/nollning/postgres|' docker-compose.yml
     - touch .env
     - touch strapi/.env
 
