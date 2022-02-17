@@ -17,6 +17,8 @@ services:
       API_TOKEN_SALT: ${API_TOKEN_SALT}
       JWT_SECRET: ${JWT_SECRET}
       NEXT_PUBLIC_STRAPI_URL: ${NEXT_PUBLIC_STRAPI_URL}
+    volumes:
+      - /srv/nollning/strapi:/srv/app
     networks:
       - traefik
       - nollning
