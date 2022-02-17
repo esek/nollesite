@@ -1,11 +1,14 @@
 {
-  "name": "web",
+  "name": "e-nollning-web",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
+  },
+  "author": {
+    "name": "Axel Froborg <axel.froborg@gmail.com>"
   },
   "dependencies": {
     "axios": "^0.26.0",
