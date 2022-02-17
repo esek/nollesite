@@ -18,7 +18,7 @@ services:
       - '5432:5432'
     restart: always
     volumes:
-      - /srv/nollning/postgres/:/var/lib/postgresql/data
+      - ./postgres/:/var/lib/postgresql/data
     networks:
       - nollning
       - traefik

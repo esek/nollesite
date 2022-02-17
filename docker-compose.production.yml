@@ -13,8 +13,6 @@ services:
       STRAPI_APP_KEYS: ${STRAPI_APP_KEYS}
       API_TOKEN_SALT: ${API_TOKEN_SALT}
       JWT_SECRET: ${JWT_SECRET}
-    volumes:
-      - /srv/nollning/strapi:/srv/app
     networks:
       - traefik
       - nollning
