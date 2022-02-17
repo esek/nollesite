@@ -2,6 +2,8 @@ FROM strapi/base:latest
 
 ENV NODE_ENV production
 
+VOLUME ["/app"]
+
 WORKDIR /app
 
 COPY package.json .
