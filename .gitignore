@@ -1,3 +1,4 @@
 .env
 srv
 postgres
+.DS_Store

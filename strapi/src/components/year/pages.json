@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_year_pages",
+  "info": {
+    "displayName": "pages",
+    "icon": "globe-americas"
+  },
+  "options": {},
+  "attributes": {
+    "pages": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
+    }
+  }
+}

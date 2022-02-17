@@ -1,0 +1,91 @@
+{
+  "kind": "collectionType",
+  "collectionName": "years",
+  "info": {
+    "singularName": "year",
+    "pluralName": "years",
+    "displayName": "Years",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "year": {
+      "type": "string",
+      "regex": "^\\d{4}$",
+      "required": true,
+      "unique": false,
+      "maxLength": 4,
+      "minLength": 4,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "primaryColor": {
+      "type": "string",
+      "default": "#FFFFFF",
+      "regex": "^#(?:[0-9a-fA-F]{3}){1,2}$",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "secondaryColor": {
+      "type": "string",
+      "default": "#FFFFFF",
+      "regex": "^#(?:[0-9a-fA-F]{3}){1,2}$",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "accentColor": {
+      "type": "string",
+      "default": "#FFFFFF",
+      "regex": "^#(?:[0-9A-F]{3}){1,2}$",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "pages": {
+      "displayName": "pages",
+      "type": "component",
+      "repeatable": true,
+      "component": "year.pages",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  }
+}
