@@ -40,6 +40,13 @@ module.exports = createCoreController('api::year.year', ({ strapi }) => ({
         logo: {
           select: imagePopulate,
         },
+        sponsors: {
+          populate: {
+            image: {
+              select: imagePopulate,
+            },
+          },
+        },
         pages: {
           populate: {
             pages: {
@@ -60,6 +67,7 @@ module.exports = createCoreController('api::year.year', ({ strapi }) => ({
       id: entry.id,
       year: entry.year,
       logo: entry.logo,
+      sponsors: entry.sponsors,
       colors: {
         primary: entry.primaryColor,
         secondary: entry.secondaryColor,

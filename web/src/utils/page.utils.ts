@@ -1,6 +1,7 @@
 import { IncomingMessage } from 'http';
 import absoluteUrl from 'next-absolute-url';
 import { Params } from 'next/dist/server/router';
+import { serverConfig } from '../config.server';
 
 /**
  * Converts
@@ -13,11 +14,10 @@ export const parseSubdomainToYear = (req?: IncomingMessage): string => {
   }
   // Get the year parameter from the URL (if present)
   const { host } = absoluteUrl(req);
-  let year = host.split('/')[0];
+  const [year] = host.split('.');
 
-  // if no year is present, default to the current year
-  if (year === host) {
-    year = new Date().getFullYear().toString();
+  if (!year || !Number(year)) {
+    return new Date().getFullYear().toString();
   }
 
   return year;
@@ -29,3 +29,6 @@ export const buildFullPath = (params: Params = {}): string => {
 
   return fullRoute;
 };
+
+export const imageUrl = (endpoint: string) =>
+  `${serverConfig.STRAPI_URL}${endpoint}`;

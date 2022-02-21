@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageResponse } from '../../models/strapi';
+import Hero from './hero/hero';
 import Navbar from './navbar/navbar';
 
 const PageLayout: React.FC<PageResponse> = ({ navLinks, page, year }) => {
@@ -11,11 +12,20 @@ const PageLayout: React.FC<PageResponse> = ({ navLinks, page, year }) => {
     {}
   ) as React.CSSProperties;
 
-  return (
-    <div className="relative flex min-h-screen flex-col" style={styles}>
-      <Navbar links={navLinks} />
+  if (!page) {
+    return null;
+  }
 
-      <main className="flex-1">{JSON.stringify(page)}</main>
+  return (
+    <div
+      className="relative flex min-h-screen w-screen flex-col"
+      style={styles}
+    >
+      <Navbar links={navLinks} year={year.year} />
+
+      <main className="flex-1">
+        <Hero {...year} title={page.title} />
+      </main>
     </div>
   );
 };

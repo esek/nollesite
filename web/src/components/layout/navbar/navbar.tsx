@@ -1,40 +1,47 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import React from 'react';
+import { SOCIALS } from '../../../constants/socials';
 import { NavLink } from '../../../models/nav';
 import EIcon from '../../icons/e-icon';
+import LanguageSelector from './language-selector';
 
 type Props = {
   links: NavLink[];
+  year: string;
 };
 
-const Navbar: React.FC<Props> = ({ links }) => {
-  const router = useRouter();
-
-  const generateLink = (link: NavLink) => {
-    const isActive = router.asPath === link.path;
-
-    const className = `inline-block p-3 font-semibold ${
-      isActive ? 'text-black' : 'text-gray-600'
-    }`;
-
-    return (
-      <Link href={link.path} key={link.id}>
-        <a className={className}>{link.title}</a>
-      </Link>
-    );
-  };
-
+const Navbar: React.FC<Props> = ({ year }) => {
   return (
-    <header className="relative h-24 bg-primary">
-      <div className="mx-auto flex h-full max-w-7xl px-4 xl:px-0 ">
+    <header className="fixed top-0 left-0 right-0 z-50">
+      <div className="mx-auto flex h-full max-w-7xl py-4 px-4 xl:px-0">
         <Link href="/">
-          <a className="logo-container inline-block aspect-square h-full p-3">
-            <EIcon />
+          <a className="logo-container flex items-center gap-4">
+            <div className="aspect-square h-16 rounded-md bg-secondary p-2">
+              <EIcon />
+            </div>
+
+            <span className="text-lg font-semibold text-white">
+              E-Nollning {year}
+            </span>
           </a>
         </Link>
 
-        <div className="ml-auto self-center">{links.map(generateLink)}</div>
+        <div className="ml-auto flex gap-4 self-center">
+          {SOCIALS.map((link) => (
+            <a
+              className="grid aspect-square h-12 place-items-center rounded-md border border-white/20 bg-transparent text-lg text-white/70 transition-colors hover:bg-white/10"
+              key={link.href}
+              href={link.href}
+              target="_blank"
+            >
+              <link.icon aria-label={link.name} title={link.name} />
+            </a>
+          ))}
+        </div>
+
+        <div className="ml-4 self-center">
+          <LanguageSelector />
+        </div>
       </div>
     </header>
   );
