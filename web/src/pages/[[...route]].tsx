@@ -1,7 +1,6 @@
 import { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
 import PageLayout from '../components/layout/page-layout';
-import { PageContextProvider } from '../context/page.ctx';
 import { getAsync } from '../lib/axios';
 import { PageResponse } from '../models/strapi';
 import { buildFullPath, parseSubdomainToYear } from '../utils/page.utils';
@@ -16,9 +15,7 @@ const Route: NextPage<PageResponse> = ({ children, ...props }) => {
         <meta name="description" content={props.page.description} />
       </Head>
 
-      <PageContextProvider {...props.year}>
-        <PageLayout {...props} />
-      </PageContextProvider>
+      <PageLayout {...props} />
     </>
   );
 };
