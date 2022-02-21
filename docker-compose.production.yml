@@ -23,8 +23,7 @@ services:
       - nollning
     restart: always
     labels:
-      - 'traefik.http.routers.strapi.rule=Host(`nollning.esek.se`) && PathPrefix(`/content`)'
-      - 'traefik.http.routers.strapi.middlewares=strip-content@file'
+      - 'traefik.http.routers.strapi.rule=Host(`admin.nollning.esek.se`)'
 
   postgres:
     image: postgres:latest
