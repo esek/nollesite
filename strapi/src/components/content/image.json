@@ -1,5 +1,5 @@
 {
-  "collectionName": "components_content_images",
+  "collectionName": "components_content_image",
   "info": {
     "displayName": "image",
     "icon": "image",
@@ -11,9 +11,7 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "imageText": {
       "type": "string",
