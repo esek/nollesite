@@ -27,6 +27,7 @@ const LanguageSelector: React.FC = ({}) => {
     <div className="group flex justify-center gap-2 rounded-full border border-white/40 px-3 py-2">
       {locales.map((l) => (
         <button
+          key={l.code}
           onClick={() => changeLocale(l.code)}
           className={`aspect-square h-8 rounded-full ${
             l.code === locale ? 'bg-white/30' : ''
