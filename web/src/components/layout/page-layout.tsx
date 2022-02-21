@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageResponse } from '../../models/strapi';
+import StrapiComponents from '../common/strapi-components';
 import Hero from './hero/hero';
 import Navbar from './navbar/navbar';
 
@@ -18,13 +19,15 @@ const PageLayout: React.FC<PageResponse> = ({ navLinks, page, year }) => {
 
   return (
     <div
-      className="relative flex min-h-screen w-screen flex-col"
+      className="relative flex min-h-screen w-screen flex-col bg-primary"
       style={styles}
     >
       <Navbar links={navLinks} year={year.year} />
 
       <main className="flex-1">
         <Hero {...year} title={page.title} />
+
+        <StrapiComponents content={page.content} />
       </main>
     </div>
   );

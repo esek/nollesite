@@ -12,11 +12,11 @@ type Props = {
 
 const Navbar: React.FC<Props> = ({ year }) => {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50">
-      <div className="mx-auto flex h-full max-w-7xl py-4 px-4 xl:px-0">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black/20">
+      <div className="max-w flex h-full py-4">
         <Link href="/">
           <a className="logo-container flex items-center gap-4">
-            <div className="aspect-square h-16 rounded-md bg-secondary p-2">
+            <div className="aspect-square h-16 rounded-md bg-white p-2 ">
               <EIcon />
             </div>
 
@@ -29,7 +29,7 @@ const Navbar: React.FC<Props> = ({ year }) => {
         <div className="ml-auto flex gap-4 self-center">
           {SOCIALS.map((link) => (
             <a
-              className="grid aspect-square h-12 place-items-center rounded-md border border-white/20 bg-transparent text-lg text-white/70 transition-colors hover:bg-white/10"
+              className="hidden aspect-square h-12 place-items-center rounded-md border border-white/20 bg-transparent text-lg text-white/70 transition-colors hover:bg-white/10 md:grid"
               key={link.href}
               href={link.href}
               target="_blank"

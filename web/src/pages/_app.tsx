@@ -1,6 +1,8 @@
 import { NextPage } from 'next';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+import '../styles/main.scss';
+import '../styles/strapi-text.scss';
 import '../styles/tailwind.scss';
 
 const App: NextPage<AppProps> = ({ Component, pageProps }) => {

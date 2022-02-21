@@ -1,3 +1,5 @@
+import { Content } from './content';
+
 export type Page = {
   id: number;
   path: string;
@@ -7,11 +9,5 @@ export type Page = {
   title: string;
   description: string;
   name: string;
-  section: Section[];
-  nollekamp: Nollekamp;
-  phos: Phos[];
+  content: Content[];
 };
-
-export type Section = {};
-export type Nollekamp = {};
-export type Phos = {};

@@ -9,7 +9,7 @@ type Props = Year & {
 
 const Hero: React.FC<Props> = ({ logo, sponsors, title }) => {
   const buildSponsor = (sponsor: Sponsor) => {
-    const { image, name, link } = sponsor;
+    const { image, name, link, id } = sponsor;
 
     if (!image?.url) {
       return null;
@@ -21,10 +21,11 @@ const Hero: React.FC<Props> = ({ logo, sponsors, title }) => {
         target="_blank"
         rel="noreferrer"
         className="inline-block h-full flex-shrink-0 p-4"
+        key={`sponsor-${id}`}
       >
         <img
           src={imageUrl(image.url)}
-          className="h-full grayscale transition-all hover:grayscale-0"
+          className="h-full rounded-md grayscale transition-all hover:grayscale-0"
           alt={image.alternativeText}
           title={name}
         />
@@ -36,19 +37,21 @@ const Hero: React.FC<Props> = ({ logo, sponsors, title }) => {
     <div className="relative flex h-screen w-screen flex-col bg-primary">
       <div className="grid flex-1 place-items-center">
         <img
-          src={imageUrl(logo.url)}
+          src={logo.url}
           alt={logo.alternativeText}
-          className="opacity-50"
+          className="pointer-events-none opacity-50"
         />
 
         <div className="absolute">
-          <h1 className="text-4xl font-semibold text-white">{title}</h1>
+          <h1 className="p-4 text-center text-4xl font-semibold text-white">
+            {title}
+          </h1>
         </div>
       </div>
 
       <div className="sponsors-wrapper relative flex h-48 items-center">
-        <div className="absolute inset-0 bg-white/10 blur-sm"></div>
-        <div className="relative mx-auto flex h-full w-full max-w-6xl justify-between overflow-auto">
+        <div className="absolute inset-0 bg-white/5"></div>
+        <div className="max-w relative flex h-full w-full justify-between overflow-auto">
           {sponsors.map(buildSponsor)}
         </div>
       </div>

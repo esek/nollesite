@@ -7,6 +7,8 @@ export type Year = {
   logo: StrapiImage;
   colors: YearColors;
   sponsors: Sponsor[];
+  nollekamp: Nollekamp;
+  phos: Phos[];
 };
 
 export type YearColors = {
@@ -14,3 +16,6 @@ export type YearColors = {
   secondary: string;
   accent: string;
 };
+
+export type Nollekamp = {};
+export type Phos = {};

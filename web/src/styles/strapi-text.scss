@@ -1,0 +1,22 @@
+.strapi-wysiwyg {
+  .text-header {
+    &::after {
+      content: '';
+      display: block;
+      width: 52px;
+      height: 6px;
+      margin-top: 8px;
+      border-radius: 999px;
+      background-color: var(--color-accent);
+    }
+  }
+
+  img,
+  figure {
+    @apply w-fit rounded-md text-center;
+  }
+
+  a {
+    @apply text-accent hover:underline;
+  }
+}
