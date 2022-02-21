@@ -25,6 +25,18 @@ services:
     labels:
       - 'traefik.http.routers.strapi.rule=Host(`admin.nollning.esek.se`)'
 
+  web:
+    image: '${CI_REGISTRY_IMAGE}'
+    environment:
+      STRAPI_URL: ${STRAPI_URL}
+      STRAPI_API_TOKEN: ${STRAPI_API_TOKEN}
+      NODE_ENV: production
+    networks:
+      - traefik
+    restart: always
+    labels:
+      - 'traefik.http.routers.nollning-web.rule=Host(`sub:{^\d{4}$}.nollning.esek.se`) || Host(`nollning.esek.se`)'
+
   postgres:
     image: postgres:latest
     env_file:
