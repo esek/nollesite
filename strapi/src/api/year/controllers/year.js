@@ -16,24 +16,36 @@ module.exports = createCoreController('api::year.year', ({ strapi }) => ({
    * to fetch the navlinks, the current page as well as the global year data
    */
   async findOne(ctx) {
-    const { locale = 'sv', path = '/' } = ctx.query;
+    const { locale = 'sv', path = '/', preview = 'false' } = ctx.query;
     const { id } = ctx.params;
+
+    const isPreview = preview === 'true';
+
+    const where = [
+      {
+        year: {
+          $eq: id,
+        },
+      },
+      {
+        locale: {
+          $eq: locale,
+        },
+      },
+    ];
+
+    if (!isPreview) {
+      where.push({
+        publish: {
+          $eq: true,
+        },
+      });
+    }
 
     // Fetch the year based on the query param
     const entry = await strapi.db.query('api::year.year').findOne({
       where: {
-        $and: [
-          {
-            year: {
-              $eq: id,
-            },
-          },
-          {
-            locale: {
-              $eq: locale,
-            },
-          },
-        ],
+        $and: where,
       },
       // by default no objects are populated by strapi so this needs to be done manually
       populate: {
@@ -56,6 +68,10 @@ module.exports = createCoreController('api::year.year', ({ strapi }) => ({
         },
       },
     });
+
+    if (!entry) {
+      return {};
+    }
 
     // map the navlinks to a better format (and remove any broken links)
     const navLinks = entry.pages

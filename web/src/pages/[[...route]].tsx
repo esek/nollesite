@@ -27,11 +27,16 @@ type Params = {
 export const getServerSideProps: GetServerSideProps<
   PageResponse,
   Params
-> = async ({ params, req, locale }) => {
+> = async ({ params, req, locale, query }) => {
   const path = buildFullPath(params);
   const year = parseSubdomainToYear(req);
 
-  const resp = await getAsync<PageResponse>(`/years/${year}`, { locale, path });
+  const { preview } = query;
+
+  const resp = await getAsync<PageResponse>(
+    `/years/${year}?preview=${preview}`,
+    { locale, path }
+  );
 
   if (!resp.page) {
     return {
