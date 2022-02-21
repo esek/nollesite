@@ -1,8 +1,8 @@
 {
-  "collectionName": "components_section_sections",
+  "collectionName": "components_content_texts",
   "info": {
-    "displayName": "section",
-    "icon": "align-left"
+    "displayName": "text",
+    "icon": "align-center"
   },
   "options": {},
   "attributes": {

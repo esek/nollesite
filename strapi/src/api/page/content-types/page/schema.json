@@ -28,39 +28,6 @@
       "unique": false,
       "default": "/"
     },
-    "section": {
-      "displayName": "section",
-      "type": "component",
-      "repeatable": true,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "section.section"
-    },
-    "nollekamp": {
-      "displayName": "nollekamp",
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "nollekamp.nollekamp"
-    },
-    "phos": {
-      "displayName": "phoset",
-      "type": "component",
-      "repeatable": true,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "phoset.phoset"
-    },
     "title": {
       "pluginOptions": {
         "i18n": {
@@ -69,7 +36,7 @@
       },
       "type": "string",
       "required": true,
-      "unique": true
+      "unique": false
     },
     "description": {
       "pluginOptions": {
@@ -91,6 +58,15 @@
       "private": true,
       "required": true,
       "unique": false
+    },
+    "content": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "dynamiczone",
+      "components": ["content.images", "content.text"]
     }
   }
 }

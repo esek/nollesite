@@ -50,8 +50,10 @@ module.exports = createCoreController('api::year.year', ({ strapi }) => ({
       },
     });
 
-    // map the navlinks to a better format
-    const navLinks = entry.pages.map((p) => ({ relationId: p.id, ...p.pages }));
+    // map the navlinks to a better format (and remove any broken links)
+    const navLinks = entry.pages
+      .filter((p) => p.pages)
+      .map((p) => ({ relationId: p.id, ...p.pages }));
 
     // map the year to a nice to work object
     const year = {
@@ -67,10 +69,19 @@ module.exports = createCoreController('api::year.year', ({ strapi }) => ({
 
     const page = await strapi.db.query('api::page.page').findOne({
       populate: {
-        section: true,
+        content: {
+          populate: {
+            images: {
+              populate: {
+                image: {
+                  select: imagePopulate,
+                },
+              },
+            },
+          },
+        },
         nollekamp: {
           populate: {
-            section: true,
             mission: true,
           },
         },

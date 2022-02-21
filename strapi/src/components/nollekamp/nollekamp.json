@@ -6,11 +6,6 @@
   },
   "options": {},
   "attributes": {
-    "section": {
-      "type": "component",
-      "repeatable": false,
-      "component": "section.section"
-    },
     "mission": {
       "displayName": "missions",
       "type": "component",

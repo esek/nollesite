@@ -2,13 +2,14 @@
   "collectionName": "components_phoset_phosets",
   "info": {
     "displayName": "phoset",
-    "icon": "user-secret"
+    "icon": "user-secret",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "name": {
       "type": "string",
-      "unique": true,
+      "unique": false,
       "required": true
     },
     "description": {
@@ -16,12 +17,12 @@
       "required": true
     },
     "image": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }

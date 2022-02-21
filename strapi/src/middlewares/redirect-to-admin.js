@@ -13,7 +13,7 @@ module.exports = () => {
 
     ctx.response.status = 301;
     ctx.set({
-      Location: '/admin',
+      Location: '/dashboard',
     });
   };
 };

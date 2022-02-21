@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_content_images",
+  "info": {
+    "displayName": "images",
+    "icon": "images",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "images": {
+      "displayName": "image",
+      "type": "component",
+      "repeatable": true,
+      "component": "content.image"
+    }
+  }
+}

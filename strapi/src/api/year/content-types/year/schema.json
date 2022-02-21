@@ -33,9 +33,7 @@
       "type": "media",
       "multiple": false,
       "required": true,
-      "allowedTypes": [
-        "images"
-      ],
+      "allowedTypes": ["images"],
       "pluginOptions": {
         "i18n": {
           "localized": false
@@ -86,6 +84,28 @@
           "localized": true
         }
       }
+    },
+    "nollekamp": {
+      "displayName": "nollekamp",
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "nollekamp.nollekamp"
+    },
+    "phos": {
+      "displayName": "phoset",
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "phoset.phoset"
     }
   }
 }
