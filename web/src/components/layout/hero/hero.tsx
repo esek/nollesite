@@ -19,6 +19,7 @@ const Hero: React.FC<Props> = ({ logo, sponsors, title }) => {
       <a
         href={link}
         target="_blank"
+        rel="noreferrer"
         className="inline-block h-full flex-shrink-0 p-4"
       >
         <img
