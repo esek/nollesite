@@ -35,7 +35,7 @@ services:
       - traefik
     restart: always
     labels:
-      - 'traefik.http.routers.nollning-web.rule=HostRegexp(`{sub:^\d{4}$$}.nollning.esek.se`) || Host(`nollning.esek.se`)'
+      - 'traefik.http.routers.nollning-web.rule=HostRegexp(`nollning.esek.se`, `{subdomain:[0-9]+}.nollning.esek.se`)'
 
   postgres:
     image: postgres:latest
