@@ -41,6 +41,7 @@ WORKDIR $WORKING_DIR
 COPY --from=BUILD_IMAGE $WORKING_DIR/.next ./.next
 COPY --from=BUILD_IMAGE $WORKING_DIR/package*.json ./
 COPY --from=BUILD_IMAGE $WORKING_DIR/yarn.lock ./
+COPY --from=BUILD_IMAGE $WORKING_DIR/next.config.js ./
 RUN yarn install --frozen-lockfile --production
 
 EXPOSE 3000
