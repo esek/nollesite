@@ -44,6 +44,7 @@ COPY --from=BUILD_IMAGE $WORKING_DIR/yarn.lock ./
 COPY --from=BUILD_IMAGE $WORKING_DIR/next.config.js ./
 RUN yarn install --frozen-lockfile --production
 
+RUN apk add curl
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3\
  CMD [ "curl", "--fail", "localhost:3000" ]
 
