@@ -23,7 +23,7 @@ services:
       - nollning
     restart: always
     volumes:
-      - /srv/nollning/web:/srv/app
+      - /srv/nollning/uploads:/app/public/uploads
     labels:
       - 'traefik.http.routers.strapi.rule=Host(`admin.nollning.esek.se`)'
 
