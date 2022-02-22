@@ -15,6 +15,7 @@ WORKDIR $WORKING_DIR
 # where available (npm@5+)
 COPY package.json ./
 COPY yarn.lock ./
+COPY next.config.js ./next.config.js
 
 RUN yarn install --frozen-lockfile
 # If you are building your code for production
