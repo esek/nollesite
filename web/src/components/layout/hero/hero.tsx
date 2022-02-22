@@ -1,7 +1,6 @@
 import React from 'react';
 import { Sponsor } from '../../../models/sponsor';
 import { Year } from '../../../models/year';
-import { imageUrl } from '../../../utils/page.utils';
 
 type Props = Year & {
   title: string;
@@ -24,7 +23,7 @@ const Hero: React.FC<Props> = ({ logo, sponsors, title }) => {
         key={`sponsor-${id}`}
       >
         <img
-          src={imageUrl(image.url)}
+          src={image.url}
           className="h-full rounded-md grayscale transition-all hover:grayscale-0"
           alt={image.alternativeText}
           title={name}

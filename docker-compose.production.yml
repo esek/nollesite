@@ -30,7 +30,7 @@ services:
   web:
     image: '${CI_REGISTRY_IMAGE}'
     environment:
-      NEXT_PUBLIC_STRAPI_URL: ${STRAPI_URL}
+      STRAPI_URL: ${STRAPI_URL}
       STRAPI_API_TOKEN: ${STRAPI_API_TOKEN}
       NODE_ENV: production
     networks:
