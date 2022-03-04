@@ -44,8 +44,6 @@ export const getServerSideProps: GetServerSideProps<
     };
   }
 
-  console.log(resp.year);
-
   return {
     props: resp,
   };

@@ -32,6 +32,7 @@ services:
     environment:
       STRAPI_URL: ${STRAPI_URL}
       STRAPI_API_TOKEN: ${STRAPI_API_TOKEN}
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY}
       NODE_ENV: production
     networks:
       - traefik
