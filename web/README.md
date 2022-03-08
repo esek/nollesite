@@ -1,34 +1,71 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🚀 Nollesite.web
 
-## Getting Started
+Frontendkod för nollningshemsidorna [`nollning.esek.se`](https://nollning.esek.se) och <s title="deprecated since 2022">[`e-nollning.nu`](https://e-nollning.nu)</s> samt alla alias `/\d{4}/.nollning.esek.se`.
 
-First, run the development server:
+Skriven i [Next.js](https://nextjs.org/) för att få SSR (och för att `@afroborg` var lite trött på SvelteKit).
+
+Däremot används såklart [TailwindCSS](https://tailwindcss.com/) för att inte behöva skriva egen csskod (🤮).
+
+## ⚡️ Quickstart
+
+Detta är ett vanligt `Next.js`-projekt som använder sig av `yarn`, så för att starta kör du:
 
 ```bash
-npm run dev
-# or
-yarn dev
+yarn install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+och sedan
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```bash
+yarn run dev
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## 🎨 Design
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Designen är gjord av `Phøset 2022` tillsammans med [`@afroborg`](https://gitlab.com/afroborg) och [`@blennster`](https://gitlab.com/blennster) (och säkert andra som inte får cred). Målet var att hitta en lösning som kan fungera flera år framåt, med endast tweaking på t.ex. färger, bilder och innehåll.
 
-## Learn More
+> Vi gissar att detta kommer ändras lite varje år men skitsamma
 
-To learn more about Next.js, take a look at the following resources:
+## ⚙️ How it works?
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Upplägget är enkelt - man bygger olika sektioner i [backenden (strapi)](../strapi/README.md) som sedan hämtas i varje anrop. Sedan parsas dessa sidorna beroende på namnet som de har i strapi.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+T.ex:
+Phøset lägger in en `text`-komponent med lite innehåll från en `WYSIWYG` i strapi.
 
-## Deploy on Vercel
+API-anropet kommer då innehålla ett objekt som ser ut enligt följande:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```js
+{
+	...
+	content = [
+	...
+	{
+		__component: 'content.text',
+		...
+	}
+]
+}
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Komponenten [`<StrapiComponents content={content} />`](src/components/common/strapi-components.tsx) gör sedan en `switch`-check och renderar ut en komponent med en färdig layout för just text.
+
+## ⌛️ Hämta tidigare år
+
+Sidan kan antingen hämtas direkt utan subdomänsprefix (`https://nollning.esek.se`) eller med prefix (`xxxx.nollning.esek.se`). Detta är för att vi vill kunna spara gamla sidor live efter att nollningen varit (vissa är nostalgiska)
+
+Beroende på hur man hämtar sidan får man olika utfall:
+
+### Utan prefix
+
+Om inget prefix sätts, så kommer det göras en default mot nuvarande året (`new Date().getFullYear()`) och endast detta årets information kommer visas.
+
+### Med prefix (ex. `2020.nollning.esek.se`)
+
+[`[[...route]]`](src/pages/[[...route]].tsx) komponenten kommer då att parsa ut årtalet (i detta fallet `2020`) och göra en filtrerad sökning mot api:et för att hämta just det årets data. På så sätt kan vi se till att alltid spara information för tidigare år.
+
+## 👻 Previewläge
+
+Eftersom vi inte vill att alla ska kunna gå in på `nollning.esek.se` under tiden som phøset bygger hemsidan i `strapi`, finns det en `publish`-flagga som de sätter i adminpanelen. Om `publish` är `false` kommer inte sidan att läsas in utan en `?preview=true` query-parameter.
+
+Detta är kanske inte det säkraste sättet att lösa det på men vi hoppas att sektionen inte är tillräckligt IT-kunniga för att förstå att man kan göra så.

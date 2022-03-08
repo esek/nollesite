@@ -1,8 +1,8 @@
-# Nollesite 🥷🏻
+# 🥷🏻 Nollesite
 
-Repo för Nollningshemsidorna [`nollning.esek.se`](https://nollning.esek.se) och [`e-nollning.nu`](https://e-nollning.nu) samt alla alias `*.nollning.esek.se`.
+Repo för Nollningshemsidorna [`nollning.esek.se`](https://nollning.esek.se) och <s title="deprecated since 2022">[`e-nollning.nu`](https://e-nollning.nu)</s> samt alla alias `*.nollning.esek.se`.
 
-## Quickstart
+## ⚡️ Quickstart
 
 För detta projektet krävs:
 
@@ -19,7 +19,7 @@ För att starta en lokal devmiljö där du kan redigera saker i strapi och testa
 2. Starta Web - `cd web` och `yarn dev`
    - Detta kommer starta en lokal webapplikation på `http://localhost:3000`
 
-## Struktur
+## 📚 Struktur
 
 Projektet består av två delar. En backend server och en frontend applikation.
 
