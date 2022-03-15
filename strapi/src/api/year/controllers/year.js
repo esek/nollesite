@@ -16,12 +16,29 @@ module.exports = createCoreController('api::year.year', ({ strapi }) => ({
    * to fetch the navlinks, the current page as well as the global year data
    */
   async findOne(ctx) {
-    const { locale = 'sv', path = '/', preview = 'false' } = ctx.query;
+    const { locale = 'sv', path = '/', password = '' } = ctx.query;
     const { id } = ctx.params;
 
-    const isPreview = preview === 'true';
-
     const where = [
+      {
+        $or: [
+          {
+            password: {
+              $eq: password,
+            },
+          },
+          {
+            password: {
+              $eq: '',
+            },
+          },
+          {
+            password: {
+              $null: true,
+            },
+          },
+        ],
+      },
       {
         year: {
           $eq: id,
@@ -34,13 +51,28 @@ module.exports = createCoreController('api::year.year', ({ strapi }) => ({
       },
     ];
 
-    if (!isPreview) {
-      where.push({
-        publish: {
-          $eq: true,
-        },
-      });
-    }
+    // if (password) {
+    //   where.push({
+    //     password: {
+    //       $eq: password,
+    //     },
+    //   });
+    // } else {
+    //   where.push({
+    //     $or: [
+    //       {
+    //         password: {
+    //           $eq: ,
+    //         },
+    //       },
+    //       {
+    //         password: {
+    //           $null: true,
+    //         },
+    //       },
+    //     ],
+    //   });
+    // }
 
     // Fetch the year based on the query param
     const entry = await strapi.db.query('api::year.year').findOne({

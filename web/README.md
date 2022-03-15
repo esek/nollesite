@@ -64,8 +64,6 @@ Om inget prefix sätts, så kommer det göras en default mot nuvarande året (`n
 
 [`[[...route]]`](src/pages/[[...route]].tsx) komponenten kommer då att parsa ut årtalet (i detta fallet `2020`) och göra en filtrerad sökning mot api:et för att hämta just det årets data. På så sätt kan vi se till att alltid spara information för tidigare år.
 
-## 👻 Previewläge
+## 👻 Passwords
 
-Eftersom vi inte vill att alla ska kunna gå in på `nollning.esek.se` under tiden som phøset bygger hemsidan i `strapi`, finns det en `publish`-flagga som de sätter i adminpanelen. Om `publish` är `false` kommer inte sidan att läsas in utan en `?preview=true` query-parameter.
-
-Detta är kanske inte det säkraste sättet att lösa det på men vi hoppas att sektionen inte är tillräckligt IT-kunniga för att förstå att man kan göra så.
+Eftersom vi inte vill att alla ska kunna gå in på `nollning.esek.se` under tiden som phøset bygger hemsidan i `strapi`, finns det ett `password`-fält som de sätter i adminpanelen. Om `password` är `''` sidan alltid att gå att läsas in, annars måste en `?password={password}` flagga sättas i frontenden.

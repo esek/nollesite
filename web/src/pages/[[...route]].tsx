@@ -31,10 +31,10 @@ export const getServerSideProps: GetServerSideProps<
   const path = buildFullPath(params);
   const year = parseSubdomainToYear(req);
 
-  const { preview = false } = query;
+  const { password = '' } = query;
 
   const resp = await getAsync<PageResponse>(
-    `/years/${year}?preview=${preview}`,
+    `/years/${year}?password=${password}`,
     { locale, path }
   );
 
