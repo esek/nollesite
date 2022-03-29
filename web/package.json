@@ -11,25 +11,29 @@
     "name": "Axel Froborg <axel.froborg@gmail.com>"
   },
   "dependencies": {
-    "axios": "^0.26.0",
-    "googleapis": "^95.0.0",
-    "next": "12.0.10",
+    "axios": "^0.26.1",
+    "colortranslator": "^1.9.2",
+    "googleapis": "^97.0.0",
+    "gsap": "^3.9.1",
+    "next": "12.1.0",
     "next-absolute-url": "^1.2.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-gsap": "^3.2.1",
     "react-icons": "^4.3.1",
-    "sass": "^1.49.7"
+    "sass": "^1.49.9"
   },
   "devDependencies": {
-    "@types/node": "17.0.18",
-    "@types/react": "17.0.39",
+    "@types/gsap": "^3.0.0",
+    "@types/node": "17.0.21",
+    "@types/react": "17.0.40",
     "autoprefixer": "^10.4.2",
-    "eslint": "8.9.0",
-    "eslint-config-next": "12.0.10",
-    "postcss": "^8.4.6",
+    "eslint": "8.11.0",
+    "eslint-config-next": "12.1.0",
+    "postcss": "^8.4.8",
     "prettier": "^2.5.1",
-    "prettier-plugin-tailwindcss": "^0.1.7",
+    "prettier-plugin-tailwindcss": "^0.1.8",
     "tailwindcss": "^3.0.23",
-    "typescript": "4.5.5"
+    "typescript": "4.6.2"
   }
 }

@@ -1,13 +1,17 @@
 .strapi-wysiwyg {
   .text-header {
+    @apply relative w-fit;
+
     &::after {
       content: '';
+      position: absolute;
       display: block;
-      width: 52px;
-      height: 6px;
-      margin-top: 8px;
-      border-radius: 999px;
-      background-color: var(--color-accent);
+      left: 0;
+      right: 0;
+      height: 2px;
+      bottom: -0.25em;
+
+      @apply rounded-full bg-accent;
     }
   }
 
@@ -18,5 +22,10 @@
 
   a {
     @apply text-accent hover:underline;
+  }
+
+  ul,
+  li {
+    @apply ml-2 list-disc;
   }
 }

@@ -9,7 +9,12 @@ const Text: React.FC<Content<'content.text'>> = ({ header, body }) => {
           {header}
         </h2>
       )}
-      {body && <div dangerouslySetInnerHTML={{ __html: body }}></div>}
+      {body && (
+        <div
+          className="text-sm md:text-base"
+          dangerouslySetInnerHTML={{ __html: body }}
+        ></div>
+      )}
     </div>
   );
 };

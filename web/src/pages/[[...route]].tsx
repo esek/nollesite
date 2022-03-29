@@ -4,8 +4,13 @@ import PageLayout from '../components/layout/page-layout';
 import { getAsync } from '../lib/axios';
 import { PageResponse } from '../models/strapi';
 import { buildFullPath, parseSubdomainToYear } from '../utils/page.utils';
+import { generateColors } from '../utils/style.utils';
 
-const Route: NextPage<PageResponse> = ({ children, ...props }) => {
+type Props = PageResponse & {
+  cssColors: Record<string, number>[];
+};
+
+const Route: NextPage<Props> = ({ children, ...props }) => {
   return (
     <>
       <Head>
@@ -44,8 +49,13 @@ export const getServerSideProps: GetServerSideProps<
     };
   }
 
+  const colors = generateColors(resp.year.colors);
+
   return {
-    props: resp,
+    props: {
+      ...resp,
+      cssColors: colors,
+    },
   };
 };
 

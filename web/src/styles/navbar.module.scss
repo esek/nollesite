@@ -1,0 +1,88 @@
+.drawer {
+  @apply absolute top-0 left-0 flex h-screen w-screen translate-x-full items-center bg-primary p-12 transition-all duration-500;
+
+  &-open {
+    @apply translate-x-0;
+  }
+
+  @screen md {
+    @apply relative h-auto w-auto translate-x-0 flex-row-reverse p-0;
+  }
+}
+
+.navlink {
+  @apply relative text-lg font-semibold;
+
+  &::before,
+  &::after {
+    position: absolute;
+    display: block;
+    content: '';
+  }
+
+  // &::before {
+  //   left: 0;
+  //   right: 0;
+  //   bottom: -0.25em;
+  //   height: 1px;
+
+  // }
+
+  &.nav-active::after {
+    $size: 10px;
+
+    height: $size;
+    width: $size;
+    left: -1em;
+    top: 50%;
+    transform: translateY(-50%);
+
+    @apply rounded-full border-2 border-accent bg-primary;
+  }
+
+  @screen md {
+    @apply text-base font-normal;
+
+    &::before,
+    &::after {
+      @apply hidden;
+    }
+  }
+}
+
+.line {
+  --translate-x: 0;
+  --translate-y: 0;
+  --rotate: 0deg;
+
+  @apply h-[4px] w-[28px] rounded-full;
+  background: white;
+  transition: all 200ms ease-in-out 300ms;
+  opacity: var(--opacity, 1);
+  transform: rotate(var(--rotate)) translateY(var(--translate-y))
+    translateX(var(--translate-x));
+
+  &:nth-child(1) {
+    --translate-y: -4px;
+  }
+
+  &:nth-child(3) {
+    --translate-y: 4px;
+  }
+
+  &.open {
+    &:nth-child(1) {
+      --rotate: 45deg;
+      --translate-y: 5.5px;
+    }
+
+    &:nth-child(2) {
+      --opacity: 0;
+    }
+
+    &:nth-child(3) {
+      --rotate: -45deg;
+      --translate-y: -5.5px;
+    }
+  }
+}

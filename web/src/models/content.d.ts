@@ -7,8 +7,8 @@ export type Content<T extends string = string> = {
 
 type TextContent = {
   __component: 'content.text';
-  header: string;
-  body: string;
+  header?: string;
+  body?: string;
 };
 
 type ImagesContent = {

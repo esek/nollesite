@@ -7,7 +7,7 @@ type Props = {
 };
 
 const StrapiComponents: React.FC<Props> = ({ content }) => {
-  const buildContent = (c: Content) => {
+  const buildContent = (c: Content, i: number) => {
     let inner = null;
     switch (c.__component) {
       case 'content.text':
@@ -27,7 +27,7 @@ const StrapiComponents: React.FC<Props> = ({ content }) => {
     }
 
     return (
-      <section className="max-w py-8" key={`strapi-content--${c.id}`}>
+      <section className="max-w py-8" key={`strapi-content--${c.id}-${i}`}>
         {inner}
       </section>
     );

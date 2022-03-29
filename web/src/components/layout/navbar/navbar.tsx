@@ -1,48 +1,43 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { SOCIALS } from '../../../constants/socials';
+import { useToggle } from '../../../hooks/toggle.hook';
+import { StrapiImage } from '../../../models/image';
 import { NavLink } from '../../../models/nav';
-import EIcon from '../../icons/e-icon';
-import LanguageSelector from './language-selector';
+import BurgerMenuBtn from './burger-menu-btn';
+import Drawer from './drawer';
 
 type Props = {
   links: NavLink[];
   year: string;
+  logo: StrapiImage;
 };
 
-const Navbar: React.FC<Props> = ({ year }) => {
+const Navbar: React.FC<Props> = ({ year, logo, links }) => {
+  const { isOpen, toggle, close } = useToggle(false);
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black/20">
-      <div className="max-w flex h-full py-4">
-        <Link href="/">
-          <a className="logo-container flex items-center gap-4">
-            <div className="aspect-square h-16 rounded-md bg-white p-2 ">
-              <EIcon />
-            </div>
+    <header
+      role="navigation"
+      className="max-w sticky top-0 z-50 mx-auto flex items-center justify-between py-4"
+      data-item="header"
+    >
+      <Link href="/">
+        <a>
+          <Image
+            src={logo.url}
+            alt={logo.alternativeText}
+            height="64"
+            width="64"
+            aria-label="Back to home"
+          />
+        </a>
+      </Link>
 
-            <span className="text-lg font-semibold text-white">
-              E-Nollning {year}
-            </span>
-          </a>
-        </Link>
+      <Drawer isOpen={isOpen} links={links} close={close} />
 
-        <div className="ml-auto flex gap-4 self-center">
-          {SOCIALS.map((link) => (
-            <a
-              className="hidden aspect-square h-12 place-items-center rounded-md border border-white/20 bg-transparent text-lg text-white/70 transition-colors hover:bg-white/10 md:grid"
-              key={link.href}
-              href={link.href}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <link.icon aria-label={link.name} title={link.name} />
-            </a>
-          ))}
-        </div>
-
-        <div className="ml-4 self-center">
-          <LanguageSelector />
-        </div>
+      <div className="relative z-10 md:hidden">
+        <BurgerMenuBtn isOpen={isOpen} onClick={toggle} />
       </div>
     </header>
   );
