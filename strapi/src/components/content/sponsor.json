@@ -1,7 +1,7 @@
 {
-  "collectionName": "components_sponsors_sponsors",
+  "collectionName": "components_content_sponsor",
   "info": {
-    "displayName": "sponsors",
+    "displayName": "sponsor",
     "icon": "money-bill",
     "description": ""
   },
@@ -15,9 +15,7 @@
       "type": "media",
       "multiple": false,
       "required": true,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "link": {
       "type": "string",

@@ -16,7 +16,7 @@ module.exports = createCoreController('api::year.year', ({ strapi }) => ({
    * to fetch the navlinks, the current page as well as the global year data
    */
   async findOne(ctx) {
-    const { locale = 'sv', path = '/', password = '' } = ctx.query;
+    const { locale = 'sv', password = '' } = ctx.query;
     const { id } = ctx.params;
 
     const where = [
@@ -51,29 +51,6 @@ module.exports = createCoreController('api::year.year', ({ strapi }) => ({
       },
     ];
 
-    // if (password) {
-    //   where.push({
-    //     password: {
-    //       $eq: password,
-    //     },
-    //   });
-    // } else {
-    //   where.push({
-    //     $or: [
-    //       {
-    //         password: {
-    //           $eq: ,
-    //         },
-    //       },
-    //       {
-    //         password: {
-    //           $null: true,
-    //         },
-    //       },
-    //     ],
-    //   });
-    // }
-
     // Fetch the year based on the query param
     const entry = await strapi.db.query('api::year.year').findOne({
       where: {
@@ -84,47 +61,6 @@ module.exports = createCoreController('api::year.year', ({ strapi }) => ({
         logo: {
           select: imagePopulate,
         },
-        sponsors: {
-          populate: {
-            image: {
-              select: imagePopulate,
-            },
-          },
-        },
-        pages: {
-          populate: {
-            pages: {
-              select: ['path', 'title', 'id'],
-            },
-          },
-        },
-      },
-    });
-
-    if (!entry) {
-      return {};
-    }
-
-    // map the navlinks to a better format (and remove any broken links)
-    const navLinks = entry.pages
-      .filter((p) => p.pages)
-      .map((p) => ({ relationId: p.id, ...p.pages }));
-
-    // map the year to a nice to work object
-    const year = {
-      id: entry.id,
-      year: entry.year,
-      logo: entry.logo,
-      sponsors: entry.sponsors,
-      colors: {
-        primary: entry.primaryColor,
-        secondary: entry.secondaryColor,
-        accent: entry.accentColor,
-      },
-    };
-
-    const page = await strapi.db.query('api::page.page').findOne({
-      populate: {
         content: {
           populate: {
             images: {
@@ -134,47 +70,30 @@ module.exports = createCoreController('api::year.year', ({ strapi }) => ({
                 },
               },
             },
+            sponsors: {
+              populate: {
+                image: {
+                  select: imagePopulate,
+                },
+              },
+            },
+            phoset: {
+              populate: {
+                image: {
+                  select: imagePopulate,
+                },
+              },
+            },
+            missions: true,
           },
         },
-        nollekamp: {
-          populate: {
-            mission: true,
-          },
-        },
-        phos: {
-          populate: {
-            image: {
-              select: imagePopulate,
-            },
-          },
-        },
-      },
-      where: {
-        $and: [
-          {
-            // make sure it's a page from the current year
-            id: {
-              $in: navLinks.map((l) => l.id),
-            },
-          },
-          {
-            path: {
-              $eq: path,
-            },
-          },
-          {
-            locale: {
-              $eq: locale,
-            },
-          },
-        ],
       },
     });
 
-    return {
-      page,
-      year,
-      navLinks,
-    };
+    if (!entry) {
+      return {};
+    }
+
+    return entry;
   },
 }));

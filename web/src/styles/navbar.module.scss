@@ -28,7 +28,7 @@
 
   // }
 
-  &.nav-active::after {
+  &::after {
     $size: 10px;
 
     height: $size;
@@ -38,6 +38,10 @@
     transform: translateY(-50%);
 
     @apply rounded-full border-2 border-accent bg-primary;
+  }
+
+  &.nav-active::after {
+    @apply bg-accent;
   }
 
   @screen md {

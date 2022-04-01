@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_content_phoset",
+  "info": {
+    "displayName": "phøset",
+    "icon": "user-secret",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "phoset": {
+      "displayName": "phøset",
+      "type": "component",
+      "repeatable": true,
+      "component": "content.phos"
+    }
+  }
+}

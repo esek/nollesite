@@ -1,7 +1,7 @@
 {
-  "collectionName": "components_nollekamp_missions",
+  "collectionName": "components_content_mission",
   "info": {
-    "displayName": "missions",
+    "displayName": "mission",
     "icon": "briefcase"
   },
   "options": {},

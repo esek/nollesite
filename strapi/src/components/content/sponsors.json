@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_content_sponsors",
+  "info": {
+    "displayName": "sponsors",
+    "icon": "money-bill",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "sponsors": {
+      "displayName": "sponsors",
+      "type": "component",
+      "repeatable": true,
+      "component": "content.sponsor"
+    }
+  }
+}

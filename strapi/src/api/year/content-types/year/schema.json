@@ -29,6 +29,16 @@
         }
       }
     },
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
     "logo": {
       "type": "media",
       "multiple": false,
@@ -75,51 +85,6 @@
         }
       }
     },
-    "pages": {
-      "displayName": "pages",
-      "type": "component",
-      "repeatable": true,
-      "component": "year.pages",
-      "required": true,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "nollekamp": {
-      "displayName": "nollekamp",
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "component": "nollekamp.nollekamp"
-    },
-    "phos": {
-      "displayName": "phoset",
-      "type": "component",
-      "repeatable": true,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "phoset.phoset"
-    },
-    "sponsors": {
-      "displayName": "sponsors",
-      "type": "component",
-      "repeatable": true,
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "component": "sponsors.sponsors"
-    },
     "password": {
       "pluginOptions": {
         "i18n": {
@@ -127,6 +92,22 @@
         }
       },
       "type": "string"
+    },
+    "content": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "dynamiczone",
+      "components": [
+        "content.images",
+        "content.nollekamp",
+        "content.phoset",
+        "content.sponsors",
+        "content.text",
+        "content.calendar"
+      ]
     }
   }
 }
