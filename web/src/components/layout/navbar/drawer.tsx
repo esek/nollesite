@@ -34,15 +34,10 @@ const Drawer: React.FC<Props> = ({ links, isOpen, close }) => {
           <LanguageSelector />
         </div>
 
-        <div className="links-wrapper flex flex-col">
+        <div className="links-wrapper flex flex-col gap-4 md:flex-row">
           {links.map((link) => (
-            <Link href={link.path} key={link.id}>
-              <a
-                onClick={doClose}
-                className={`${styles.navlink} ${
-                  link.path === asPath ? styles['nav-active'] : ''
-                }`}
-              >
+            <Link href={link.href} key={link.href}>
+              <a onClick={doClose} className={`${styles.navlink}`}>
                 {link.title}
               </a>
             </Link>

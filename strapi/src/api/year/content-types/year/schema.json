@@ -108,6 +108,15 @@
         "content.text",
         "content.calendar"
       ]
+    },
+    "description": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
+      "required": true
     }
   }
 }

@@ -6,12 +6,12 @@
   }
 
   @screen md {
-    @apply relative h-auto w-auto translate-x-0 flex-row-reverse p-0;
+    @apply relative h-auto w-auto translate-x-0 flex-row-reverse gap-4 p-0;
   }
 }
 
 .navlink {
-  @apply relative text-lg font-semibold;
+  @apply relative text-lg font-semibold capitalize;
 
   &::before,
   &::after {

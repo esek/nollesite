@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { useToggle } from '../../../hooks/toggle.hook';
@@ -19,12 +18,12 @@ const Navbar: React.FC<Props> = ({ year, logo, links }) => {
   return (
     <header
       role="navigation"
-      className="max-w sticky top-0 z-50 mx-auto flex items-center justify-between py-4"
+      className="max-w fixed top-0 left-0 right-0 z-50 mx-auto flex items-center justify-between bg-primary py-4"
       data-item="header"
     >
       <Link href="/">
         <a>
-          <Image
+          <img
             src={logo.url}
             alt={logo.alternativeText}
             height="64"

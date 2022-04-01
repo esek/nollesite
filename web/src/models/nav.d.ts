@@ -1,1 +1,4 @@
-export type NavLink = Pick<Page, 'path' | 'title' | 'id'>;
+export type NavLink = {
+  title: string;
+  href: string;
+};

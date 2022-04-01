@@ -1,14 +1,14 @@
+import { Content } from './content';
 import { StrapiImage } from './image';
-import { Sponsor } from './sponsor';
 
 export type Year = {
   id: number;
   year: string;
+  title: string;
+  description: string;
   logo: StrapiImage;
   colors: YearColors;
-  sponsors: Sponsor[];
-  nollekamp: Nollekamp;
-  phos: Phos[];
+  content: Content[];
 };
 
 export type YearColors = {
@@ -16,6 +16,3 @@ export type YearColors = {
   secondary: string;
   accent: string;
 };
-
-export type Nollekamp = {};
-export type Phos = {};

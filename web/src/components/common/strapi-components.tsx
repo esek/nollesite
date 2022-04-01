@@ -1,5 +1,6 @@
 import { Content } from '../../models/content';
 import Images from './images';
+import Phoset from './phoset';
 import Text from './text';
 
 type Props = {
@@ -20,6 +21,10 @@ const StrapiComponents: React.FC<Props> = ({ content }) => {
           inner = <Images {...c} />;
         }
         break;
+      case 'content.phoset':
+        if (c.phoset.length) {
+          inner = <Phoset {...c} />;
+        }
     }
 
     if (!inner) {
@@ -27,7 +32,11 @@ const StrapiComponents: React.FC<Props> = ({ content }) => {
     }
 
     return (
-      <section className="max-w py-8" key={`strapi-content--${c.id}-${i}`}>
+      <section
+        className="max-w py-8"
+        key={`strapi-content--${c.id}-${i}`}
+        data-component={c.__component}
+      >
         {inner}
       </section>
     );

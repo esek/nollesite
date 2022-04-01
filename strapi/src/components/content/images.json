@@ -12,6 +12,9 @@
       "type": "component",
       "repeatable": true,
       "component": "content.image"
+    },
+    "title": {
+      "type": "string"
     }
   }
 }

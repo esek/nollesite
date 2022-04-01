@@ -3,21 +3,75 @@ import { StrapiImage } from './image';
 export type Content<T extends string = string> = {
   __component: T;
   id: string;
-} & (TextContent | ImagesContent);
+} & (
+  | TextContent
+  | ImagesContent
+  | PhosetContent
+  | NollekampContent
+  | SponsorsContent
+  | CalendarContent
+);
 
+/** TEXT */
 type TextContent = {
   __component: 'content.text';
   header?: string;
   body?: string;
 };
 
+/** IMAGES */
 type ImagesContent = {
   __component: 'content.images';
+  title?: string;
   images: ContentImage[];
 };
 
 type ContentImage = {
   image: StrapiImage;
   imageText: string;
-  id: string;
+  id: number;
+};
+
+/** PHØSET */
+type PhosetContent = {
+  __component: 'content.phoset';
+  phoset: ContentPhos[];
+};
+
+export type ContentPhos = {
+  id: number;
+  name: string;
+  description: string;
+  image: StrapiImage;
+};
+
+/** NOLLEKAMP */
+type NollekampContent = {
+  __component: 'content.nollekamp';
+  missions: ContentMission[];
+};
+
+type ContentMission = {
+  id: number;
+  name: string;
+  points: number;
+};
+
+/** SPONSORS */
+type SponsorsContent = {
+  __component: 'content.sponsors';
+  sponsors: ContentSponsor[];
+};
+
+type ContentSponsor = {
+  id: number;
+  name: string;
+  link: string;
+  image: StrapiImage;
+};
+
+/** CALENDAR */
+type CalendarContent = {
+  __component: 'content.calendar';
+  calendarUrl: string;
 };

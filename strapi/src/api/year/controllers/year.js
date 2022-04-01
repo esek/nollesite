@@ -94,6 +94,15 @@ module.exports = createCoreController('api::year.year', ({ strapi }) => ({
       return {};
     }
 
-    return entry;
+    const { primaryColor, secondaryColor, accentColor, ...reduced } = entry;
+
+    return {
+      ...reduced,
+      colors: {
+        primary: primaryColor,
+        secondary: secondaryColor,
+        accent: accentColor,
+      },
+    };
   },
 }));
