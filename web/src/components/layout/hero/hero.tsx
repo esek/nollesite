@@ -7,7 +7,7 @@ type Props = Year & {
   navLinks: NavLink[];
 };
 
-const Hero: React.FC<Props> = ({ logo, sponsors, title, navLinks, year }) => {
+const Hero: React.FC<Props> = ({ logo, title, navLinks, year }) => {
   return (
     <section className="relative flex h-screen w-screen flex-col bg-primary/20">
       <header className="fixed right-0 top-0 left-0 z-50 h-20 bg-pink-100"></header>
