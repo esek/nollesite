@@ -57,7 +57,7 @@ export const buildNavLinks = (
   content.forEach((c) => {
     switch (c.__component) {
       case 'content.text':
-        if (!c.header) {
+        if (!c.showInMenu || !c.header) {
           return;
         }
 
@@ -96,8 +96,8 @@ export const buildNavLinks = (
         break;
       case 'content.phoset':
         links.push({
-          title: 'Phoset',
-          href: `#phoset`,
+          title: 'Phøs',
+          href: `#phos`,
         });
     }
   });

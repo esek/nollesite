@@ -1,20 +1,4 @@
 .strapi-wysiwyg {
-  .text-header {
-    @apply relative w-fit;
-
-    &::after {
-      content: '';
-      position: absolute;
-      display: block;
-      left: 0;
-      right: 0;
-      height: 2px;
-      bottom: -0.25em;
-
-      @apply rounded-full bg-accent;
-    }
-  }
-
   img,
   figure {
     @apply w-fit rounded-md text-center;

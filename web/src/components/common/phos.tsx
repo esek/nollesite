@@ -21,7 +21,7 @@ const Phos: React.FC<Props> = ({
       <div>
         <img src={image.url} alt={image.alternativeText} />
       </div>
-      <h2 className="text-lg font-bold">{name}</h2>
+      <h2 className="font-nolle text-lg font-bold">{name}</h2>
       <div
         className="text-sm"
         dangerouslySetInnerHTML={{ __html: description }}

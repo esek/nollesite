@@ -2,6 +2,7 @@ import { NavLink } from '@/models/nav';
 import { Year } from '@/models/year';
 import React from 'react';
 import StrapiComponents from '../common/strapi-components';
+import Hero from './hero/hero';
 import Navbar from './navbar/navbar';
 
 type Props = Year & {
@@ -9,13 +10,7 @@ type Props = Year & {
   navLinks: NavLink[];
 };
 
-const PageLayout: React.FC<Props> = ({
-  content,
-  navLinks,
-  year,
-  logo,
-  cssColors,
-}) => {
+const PageLayout: React.FC<Props> = ({ cssColors, navLinks, ...props }) => {
   const styles = cssColors.reduce((acc, curr) => {
     return {
       ...acc,
@@ -25,13 +20,14 @@ const PageLayout: React.FC<Props> = ({
 
   return (
     <div
-      className="relative flex min-h-screen w-screen flex-col overflow-x-hidden"
+      className="relative flex min-h-screen w-screen flex-col"
       style={styles}
     >
-      <main className="flex-1 bg-primary pt-24 text-secondary">
-        <Navbar links={navLinks} year={year} logo={logo} />
+      <main className="flex-1 bg-primary text-secondary">
+        <Navbar links={navLinks} year={props.year} logo={props.logo} />
 
-        <StrapiComponents content={content} />
+        <Hero {...props} navLinks={navLinks} />
+        <StrapiComponents content={props.content} />
       </main>
     </div>
   );

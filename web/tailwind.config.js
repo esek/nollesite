@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 const HSL =
   (variable) =>
   ({ opacityValue }) => {
@@ -16,6 +18,9 @@ module.exports = {
         primary: HSL('primary'),
         secondary: HSL('secondary'),
         accent: HSL('accent'),
+      },
+      fontFamily: {
+        nolle: ['Nollefont', ...defaultTheme.fontFamily.sans],
       },
     },
   },

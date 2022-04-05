@@ -2,7 +2,8 @@
   "collectionName": "components_content_text",
   "info": {
     "displayName": "text",
-    "icon": "align-center"
+    "icon": "align-center",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -11,6 +12,10 @@
     },
     "body": {
       "type": "richtext"
+    },
+    "showInMenu": {
+      "type": "boolean",
+      "default": true
     }
   }
 }

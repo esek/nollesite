@@ -27,6 +27,24 @@ const App: NextPage<AppProps> = ({ Component, pageProps }) => {
           href="/favicon-16x16.png"
         />
         <link rel="manifest" href="/site.webmanifest" />
+        <link
+          rel="preload"
+          href="/fonts/nollefont.woff"
+          as="font"
+          crossOrigin=""
+        />
+        <link
+          rel="preload"
+          href="/fonts/nollefont.woff2"
+          as="font"
+          crossOrigin=""
+        />
+        <link
+          rel="preload"
+          href="/fonts/nollefont.ttf"
+          as="font"
+          crossOrigin=""
+        />
       </Head>
 
       <Component {...pageProps} />

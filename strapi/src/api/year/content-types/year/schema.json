@@ -101,12 +101,12 @@
       },
       "type": "dynamiczone",
       "components": [
+        "content.calendar",
         "content.images",
         "content.nollekamp",
         "content.phoset",
         "content.sponsors",
-        "content.text",
-        "content.calendar"
+        "content.text"
       ]
     },
     "description": {

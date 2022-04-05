@@ -18,25 +18,27 @@ const Navbar: React.FC<Props> = ({ year, logo, links }) => {
   return (
     <header
       role="navigation"
-      className="max-w fixed top-0 left-0 right-0 z-50 mx-auto flex items-center justify-between bg-primary py-4"
+      className="sticky top-0 left-0 right-0 z-50 overflow-x-clip bg-primary"
       data-item="header"
     >
-      <Link href="/">
-        <a>
-          <img
-            src={logo.url}
-            alt={logo.alternativeText}
-            height="64"
-            width="64"
-            aria-label="Back to home"
-          />
-        </a>
-      </Link>
+      <div className="header-inner max-w flex items-center justify-between py-4">
+        <Link href="/">
+          <a>
+            <img
+              src={logo.url}
+              alt={logo.alternativeText}
+              height="64"
+              width="64"
+              aria-label="Back to home"
+            />
+          </a>
+        </Link>
 
-      <Drawer isOpen={isOpen} links={links} close={close} />
+        <Drawer isOpen={isOpen} links={links} close={close} />
 
-      <div className="relative z-10 md:hidden">
-        <BurgerMenuBtn isOpen={isOpen} onClick={toggle} />
+        <div className="relative z-10 md:hidden">
+          <BurgerMenuBtn isOpen={isOpen} onClick={toggle} />
+        </div>
       </div>
     </header>
   );

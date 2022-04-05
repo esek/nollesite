@@ -17,6 +17,7 @@ type TextContent = {
   __component: 'content.text';
   header?: string;
   body?: string;
+  showInMenu: boolean;
 };
 
 /** IMAGES */

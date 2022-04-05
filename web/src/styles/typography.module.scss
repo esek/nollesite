@@ -1,0 +1,15 @@
+.e-heading {
+  @apply relative mb-8 max-w-fit font-nolle text-3xl;
+
+  &::after {
+    content: '';
+    position: absolute;
+    display: block;
+    left: 0;
+    right: 0;
+    height: 2px;
+    bottom: -0.25em;
+
+    @apply rounded-full bg-accent;
+  }
+}

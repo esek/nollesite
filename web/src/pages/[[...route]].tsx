@@ -4,11 +4,7 @@ import { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
 import PageLayout from '../components/layout/page-layout';
 import { getAsync } from '../lib/axios';
-import {
-  buildFullPath,
-  buildNavLinks,
-  parseSubdomainToYear,
-} from '../utils/page.utils';
+import { buildNavLinks, parseSubdomainToYear } from '../utils/page.utils';
 import { generateColors } from '../utils/style.utils';
 
 type Props = Year & {
@@ -41,17 +37,15 @@ export const getServerSideProps: GetServerSideProps<Year, Params> = async ({
   locale,
   query,
 }) => {
-  const path = buildFullPath(params);
   const year = parseSubdomainToYear(req);
 
   const { password = '' } = query;
 
   const resp = await getAsync<Year>(`/years/${year}?password=${password}`, {
     locale,
-    path,
   });
 
-  if (!resp) {
+  if (!resp?.year) {
     return {
       notFound: true,
     };
