@@ -17,10 +17,10 @@ const locales = [
 ];
 
 const LanguageSelector: React.FC = ({}) => {
-  const { locale, push, pathname, asPath, query } = useRouter();
+  const { locale, push, pathname, asPath } = useRouter();
 
   const changeLocale = (l: string) => {
-    push({ pathname, query }, asPath, { locale: l });
+    push({ pathname: pathname }, asPath, { locale: l });
   };
 
   return (

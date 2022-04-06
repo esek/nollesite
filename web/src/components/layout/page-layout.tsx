@@ -30,6 +30,8 @@ const PageLayout: React.FC<Props> = ({ cssColors, navLinks, ...props }) => {
         <StrapiComponents content={props.content} />
       </main>
       <Footer year={props.year} />
+      {/* Modal wrapper */}
+      <div id="modal-root"></div>
     </div>
   );
 };

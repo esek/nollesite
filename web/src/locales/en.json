@@ -5,5 +5,7 @@
     "sponsors": "Sponsors",
     "nollekamp": "The Nollekamp"
   },
-  "downloadCalendar": "Download calendar"
+  "downloadCalendar": "Download calendar",
+  "close": "Close",
+  "descriptionMissing": "Description missing"
 }

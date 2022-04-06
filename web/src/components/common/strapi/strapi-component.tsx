@@ -12,7 +12,7 @@ const StrapiComponent: React.FC<StrapiComponentProps> = ({
 }) => {
   return (
     <section
-      className="max-w scroll-mt-20 py-8"
+      className="strapi-component max-w scroll-mt-20 py-8"
       data-component={component}
       id={id}
     >

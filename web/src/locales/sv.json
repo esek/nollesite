@@ -5,5 +5,7 @@
     "sponsors": "Sponsorer",
     "nollekamp": "Nollekampen"
   },
-  "downloadCalendar": "Ladda ner kalender"
+  "downloadCalendar": "Ladda ner kalender",
+  "close": "Stäng",
+  "descriptionMissing": "Beskrivning saknas"
 }
