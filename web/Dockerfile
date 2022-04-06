@@ -42,6 +42,7 @@ COPY --from=BUILD_IMAGE $WORKING_DIR/.next ./.next
 COPY --from=BUILD_IMAGE $WORKING_DIR/package*.json ./
 COPY --from=BUILD_IMAGE $WORKING_DIR/yarn.lock ./
 COPY --from=BUILD_IMAGE $WORKING_DIR/next.config.js ./
+COPY --from=BUILD_IMAGE $WORKING_DIR/public ./
 RUN yarn install --frozen-lockfile --production
 
 RUN apk add curl

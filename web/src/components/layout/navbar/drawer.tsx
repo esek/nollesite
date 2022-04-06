@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import React from 'react';
 import styles from 'src/styles/navbar.module.scss';
 import { NavLink } from '../../../models/nav';
@@ -18,8 +17,6 @@ const Drawer: React.FC<Props> = ({ links, isOpen, close }) => {
     }, 200);
   };
 
-  const { asPath } = useRouter();
-
   return (
     <div>
       <div
@@ -34,14 +31,16 @@ const Drawer: React.FC<Props> = ({ links, isOpen, close }) => {
           <LanguageSelector />
         </div>
 
-        <div className="links-wrapper flex flex-col gap-4 md:flex-row">
-          {links.map((link) => (
-            <Link href={link.href} key={link.href}>
-              <a onClick={doClose} className={`${styles.navlink}`}>
-                {link.title}
-              </a>
-            </Link>
-          ))}
+        <div className="links-wrapper flex flex-col gap-4 md:flex-row md:gap-6">
+          {links.map((link) => {
+            return (
+              <Link href={link.href} key={link.href}>
+                <a onClick={doClose} className={`${styles.navlink}`}>
+                  {link.title}
+                </a>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </div>

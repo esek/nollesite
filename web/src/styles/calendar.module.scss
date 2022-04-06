@@ -1,0 +1,10 @@
+.calendar-event {
+  @apply relative flex flex-col bg-accent p-4 text-primary transition-all hover:-translate-y-0.5 hover:opacity-80;
+
+  &.is-open {
+    @apply absolute;
+    h4 {
+      @apply text-4xl;
+    }
+  }
+}
