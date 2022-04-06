@@ -33,7 +33,6 @@ type Params = {
 };
 
 export const getServerSideProps: GetServerSideProps<Year, Params> = async ({
-  params,
   req,
   locale,
   query,

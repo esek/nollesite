@@ -19,11 +19,10 @@ const Meta: React.FC<Props> = ({
   color,
   logoUrl,
 }) => {
+  const t = `${title} | E-Nollning ${year}`;
   return (
     <Head>
-      <title>
-        {title} | E-Nollning {year}
-      </title>
+      <title>{t}</title>
       <meta name="description" content={description} />
       <meta
         name="keywords"
