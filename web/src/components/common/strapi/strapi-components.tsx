@@ -5,6 +5,7 @@ import Calendar from '../components/calendar/calendar';
 import Images from '../components/images';
 import Phoset from '../components/phoset/phoset';
 import Text from '../components/text';
+import Nollekamp from '../nollekamp/nollekamp';
 import StrapiComponent from './strapi-component';
 
 type Props = {
@@ -33,6 +34,12 @@ const StrapiComponents: React.FC<Props> = ({ content }) => {
         if (c.calendarUrl) {
           return ['calendar', Calendar];
         }
+        break;
+      case 'content.nollekamp':
+        if (c.missions.length) {
+          return ['nollekamp', Nollekamp];
+        }
+        break;
     }
 
     return null;

@@ -10,7 +10,7 @@ const Phoset: React.FC<Content<'content.phoset'>> = ({ phoset }) => {
   const { t } = useLocale();
 
   return (
-    <div>
+    <>
       <Heading>{t('headers.phoset')}</Heading>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
         <div className="md:col-span-3">
@@ -21,7 +21,7 @@ const Phoset: React.FC<Content<'content.phoset'>> = ({ phoset }) => {
           <Phos {...p} key={`phos-${p.id}`} moveUp={i !== 1} />
         ))}
       </div>
-    </div>
+    </>
   );
 };
 

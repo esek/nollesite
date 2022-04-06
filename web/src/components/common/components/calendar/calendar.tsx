@@ -35,7 +35,7 @@ const Calendar: React.FC<Content<'content.calendar'>> = ({ calendarUrl }) => {
   }, [calendarUrl]);
 
   return (
-    <div>
+    <>
       <Heading>{t('headers.calendar')}</Heading>
       <button className="flex items-center gap-2" onClick={handleCalDownload}>
         <FiSave />
@@ -50,7 +50,7 @@ const Calendar: React.FC<Content<'content.calendar'>> = ({ calendarUrl }) => {
           <CalendarDay {...event} key={`calendar-day-${event.date}`} />
         ))
       )}
-    </div>
+    </>
   );
 };
 

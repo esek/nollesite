@@ -55,7 +55,7 @@ type NollekampContent = {
 type ContentMission = {
   id: number;
   name: string;
-  points: number;
+  points?: number;
 };
 
 /** SPONSORS */

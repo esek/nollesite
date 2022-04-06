@@ -7,5 +7,9 @@
   },
   "downloadCalendar": "Download calendar",
   "close": "Close",
-  "descriptionMissing": "Description missing"
+  "descriptionMissing": "Description missing",
+  "nollekamp": {
+    "title": "Mission",
+    "points": "Points"
+  }
 }

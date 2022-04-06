@@ -1,5 +1,5 @@
 .drawer {
-  @apply absolute top-0 left-0 flex h-screen w-screen translate-x-full items-center p-12 transition-all duration-500;
+  @apply absolute top-0 left-0 flex h-screen w-screen translate-x-full items-center p-12 font-nolle transition-all duration-500;
 
   &-open {
     @apply translate-x-0 bg-primary;
