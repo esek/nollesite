@@ -10,16 +10,18 @@ require('dayjs/locale/sv');
 
 const Calendar: React.FC<Content<'content.calendar'>> = ({ calendarUrl }) => {
   const [events, setEvents] = useState<CalendarResponse[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const { t, locale } = useLocale();
 
   const iCalLink = `https://calendar.google.com/calendar/ical/${calendarUrl}/public/basic.ics`;
 
   const getCalendarInfo = async () => {
+    setIsLoading(true);
     const events: CalendarResponse[] = await fetch(
       `/api/calendar?c=${calendarUrl}`
     ).then((res) => res.json());
-
+    setIsLoading(false);
     setEvents(events);
   };
 
@@ -39,9 +41,15 @@ const Calendar: React.FC<Content<'content.calendar'>> = ({ calendarUrl }) => {
         <FiSave />
         <span>{t('downloadCalendar')}</span>
       </button>
-      {events.map((event) => (
-        <CalendarDay {...event} key={`calendar-day-${event.date}`} />
-      ))}
+      {isLoading ? (
+        <div className="mt-8 flex h-24 items-center justify-center bg-white/10 md:col-span-2">
+          Laddar kalender...
+        </div>
+      ) : (
+        events.map((event) => (
+          <CalendarDay {...event} key={`calendar-day-${event.date}`} />
+        ))
+      )}
     </div>
   );
 };
