@@ -18,7 +18,7 @@ const Navbar: React.FC<Props> = ({ year, logo, links }) => {
   return (
     <header
       role="navigation"
-      className="sticky top-0 left-0 right-0 z-50 overflow-x-clip bg-primary/90"
+      className="sticky top-0 left-0 right-0 z-50 overflow-x-clip bg-primary/95"
       data-item="header"
     >
       <div className="header-inner max-w flex items-center justify-between py-4">

@@ -50,6 +50,8 @@ export type ContentPhos = {
 type NollekampContent = {
   __component: 'content.nollekamp';
   missions: ContentMission[];
+  showPoints: boolean;
+  description: string;
 };
 
 type ContentMission = {
