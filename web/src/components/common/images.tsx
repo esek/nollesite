@@ -1,13 +1,9 @@
-import { slugify } from '@/utils/page.utils';
 import React from 'react';
 import { Content } from '../../models/content';
 
-const Images: React.FC<Content<'content.images'>> = ({ images, title }) => {
+const Images: React.FC<Content<'content.images'>> = ({ images }) => {
   return (
-    <div
-      className="grid justify-center gap-4 md:grid-flow-col"
-      id={slugify(title)}
-    >
+    <div className="grid justify-center gap-4 md:grid-flow-col">
       {images.map(
         ({ id, image, imageText }) =>
           image.url && (

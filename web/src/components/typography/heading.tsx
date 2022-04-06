@@ -2,7 +2,7 @@ import styles from '@/styles/typography.module.scss';
 import React from 'react';
 
 type Props = {
-  id: string;
+  id?: string;
 };
 
 const Heading: React.FC<Props> = ({ children, id }) => {

@@ -1,7 +1,7 @@
 import { NavLink } from '@/models/nav';
 import { Year } from '@/models/year';
 import React from 'react';
-import StrapiComponents from '../common/strapi-components';
+import StrapiComponents from '../common/strapi/strapi-components';
 import Hero from './hero/hero';
 import Navbar from './navbar/navbar';
 
