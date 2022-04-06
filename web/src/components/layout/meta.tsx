@@ -30,7 +30,7 @@ const Meta: React.FC<Props> = ({
         content="E-Sektionen, Nollning, Lunds Universitet, LTH"
       />
 
-      <meta property="og:title" content={title} />
+      <meta property="og:title" content={`${title} | E-Nollning ${year}`} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={logoUrl} />
 
