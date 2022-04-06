@@ -13,6 +13,7 @@
   "dependencies": {
     "axios": "^0.26.1",
     "colortranslator": "^1.9.2",
+    "dayjs": "^1.11.0",
     "googleapis": "^97.0.0",
     "gsap": "^3.9.1",
     "next": "12.1.0",
