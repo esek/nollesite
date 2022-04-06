@@ -1,7 +1,7 @@
+import Meta from '@/components/layout/meta';
 import { NavLink } from '@/models/nav';
 import { Year } from '@/models/year';
 import { GetServerSideProps, NextPage } from 'next';
-import Head from 'next/head';
 import PageLayout from '../components/layout/page-layout';
 import { getAsync } from '../lib/axios';
 import { buildNavLinks, parseSubdomainToYear } from '../utils/page.utils';
@@ -15,12 +15,13 @@ type Props = Year & {
 const Route: NextPage<Props> = ({ children, navLinks, ...props }) => {
   return (
     <>
-      <Head>
-        <title>
-          {props.title} | E-Nollning {props.year}
-        </title>
-        <meta name="description" content={props.description} />
-      </Head>
+      <Meta
+        color={props.colors.primary}
+        title={props.title}
+        description={props.description}
+        year={props.year}
+        logoUrl={props.logo.url}
+      />
 
       <PageLayout {...props} navLinks={navLinks} />
     </>
