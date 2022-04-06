@@ -2,6 +2,7 @@ import { NavLink } from '@/models/nav';
 import { Year } from '@/models/year';
 import React from 'react';
 import StrapiComponents from '../common/strapi/strapi-components';
+import Footer from './footer/footer';
 import Hero from './hero/hero';
 import Navbar from './navbar/navbar';
 
@@ -20,15 +21,15 @@ const PageLayout: React.FC<Props> = ({ cssColors, navLinks, ...props }) => {
 
   return (
     <div
-      className="relative flex min-h-screen w-screen flex-col"
+      className="relative flex min-h-screen w-screen flex-col bg-primary text-secondary"
       style={styles}
     >
-      <main className="flex-1 bg-primary text-secondary">
-        <Navbar links={navLinks} year={props.year} logo={props.logo} />
-
+      <Navbar links={navLinks} year={props.year} logo={props.logo} />
+      <main className="flex-1">
         <Hero {...props} navLinks={navLinks} />
         <StrapiComponents content={props.content} />
       </main>
+      <Footer year={props.year} />
     </div>
   );
 };

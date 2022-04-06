@@ -1,5 +1,5 @@
 import React from 'react';
-import { Content } from '../../models/content';
+import { Content } from '../../../models/content';
 
 const Images: React.FC<Content<'content.images'>> = ({ images }) => {
   return (

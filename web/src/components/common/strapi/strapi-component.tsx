@@ -1,49 +1,19 @@
-import { useLocale } from '@/hooks/locale.hook';
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 
-type Props = {
+export type StrapiComponentProps = {
   id: string;
   component: string;
 };
 
-const StrapiComponent: React.FC<Props> = ({ id, children, component }) => {
-  const { t } = useLocale();
-
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          window.location.hash = `#${id}`;
-        } else {
-          window.location.hash = '';
-        }
-      },
-      {
-        root: null,
-        rootMargin: '20px',
-        threshold: 1.0,
-      }
-    );
-
-    if (ref?.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => {
-      if (ref?.current) {
-        observer.unobserve(ref.current);
-      }
-    };
-  }, [ref]);
-
+const StrapiComponent: React.FC<StrapiComponentProps> = ({
+  id,
+  children,
+  component,
+}) => {
   return (
     <section
-      className="max-w scroll-mt-36 py-8"
-      key={`strapi-content--${id}`}
+      className="max-w scroll-mt-20 py-8"
       data-component={component}
-      ref={ref}
       id={id}
     >
       {children}

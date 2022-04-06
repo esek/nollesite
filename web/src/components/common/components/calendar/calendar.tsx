@@ -1,19 +1,26 @@
 import Heading from '@/components/typography/heading';
 import { useLocale } from '@/hooks/locale.hook';
+import { CalendarResponse } from '@/models/calendar';
 import { Content } from '@/models/content';
-import React, { useEffect } from 'react';
+import dayjs from 'dayjs';
+import React, { useEffect, useState } from 'react';
 import { FiSave } from 'react-icons/fi';
+import CalendarDay from './calendar-day';
+require('dayjs/locale/sv');
 
 const Calendar: React.FC<Content<'content.calendar'>> = ({ calendarUrl }) => {
-  const { t } = useLocale();
+  const [events, setEvents] = useState<CalendarResponse[]>([]);
+
+  const { t, locale } = useLocale();
 
   const iCalLink = `https://calendar.google.com/calendar/ical/${calendarUrl}/public/basic.ics`;
 
   const getCalendarInfo = async () => {
-    const events = await fetch(`/api/calendar?c=${calendarUrl}`).then((res) =>
-      res.json()
-    );
-    console.log(events);
+    const events: CalendarResponse[] = await fetch(
+      `/api/calendar?c=${calendarUrl}`
+    ).then((res) => res.json());
+
+    setEvents(events);
   };
 
   const handleCalDownload = () => {
@@ -21,6 +28,7 @@ const Calendar: React.FC<Content<'content.calendar'>> = ({ calendarUrl }) => {
   };
 
   useEffect(() => {
+    dayjs.locale(locale);
     getCalendarInfo();
   }, [calendarUrl]);
 
@@ -31,6 +39,9 @@ const Calendar: React.FC<Content<'content.calendar'>> = ({ calendarUrl }) => {
         <FiSave />
         <span>{t('downloadCalendar')}</span>
       </button>
+      {events.map((event) => (
+        <CalendarDay {...event} key={`calendar-day-${event.date}`} />
+      ))}
     </div>
   );
 };

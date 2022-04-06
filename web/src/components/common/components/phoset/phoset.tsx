@@ -1,7 +1,7 @@
 import { useLocale } from '@/hooks/locale.hook';
 import { Content } from '@/models/content';
 import React from 'react';
-import Heading from '../typography/heading';
+import Heading from '../../../typography/heading';
 import Phos from './phos';
 
 const Phoset: React.FC<Content<'content.phoset'>> = ({ phoset }) => {

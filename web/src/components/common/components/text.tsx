@@ -1,6 +1,6 @@
 import React from 'react';
-import { Content } from '../../models/content';
-import Heading from '../typography/heading';
+import { Content } from '../../../models/content';
+import Heading from '../../typography/heading';
 
 const Text: React.FC<Content<'content.text'>> = ({ header, body }) => {
   return (

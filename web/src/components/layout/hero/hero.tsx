@@ -9,8 +9,8 @@ type Props = Year & {
 
 const Hero: React.FC<Props> = ({ logo, title, navLinks, year }) => {
   return (
-    <section className="relative flex h-[100vh] w-screen flex-col items-center justify-center">
-      <h1 className="max-w-[30ch] px-8 text-center font-nolle text-5xl md:px-0 xl:text-7xl">
+    <section className="relative flex h-[90vh] w-screen flex-col items-center justify-center">
+      <h1 className="max-w-[30ch] px-8 pb-32 text-center font-nolle text-5xl md:px-0 xl:text-7xl">
         {title}
       </h1>
     </section>

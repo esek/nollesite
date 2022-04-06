@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import { calendar_v3, google } from 'googleapis';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { serverConfig } from '../../config.server';
@@ -11,35 +12,64 @@ const calendar = google.calendar({
 const getCalendarEvents = (calendarId: string): Promise<CalendarEvent[]> => {
   const mapEvent = (item: calendar_v3.Schema$Event): CalendarEvent => {
     const { id, description, summary, start, end } = item;
+
+    const startDate = start?.date ?? start?.dateTime;
+    const endDate = end?.date ?? end?.dateTime;
+
     return {
       id: id ?? '',
       title: summary ?? '',
       description: description ?? '',
-      start: start?.date ? new Date(start.date) : null,
-      end: end?.date ? new Date(end.date) : null,
+      start: new Date(startDate ?? ''),
+      end: new Date(endDate ?? ''),
     };
   };
 
   return new Promise((resolve, reject) => {
-    calendar.events.list({ calendarId }, (err, data) => {
-      if (err || !data) {
-        reject(err);
-        return;
+    calendar.events.list(
+      {
+        calendarId,
+      },
+      (err, data) => {
+        if (err || !data) {
+          reject(err);
+          return;
+        }
+
+        const events = data.data.items?.map<CalendarEvent>(mapEvent) ?? [];
+
+        resolve(events);
       }
-
-      const events = data.data.items?.map<CalendarEvent>(mapEvent) ?? [];
-
-      resolve(events);
-    });
+    );
   });
+};
+
+const groupEvents = (events: CalendarEvent[], includePast: boolean) => {
+  const grouped: Record<string, CalendarEvent[]> = {};
+
+  events.forEach((event) => {
+    const start = dayjs(event.start);
+    const key = start.format('YYYY-MM-DD');
+
+    if (!grouped[key]) {
+      grouped[key] = [];
+    }
+
+    grouped[key].push(event);
+  });
+
+  return Object.entries(grouped)
+    .map(([date, events]) => ({ events, date }))
+    .sort((a, b) => (a.date > b.date ? 1 : -1));
 };
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const calendarId = req.query.c?.toString() ?? '';
+  const includePastEvents = req.query.p === 'true';
 
   const events = await getCalendarEvents(calendarId).catch(() => []);
 
-  res.send(events);
+  res.send(groupEvents(events, includePastEvents));
 };
 
 export default handler;

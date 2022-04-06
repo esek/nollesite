@@ -51,8 +51,14 @@ export const buildNavLinks = (
   content: Content[],
   locale: string
 ): NavLink[] => {
-  const links: NavLink[] = [];
   const isSwe = locale === 'sv';
+
+  const links: NavLink[] = [
+    {
+      href: '/',
+      title: isSwe ? 'Hem' : 'Home',
+    },
+  ];
 
   content.forEach((c) => {
     switch (c.__component) {
