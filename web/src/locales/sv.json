@@ -11,5 +11,10 @@
   "nollekamp": {
     "title": "Uppdrag",
     "points": "Poäng"
+  },
+  "calendar": {
+    "alcohol": "Alkoholhaltigt event",
+    "food": "Mat erbjuds",
+    "ouvve": "Ha din Ouvve på dig!"
   }
 }

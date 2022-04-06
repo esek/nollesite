@@ -1,13 +1,27 @@
+import { CalendarEvent, CalendarEventTag } from '@/models/calendar';
 import dayjs from 'dayjs';
 import { calendar_v3, google } from 'googleapis';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { serverConfig } from '../../config.server';
-import { CalendarEvent } from '../../models/calendar';
 
 const calendar = google.calendar({
   version: 'v3',
   auth: serverConfig.GOOGLE_API_KEY,
 });
+
+const parseTagsFromTitle = (title: string): [string, CalendarEventTag[]] => {
+  const tags: CalendarEventTag[] = [];
+  let t = title;
+
+  Object.values(CalendarEventTag).forEach((k) => {
+    if (title.includes(k)) {
+      t = title.replace(`[${k}]`, '').replace(`[${k.toLowerCase()}]`, '');
+      tags.push(k);
+    }
+  });
+
+  return [t, tags];
+};
 
 const getCalendarEvents = (calendarId: string): Promise<CalendarEvent[]> => {
   const mapEvent = (item: calendar_v3.Schema$Event): CalendarEvent => {
@@ -16,9 +30,12 @@ const getCalendarEvents = (calendarId: string): Promise<CalendarEvent[]> => {
     const startDate = start?.date ?? start?.dateTime;
     const endDate = end?.date ?? end?.dateTime;
 
+    const [title, tags] = parseTagsFromTitle(summary ?? '');
+
     return {
+      title,
+      tags,
       id: id ?? '',
-      title: summary ?? '',
       description: description ?? '',
       start: new Date(startDate ?? ''),
       end: new Date(endDate ?? ''),

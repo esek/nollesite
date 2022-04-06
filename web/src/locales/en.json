@@ -11,5 +11,10 @@
   "nollekamp": {
     "title": "Mission",
     "points": "Points"
+  },
+  "calendar": {
+    "alcohol": "Alcoholic event",
+    "food": "Food is provided",
+    "ouvve": "Wear your Ouvve!"
   }
 }

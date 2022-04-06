@@ -1,6 +1,10 @@
 import Heading from '@/components/typography/heading';
 import { useLocale } from '@/hooks/locale.hook';
-import { CalendarResponse } from '@/models/calendar';
+import {
+  CalendarEventTag,
+  CalendarResponse,
+  TagIcons,
+} from '@/models/calendar';
 import { Content } from '@/models/content';
 import dayjs from 'dayjs';
 import React, { useEffect, useState } from 'react';
@@ -50,6 +54,23 @@ const Calendar: React.FC<Content<'content.calendar'>> = ({ calendarUrl }) => {
           <CalendarDay {...event} key={`calendar-day-${event.date}`} />
         ))
       )}
+
+      <div className="mt-4 flex flex-col gap-4 md:flex-row">
+        {Object.values(CalendarEventTag).map((tag) => {
+          const Icon = TagIcons[tag];
+          const label = t(`calendar.${tag.toLowerCase()}`);
+
+          return (
+            <div className="flex items-center gap-2">
+              <span className="text-xl">
+                <Icon />
+              </span>
+
+              <span>{label}</span>
+            </div>
+          );
+        })}
+      </div>
     </>
   );
 };

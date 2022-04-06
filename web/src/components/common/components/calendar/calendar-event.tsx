@@ -1,6 +1,6 @@
 import Modal from '@/components/layout/modal';
 import { useLocale } from '@/hooks/locale.hook';
-import { CalendarEvent } from '@/models/calendar';
+import { CalendarEvent, TagIcons } from '@/models/calendar';
 import dayjs from 'dayjs';
 import { useState } from 'react';
 
@@ -9,6 +9,7 @@ const CalendarEvent: React.FC<CalendarEvent> = ({
   start,
   end,
   description,
+  tags,
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { t } = useLocale();
@@ -25,10 +26,20 @@ const CalendarEvent: React.FC<CalendarEvent> = ({
   return (
     <>
       <button
-        className="flex flex-col bg-accent p-4 text-primary transition-all hover:-translate-y-0.5 hover:opacity-80"
+        className="relative flex flex-col bg-accent p-4 text-primary transition-all hover:-translate-y-0.5 hover:opacity-80"
         onClick={toggle}
       >
         <h4 className="font-medium">{title}</h4>
+        <div className="absolute right-4 top-0 bottom-0 flex flex-col items-center justify-center gap-1 text-xl">
+          {tags.map((t) => {
+            const Icon = TagIcons[t];
+            return (
+              <div>
+                <Icon />
+              </div>
+            );
+          })}
+        </div>
         <div>
           <span>{getTime(start)}</span>-<span>{getTime(end)}</span>
         </div>
@@ -40,6 +51,18 @@ const CalendarEvent: React.FC<CalendarEvent> = ({
         <p className="text-sm">
           {getTime(start)} - {getTime(end)}
         </p>
+
+        <div className="mt-2 flex gap-2 text-xl">
+          {tags.map((tag) => {
+            const Icon = TagIcons[tag];
+            const label = t(`calendar.${tag.toLowerCase()}`);
+            return (
+              <div title={label} aria-label={label}>
+                <Icon />
+              </div>
+            );
+          })}
+        </div>
 
         <p className="mt-2">
           {description ? (
