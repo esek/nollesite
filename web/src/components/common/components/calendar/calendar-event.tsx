@@ -5,6 +5,7 @@ import dayjs from 'dayjs';
 import { useState } from 'react';
 
 const CalendarEvent: React.FC<CalendarEvent> = ({
+  id,
   title,
   start,
   end,
@@ -34,7 +35,7 @@ const CalendarEvent: React.FC<CalendarEvent> = ({
           {tags.map((t) => {
             const Icon = TagIcons[t];
             return (
-              <div>
+              <div key={`calendar-event-${id}-tag-${t}-icon`}>
                 <Icon />
               </div>
             );
@@ -57,7 +58,11 @@ const CalendarEvent: React.FC<CalendarEvent> = ({
             const Icon = TagIcons[tag];
             const label = t(`calendar.${tag.toLowerCase()}`);
             return (
-              <div title={label} aria-label={label}>
+              <div
+                title={label}
+                aria-label={label}
+                key={`event-${id}--tag-${tag}`}
+              >
                 <Icon />
               </div>
             );

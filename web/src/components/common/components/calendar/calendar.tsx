@@ -61,7 +61,7 @@ const Calendar: React.FC<Content<'content.calendar'>> = ({ calendarUrl }) => {
           const label = t(`calendar.${tag.toLowerCase()}`);
 
           return (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2" key={`tag-info--${tag}`}>
               <span className="text-xl">
                 <Icon />
               </span>
