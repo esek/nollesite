@@ -1,21 +1,17 @@
 {
   "name": "previewer",
-  "version": "0.0.0",
-  "description": "This is the description of the plugin.",
+  "version": "1.0.0",
+  "description": "Adds a preview button to the content-manager.",
   "strapi": {
-    "name": "previewer",
-    "description": "Description of previewer plugin",
+    "name": "Previewer",
+    "description": "Adds a preview button to the content-manager.",
     "kind": "plugin"
   },
   "dependencies": {},
   "author": {
-    "name": "A Strapi developer"
+    "name": "Axel Froborg <axel.froborg@gmail.com>"
   },
-  "maintainers": [
-    {
-      "name": "A Strapi developer"
-    }
-  ],
+  "maintainers": [],
   "engines": {
     "node": ">=12.x.x <=16.x.x",
     "npm": ">=6.0.0"
