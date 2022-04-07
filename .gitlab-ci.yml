@@ -38,12 +38,12 @@ docker-build:
     - cd strapi
     - docker build --pull -t "$CI_REGISTRY_IMAGE/strapi${tag}" .
     - docker push "$CI_REGISTRY_IMAGE/strapi${tag}"
-    - docker image prune -af --filter "until=48h"
 
     - cd ../web
     - docker build --pull -t "$CI_REGISTRY_IMAGE${tag}" .
     - docker push "$CI_REGISTRY_IMAGE${tag}"
-    - docker image prune -af --filter "until=48h"
+
+    - docker system prune -f 2> /dev/null || true
   # Run this job in a branch where a Dockerfile exists
   rules:
     - if: $CI_COMMIT_BRANCH
@@ -62,6 +62,7 @@ deploy image:
 
     # Remove old container
     - docker-compose -f docker-compose.production.yml up -d --force-recreate
+    - docker system prune -f 2> /dev/null || true
   environment:
     name: production
     url: https://nollning.esek.se
