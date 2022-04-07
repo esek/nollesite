@@ -1,7 +1,11 @@
 .drawer {
-  @apply absolute top-0 left-0 flex h-screen w-screen translate-x-full items-center p-12 font-nolle transition-all duration-500;
+  --transition-delay: 100ms;
 
+  @apply fixed top-0 left-0 flex h-screen w-screen translate-x-full items-center p-12 font-nolle duration-500;
+  transition: transform 300ms ease-in-out,
+    background 300ms ease-in-out var(--transition-delay);
   &-open {
+    --transition-delay: 0ms;
     @apply translate-x-0 bg-primary;
   }
 
