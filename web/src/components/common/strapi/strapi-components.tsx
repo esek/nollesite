@@ -2,6 +2,7 @@ import { slugify } from '@/utils/page.utils';
 import { FunctionComponent } from 'react';
 import { Content } from '../../../models/content';
 import Calendar from '../components/calendar/calendar';
+import Groups from '../components/groups/groups';
 import Images from '../components/images';
 import Phoset from '../components/phoset/phoset';
 import Text from '../components/text';
@@ -40,6 +41,10 @@ const StrapiComponents: React.FC<Props> = ({ content }) => {
           return ['nollekamp', Nollekamp];
         }
         break;
+      case 'content.groups':
+        if (c.groups.length) {
+          return ['groups', Groups];
+        }
     }
 
     return null;

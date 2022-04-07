@@ -105,6 +105,13 @@ export const buildNavLinks = (
           title: 'Phøs',
           href: `#phos`,
         });
+        break;
+      case 'content.groups':
+        links.push({
+          title: isSwe ? 'Grupper' : 'Groups',
+          href: `#groups`,
+        });
+        break;
     }
   });
 

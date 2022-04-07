@@ -10,6 +10,7 @@ export type Content<T extends string = string> = {
   | NollekampContent
   | SponsorsContent
   | CalendarContent
+  | GroupsContent
 );
 
 /** TEXT */
@@ -77,4 +78,17 @@ type ContentSponsor = {
 type CalendarContent = {
   __component: 'content.calendar';
   calendarUrl: string;
+};
+
+/** Groups */
+type GroupsContent = {
+  __component: 'content.groups';
+  groups: ContentGroup[];
+};
+
+type ContentGroup = {
+  id: number;
+  name: string;
+  number: number;
+  logo: StrapiImage;
 };

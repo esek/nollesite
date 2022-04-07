@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_content_groups",
+  "info": {
+    "displayName": "groups",
+    "icon": "users"
+  },
+  "options": {},
+  "attributes": {
+    "groups": {
+      "displayName": "group",
+      "type": "component",
+      "repeatable": true,
+      "component": "content.group"
+    }
+  }
+}

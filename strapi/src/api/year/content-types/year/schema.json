@@ -106,7 +106,8 @@
         "content.nollekamp",
         "content.phoset",
         "content.sponsors",
-        "content.text"
+        "content.text",
+        "content.groups"
       ]
     },
     "description": {
