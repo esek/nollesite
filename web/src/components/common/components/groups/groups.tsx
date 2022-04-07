@@ -12,11 +12,13 @@ const Groups: React.FC<Content<'content.groups'>> = ({ groups }) => {
   return (
     <>
       <Heading>{t('headers.groups')}</Heading>
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-        {sortGroups(groups).map((g) => (
-          <Group {...g} key={`group-${g.number}`} />
-        ))}
-      </div>
+      {groups?.length && (
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+          {sortGroups(groups).map((g) => (
+            <Group {...g} key={`group-${g.number}`} />
+          ))}
+        </div>
+      )}
     </>
   );
 };

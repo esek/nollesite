@@ -8,7 +8,7 @@ const Group: React.FC<ContentGroup> = ({ name, number, logo, link }) => {
       href={link}
       className="group flex flex-col p-4"
       target="_blank"
-      rel="norefferer"
+      rel="noreferrer"
     >
       <StrapiImg
         {...logo}

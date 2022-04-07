@@ -90,7 +90,7 @@ type CalendarContent = {
 /** Groups */
 type GroupsContent = {
   __component: 'content.groups';
-  groups: ContentGroup[];
+  groups?: ContentGroup[];
 };
 
 type ContentGroup = {
