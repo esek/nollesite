@@ -22,6 +22,7 @@ const Hero: React.FC<Props> = ({ logo, title, navLinks, year }) => {
       <button
         className="animate-bounce text-3xl text-accent"
         onClick={scrollToFirst}
+        aria-label="Scroll to content"
       >
         <FiChevronDown />
       </button>
