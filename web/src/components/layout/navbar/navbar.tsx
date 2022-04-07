@@ -1,7 +1,8 @@
 import StrapiImg from '@/components/common/strapi/strapi-image';
 import { StrapiImage } from '@/models/image';
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useToggle } from '../../../hooks/toggle.hook';
 import { NavLink } from '../../../models/nav';
 import BurgerMenuBtn from './burger-menu-btn';
@@ -15,6 +16,19 @@ type Props = {
 
 const Navbar: React.FC<Props> = ({ year, logo, links }) => {
   const { isOpen, toggle, close } = useToggle(false);
+
+  useEffect(() => {
+    const body = document.querySelector('body');
+    if (!body) {
+      return;
+    }
+
+    if (isOpen) {
+      disableBodyScroll(body);
+    } else {
+      enableBodyScroll(body);
+    }
+  }, [isOpen]);
 
   return (
     <header

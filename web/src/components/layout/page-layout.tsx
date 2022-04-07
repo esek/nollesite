@@ -21,7 +21,7 @@ const PageLayout: React.FC<Props> = ({ cssColors, navLinks, ...props }) => {
 
   return (
     <div
-      className="relative flex min-h-screen w-screen flex-col overflow-x-hidden bg-primary text-secondary"
+      className="relative flex min-h-screen w-screen flex-col bg-primary text-secondary"
       style={styles}
     >
       <Navbar links={navLinks} year={props.year} logo={props.logo} />
