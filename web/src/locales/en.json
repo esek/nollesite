@@ -11,7 +11,8 @@
   "descriptionMissing": "Description missing",
   "nollekamp": {
     "title": "Mission",
-    "points": "Points"
+    "points": "Points",
+    "group": "Group"
   },
   "calendar": {
     "alcohol": "Alcoholic event",

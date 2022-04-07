@@ -1,5 +1,6 @@
 import React from 'react';
 import { Content } from '../../../models/content';
+import StrapiImg from '../strapi/strapi-image';
 
 const Images: React.FC<Content<'content.images'>> = ({ images }) => {
   return (
@@ -11,11 +12,7 @@ const Images: React.FC<Content<'content.images'>> = ({ images }) => {
               key={`images-image-${id}`}
               className="relative aspect-square max-h-80 overflow-hidden rounded-md"
             >
-              <img
-                src={image.url}
-                className="h-full w-full"
-                alt={image.alternativeText}
-              />
+              <StrapiImg {...image} className="h-full w-full" />
               {imageText && <p className="text-accent">{imageText}</p>}
             </div>
           )

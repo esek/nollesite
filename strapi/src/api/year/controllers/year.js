@@ -85,7 +85,14 @@ module.exports = createCoreController('api::year.year', ({ strapi }) => ({
               },
             },
             missions: true,
-            groups: true,
+            standings: true,
+            groups: {
+              populate: {
+                logo: {
+                  select: imagePopulate,
+                },
+              },
+            },
           },
         },
       },

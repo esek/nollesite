@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_content_standings",
+  "info": {
+    "displayName": "standings",
+    "icon": "bars"
+  },
+  "options": {},
+  "attributes": {
+    "groupName": {
+      "type": "string",
+      "required": true
+    },
+    "points": {
+      "type": "integer",
+      "required": true,
+      "default": 0
+    }
+  }
+}

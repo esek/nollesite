@@ -2,7 +2,8 @@
   "collectionName": "components_content_group",
   "info": {
     "displayName": "group",
-    "icon": "user-friends"
+    "icon": "user-friends",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -15,10 +16,16 @@
       "required": true
     },
     "logo": {
-      "allowedTypes": ["images"],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "link": {
+      "type": "string",
+      "required": false
     }
   }
 }

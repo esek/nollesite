@@ -102,12 +102,12 @@
       "type": "dynamiczone",
       "components": [
         "content.calendar",
+        "content.groups",
         "content.images",
         "content.nollekamp",
         "content.phoset",
         "content.sponsors",
-        "content.text",
-        "content.groups"
+        "content.text"
       ]
     },
     "description": {

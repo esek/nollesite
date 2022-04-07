@@ -1,7 +1,8 @@
+import StrapiImg from '@/components/common/strapi/strapi-image';
+import { StrapiImage } from '@/models/image';
 import Link from 'next/link';
 import React from 'react';
 import { useToggle } from '../../../hooks/toggle.hook';
-import { StrapiImage } from '../../../models/image';
 import { NavLink } from '../../../models/nav';
 import BurgerMenuBtn from './burger-menu-btn';
 import Drawer from './drawer';
@@ -24,13 +25,7 @@ const Navbar: React.FC<Props> = ({ year, logo, links }) => {
       <div className="header-inner max-w flex items-center justify-between py-4">
         <Link href="/">
           <a>
-            <img
-              src={logo.url}
-              alt={logo.alternativeText}
-              height="64"
-              width="64"
-              aria-label="Back to home"
-            />
+            <StrapiImg {...logo} height={64} width={64} label="Back to top" />
           </a>
         </Link>
 

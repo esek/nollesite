@@ -11,7 +11,8 @@
   "descriptionMissing": "Beskrivning saknas",
   "nollekamp": {
     "title": "Uppdrag",
-    "points": "Poäng"
+    "points": "Poäng",
+    "group": "Grupp"
   },
   "calendar": {
     "alcohol": "Alkoholhaltigt event",

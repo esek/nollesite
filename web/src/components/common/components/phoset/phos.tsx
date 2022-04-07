@@ -1,5 +1,6 @@
 import { ContentPhos } from '@/models/content';
 import React from 'react';
+import StrapiImg from '../../strapi/strapi-image';
 
 type Props = ContentPhos & {
   isOverphos?: boolean;
@@ -19,7 +20,7 @@ const Phos: React.FC<Props> = ({
       }`}
     >
       <div>
-        <img src={image.url} alt={image.alternativeText} />
+        <StrapiImg {...image} />
       </div>
       <h2 className="font-nolle text-lg font-bold">{name}</h2>
       <div

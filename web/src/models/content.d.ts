@@ -50,7 +50,8 @@ export type ContentPhos = {
 /** NOLLEKAMP */
 type NollekampContent = {
   __component: 'content.nollekamp';
-  missions: ContentMission[];
+  missions?: ContentMission[];
+  standings?: ContentStanding[];
   showPoints: boolean;
   description: string;
 };
@@ -59,6 +60,12 @@ type ContentMission = {
   id: number;
   name: string;
   points?: number;
+};
+
+type ContentStanding = {
+  id: number;
+  groupName: string;
+  points: number;
 };
 
 /** SPONSORS */
@@ -91,4 +98,5 @@ type ContentGroup = {
   name: string;
   number: number;
   logo: StrapiImage;
+  link?: string;
 };
