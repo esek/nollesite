@@ -14,13 +14,13 @@ const parseTagsFromTitle = (title: string): [string, CalendarEventTag[]] => {
   let t = title;
 
   Object.values(CalendarEventTag).forEach((k) => {
-    if (title.includes(k)) {
-      t = title.replace(`[${k}]`, '').replace(`[${k.toLowerCase()}]`, '');
+    if (t.includes(k)) {
+      t = t.replace(`[${k}]`, '').replace(`[${k.toLowerCase()}]`, '');
       tags.push(k);
     }
   });
 
-  return [t, tags];
+  return [t.trim(), tags];
 };
 
 const getCalendarEvents = (calendarId: string): Promise<CalendarEvent[]> => {
