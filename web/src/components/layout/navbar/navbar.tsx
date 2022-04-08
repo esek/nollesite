@@ -1,12 +1,11 @@
-import StrapiImg from '@/components/common/strapi/strapi-image';
 import { StrapiImage } from '@/models/image';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
-import Link from 'next/link';
 import React, { useEffect } from 'react';
 import { useToggle } from '../../../hooks/toggle.hook';
 import { NavLink } from '../../../models/nav';
 import BurgerMenuBtn from './burger-menu-btn';
 import Drawer from './drawer';
+import NavbarLogo from './navbar-logo';
 
 type Props = {
   links: NavLink[];
@@ -36,12 +35,8 @@ const Navbar: React.FC<Props> = ({ year, logo, links }) => {
       className="sticky top-0 left-0 right-0 z-50 overflow-x-clip bg-primary/95"
       data-item="header"
     >
-      <div className="header-inner max-w flex items-center justify-between py-4">
-        <Link href="/">
-          <a>
-            <StrapiImg {...logo} height={64} width={64} label="Back to top" />
-          </a>
-        </Link>
+      <div className="header-inner max-w relative flex items-center justify-between py-4">
+        <NavbarLogo {...logo} />
 
         <Drawer isOpen={isOpen} links={links} close={close} />
 

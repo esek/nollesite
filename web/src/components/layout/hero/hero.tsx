@@ -14,8 +14,11 @@ const Hero: React.FC<Props> = ({ logo, title, navLinks, year }) => {
     window.location.hash = sections.item(0)?.id;
   };
   return (
-    <section className="relative flex h-[90vh] w-screen flex-col items-center justify-center">
-      <h1 className="max-w-[30ch] px-8 pb-32 text-center font-nolle text-5xl md:px-0 xl:text-7xl">
+    <section
+      data-component="hero"
+      className="relative mt-32 flex h-[80vh] w-screen flex-col items-center justify-center"
+    >
+      <h1 className="max-w-[30ch] self-center px-8 pb-8 text-center font-nolle text-5xl md:px-0 xl:text-7xl">
         {title}
       </h1>
 
