@@ -30,7 +30,7 @@ const NavbarLogo: React.FC<StrapiImage> = ({ url, alternativeText }) => {
       {
         top: '16px',
         scale: 1,
-        left: window.innerWidth < 768 ? '32px' : '0px',
+        left: window.innerWidth < 1024 ? '32px' : '0px',
         translateX: '0%',
         scrollTrigger: {
           start: 'top top',
