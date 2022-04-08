@@ -8,6 +8,10 @@
     @apply text-accent hover:underline;
   }
 
+  p:not(:last-child) {
+    @apply pb-2;
+  }
+
   ul,
   li {
     @apply ml-2 list-disc;

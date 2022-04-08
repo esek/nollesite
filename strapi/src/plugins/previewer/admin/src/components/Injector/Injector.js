@@ -3,8 +3,7 @@ import React from 'react';
 import Button from '../Button';
 
 const Injector = () => {
-  const { modifiedData, isCreatingEntry, ...rest } = useCMEditViewDataManager();
-  console.log(rest);
+  const { modifiedData, isCreatingEntry } = useCMEditViewDataManager();
 
   const [url, setUrl] = React.useState('');
 
