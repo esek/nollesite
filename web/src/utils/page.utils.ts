@@ -53,12 +53,7 @@ export const buildNavLinks = (
 ): NavLink[] => {
   const isSwe = locale === 'sv';
 
-  const links: NavLink[] = [
-    {
-      href: '/',
-      title: isSwe ? 'Hem' : 'Home',
-    },
-  ];
+  const links: NavLink[] = [];
 
   content.forEach((c) => {
     switch (c.__component) {
@@ -95,6 +90,9 @@ export const buildNavLinks = (
         });
         break;
       case 'content.sponsors':
+        if (!c.sponsors?.length) {
+          return;
+        }
         links.push({
           title: isSwe ? 'Sponsorer' : 'Sponsors',
           href: `#sponsors`,

@@ -13,7 +13,7 @@ type Props = {
   logo: StrapiImage;
 };
 
-const Navbar: React.FC<Props> = ({ year, logo, links }) => {
+const Navbar: React.FC<Props> = ({ logo, links }) => {
   const { isOpen, toggle, close } = useToggle(false);
 
   useEffect(() => {

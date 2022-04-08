@@ -15,8 +15,10 @@ const NavbarLogo: React.FC<StrapiImage> = ({ url, alternativeText }) => {
       return;
     }
 
+    // we initialize the animation only once the component is mounted
     gsap.fromTo(
       ref.current,
+      // FROM
       {
         position: 'absolute',
         scale: 4,
@@ -24,6 +26,7 @@ const NavbarLogo: React.FC<StrapiImage> = ({ url, alternativeText }) => {
         left: '50%',
         translateX: '-50%',
       },
+      // TO
       {
         top: '16px',
         scale: 1,
@@ -31,7 +34,7 @@ const NavbarLogo: React.FC<StrapiImage> = ({ url, alternativeText }) => {
         translateX: '0%',
         scrollTrigger: {
           start: 'top top',
-          end: '500px',
+          end: `${window.innerHeight * 0.8}px`, // 80% of screen height
           scrub: true,
         },
       }
