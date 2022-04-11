@@ -3,7 +3,7 @@ import React from 'react';
 import Button from '../Button';
 
 const Injector = () => {
-  const { modifiedData, isCreatingEntry } = useCMEditViewDataManager();
+  const { modifiedData, isCreatingEntry, slug } = useCMEditViewDataManager();
 
   const [url, setUrl] = React.useState('');
 
@@ -13,7 +13,7 @@ const Injector = () => {
     setUrl(`https://${year}.nollning.esek.se/?password=${password}`);
   }, [modifiedData]);
 
-  if (isCreatingEntry) {
+  if (isCreatingEntry || slug !== 'api::year.year') {
     return null;
   }
 
