@@ -1,10 +1,12 @@
 import { ContentStanding } from '@/models/content';
 import React from 'react';
 
-const Standing: React.FC<ContentStanding> = ({ groupName, points }) => {
+const Standing: React.FC<ContentStanding> = ({ group, points }) => {
   return (
     <div className="flex justify-between">
-      <p>{groupName}</p>
+      <p>
+        {group.name} ({group.number})
+      </p>
       <p>{points}p</p>
     </div>
   );
