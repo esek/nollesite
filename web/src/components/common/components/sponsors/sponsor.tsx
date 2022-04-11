@@ -7,7 +7,7 @@ const Sponsor: React.FC<ContentSponsor> = ({ image, name, link }) => {
     <a
       href={link}
       target="_blank"
-      rel="noreferer"
+      rel="noreferrer"
       className="flex flex-col items-center"
     >
       <StrapiImg {...image} />
