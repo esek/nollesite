@@ -9,6 +9,11 @@ const calendar = google.calendar({
   auth: serverConfig.GOOGLE_API_KEY,
 });
 
+/**
+ * Gets for example [OUVVE] and maps it to a tag and removes it from the title
+ * @param title the title from google
+ * @returns a touple of the title and the tags
+ */
 const parseTagsFromTitle = (title: string): [string, CalendarEventTag[]] => {
   const tags: CalendarEventTag[] = [];
   let t = title;
