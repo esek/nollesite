@@ -2,6 +2,3 @@
 srv
 postgres
 .DS_Store
-
-# Service worker stuff
-web/public/*.js
