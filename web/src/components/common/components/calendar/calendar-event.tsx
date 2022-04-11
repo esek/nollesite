@@ -45,7 +45,7 @@ const CalendarEvent: React.FC<CalendarEvent> = ({
           <span>{getTime(start)}</span>-<span>{getTime(end)}</span>
         </div>
 
-        <p className="mt-1 text-sm italic">Klicka för mer information</p>
+        <p className="mt-1 text-sm italic">{t('calendar.more-info')}</p>
       </button>
 
       <Modal title={title} isVisible={isOpen} onChange={setIsOpen}>

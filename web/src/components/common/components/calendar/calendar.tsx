@@ -8,17 +8,15 @@ import {
 } from '@/models/calendar';
 import { Content } from '@/models/content';
 import dayjs from 'dayjs';
-import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { FiLoader, FiSave } from 'react-icons/fi';
 import CalendarDay from './calendar-day';
 require('dayjs/locale/sv');
 
 const Calendar: React.FC<Content<'content.calendar'>> = ({ calendarUrl }) => {
-  const router = useRouter();
   const [events, setEvents] = useState<CalendarResponse[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [includePast, setIncludePast] = useState<boolean>(false);
+  const [includePast, setIncludePast] = useState<boolean>(true);
 
   const { t, locale } = useLocale();
 
