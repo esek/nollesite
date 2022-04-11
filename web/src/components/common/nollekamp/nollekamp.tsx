@@ -12,6 +12,7 @@ const Nollekamp: React.FC<Content<'content.nollekamp'>> = ({
   description,
 }) => {
   const { t } = useLocale();
+  console.log(showPoints);
 
   const sortGroups = (g: ContentStanding[]) => {
     return g.sort((a, b) => (a.points > b.points ? -1 : 1));
