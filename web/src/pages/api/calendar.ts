@@ -46,7 +46,6 @@ const getCalendarEvents = (
   };
 
   return new Promise((resolve, reject) => {
-    console.log(new Date().toISOString());
     calendar.events.list(
       {
         calendarId,
@@ -54,6 +53,7 @@ const getCalendarEvents = (
       },
       (err, data) => {
         if (err || !data) {
+          console.error('Calendar API errored: ', err);
           reject(err);
           return;
         }
