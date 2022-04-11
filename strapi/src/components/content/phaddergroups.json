@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_content_phaddergroups",
+  "info": {
+    "displayName": "phaddergroups",
+    "icon": "users",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "groups": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::group.group"
+    }
+  }
+}

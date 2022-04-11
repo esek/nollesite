@@ -102,9 +102,9 @@
       "type": "dynamiczone",
       "components": [
         "content.calendar",
-        "content.groups",
         "content.images",
         "content.nollekamp",
+        "content.phaddergroups",
         "content.phoset",
         "content.sponsors",
         "content.text"

@@ -1,31 +1,21 @@
 {
-  "collectionName": "components_content_group",
+  "collectionName": "components_content_groups",
   "info": {
     "displayName": "group",
-    "icon": "user-friends",
+    "icon": "user-astronaut",
     "description": ""
   },
   "options": {},
   "attributes": {
-    "name": {
-      "type": "string",
-      "required": true
+    "group": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::group.group"
     },
-    "number": {
-      "type": "integer",
-      "required": true
-    },
-    "logo": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "link": {
-      "type": "string",
-      "required": false
+    "groups": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::group.group"
     }
   }
 }

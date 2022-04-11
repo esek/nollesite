@@ -8,6 +8,7 @@ const { createCoreController } = require('@strapi/strapi').factories;
 
 // when we fetch images, only the url and alt-text are important
 const imagePopulate = ['url', 'alternativeText'];
+const groupPopulate = ['name', 'number', 'link'];
 
 module.exports = createCoreController('api::year.year', ({ strapi }) => ({
   /**
@@ -85,10 +86,22 @@ module.exports = createCoreController('api::year.year', ({ strapi }) => ({
               },
             },
             missions: true,
-            standings: true,
-            groups: {
+            standings: {
               populate: {
-                logo: {
+                group: {
+                  select: groupPopulate,
+                  populate: {
+                    image: {
+                      select: imagePopulate,
+                    },
+                  },
+                },
+              },
+            },
+            groups: {
+              select: groupPopulate,
+              populate: {
+                image: {
                   select: imagePopulate,
                 },
               },
