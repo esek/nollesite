@@ -1,5 +1,9 @@
 import { useState } from 'react';
 
+/**
+ * Util hook to toggle a boolean state
+ * @param defaultValue the default value to use
+ */
 export const useToggle = (defaultValue: boolean = false) => {
   const [isOpen, setIsOpen] = useState<boolean>(defaultValue);
 

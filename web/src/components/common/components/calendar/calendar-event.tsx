@@ -15,7 +15,9 @@ const CalendarEvent: React.FC<CalendarEvent> = ({
   location,
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
   const { t } = useLocale();
+
   const hasDescription = description && description.length > 0;
 
   const getTime = (date: Date) => {
@@ -53,6 +55,7 @@ const CalendarEvent: React.FC<CalendarEvent> = ({
           })}
         </div>
 
+        {/* If there is a location, show a pin and the location */}
         {location && (
           <div className="flex items-center gap-1">
             <FiMapPin />
@@ -64,11 +67,13 @@ const CalendarEvent: React.FC<CalendarEvent> = ({
           <span>{getTime(start)}</span> - <span>{getTime(end)}</span>
         </div>
 
+        {/* Only show "click for more info" if there is a description */}
         {hasDescription && (
           <p className="mt-1 text-sm italic">{t('calendar.more-info')}</p>
         )}
       </button>
 
+      {/* A popup modal for displaying more information about the event */}
       <Modal title={title} isVisible={isOpen} onChange={setIsOpen}>
         {location && (
           <div className="mb-1 flex items-center gap-1 text-sm">
@@ -85,6 +90,7 @@ const CalendarEvent: React.FC<CalendarEvent> = ({
           {tags.map((tag) => {
             const Icon = TagIcons[tag];
             const label = t(`calendar.${tag.toLowerCase()}`);
+
             return (
               <div
                 title={label}
@@ -97,13 +103,7 @@ const CalendarEvent: React.FC<CalendarEvent> = ({
           })}
         </div>
 
-        <p className="mt-2">
-          {description ? (
-            description
-          ) : (
-            <span className="italic">{t('descriptionMissing')}</span>
-          )}
-        </p>
+        <p className="mt-2">{description}</p>
       </Modal>
     </>
   );

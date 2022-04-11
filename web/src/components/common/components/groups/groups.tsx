@@ -6,12 +6,14 @@ import Group from './group';
 const Groups: React.FC<Content<'content.phaddergroups'>> = ({ groups }) => {
   const { t } = useLocale();
 
+  // Sort the groups by their number
   const sortGroups = (g: ContentPhadderGroup[]) =>
     g.sort((a, b) => (a.number > b.number ? 1 : -1));
 
   return (
     <>
       <Heading>{t('headers.groups')}</Heading>
+
       {groups?.length && (
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
           {sortGroups(groups).map((g) => (

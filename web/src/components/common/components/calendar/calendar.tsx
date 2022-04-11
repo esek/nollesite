@@ -16,16 +16,21 @@ require('dayjs/locale/sv');
 const Calendar: React.FC<Content<'content.calendar'>> = ({ calendarUrl }) => {
   const [events, setEvents] = useState<CalendarResponse[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [includePast, setIncludePast] = useState<boolean>(true);
+
+  const [includePast, setIncludePast] = useState<boolean>(false);
 
   const { t, locale } = useLocale();
 
   const iCalLink = `https://calendar.google.com/calendar/ical/${calendarUrl}/public/basic.ics`;
 
-  const getCalendarInfo = async (past: boolean) => {
+  /**
+   * Fetches the calendar events from the given url
+   * @param includePast Whether or not to include past events
+   */
+  const getCalendarInfo = async (includePast: boolean) => {
     setIsLoading(true);
     const events: CalendarResponse[] = await fetch(
-      `/api/calendar?c=${calendarUrl}&p=${past}`
+      `/api/calendar?c=${calendarUrl}&p=${includePast}`
     ).then((res) => res.json());
     setIsLoading(false);
     setEvents(events);
@@ -35,10 +40,38 @@ const Calendar: React.FC<Content<'content.calendar'>> = ({ calendarUrl }) => {
     window.open(iCalLink, '_blank');
   };
 
+  /**
+   * Runs anytime locale, includePast or calendarUrl changes
+   * and refetches the calendar info
+   */
   useEffect(() => {
     dayjs.locale(locale);
     getCalendarInfo(includePast);
   }, [calendarUrl, locale, includePast]);
+
+  const renderCalendarItems = () => {
+    if (isLoading) {
+      return (
+        <div className="flex h-24 items-center justify-center gap-2 bg-white/10 md:col-span-2">
+          <FiLoader className="animate-spin" size="1.25em" />
+          <p>{t('calendar.loading')}</p>
+        </div>
+      );
+    }
+
+    // If no events, show a box saying so
+    if (!events.length) {
+      return (
+        <div className="flex h-24 items-center justify-center bg-secondary/10 p-4">
+          <p>{t('calendar.no-events')}</p>
+        </div>
+      );
+    }
+
+    return events.map((event) => (
+      <CalendarDay {...event} key={`calendar-day-${event.date}`} />
+    ));
+  };
 
   return (
     <>
@@ -48,28 +81,14 @@ const Calendar: React.FC<Content<'content.calendar'>> = ({ calendarUrl }) => {
           <FiSave />
           <span>{t('downloadCalendar')}</span>
         </button>
-        <div>
-          <Cbx
-            value={includePast}
-            onChange={setIncludePast}
-            label={t('calendar.show-past-events')}
-            name="show-past-events"
-          />
-        </div>
-        {isLoading ? (
-          <div className="flex h-24 items-center justify-center gap-2 bg-white/10 md:col-span-2">
-            <FiLoader className="animate-spin" size="1.25em" />
-            <p>{t('calendar.loading')}</p>
-          </div>
-        ) : events.length ? (
-          events.map((event) => (
-            <CalendarDay {...event} key={`calendar-day-${event.date}`} />
-          ))
-        ) : (
-          <div className="flex h-24 items-center justify-center bg-secondary/10 p-4">
-            <p>{t('calendar.no-events')}</p>
-          </div>
-        )}
+        <Cbx
+          value={includePast}
+          onChange={setIncludePast}
+          label={t('calendar.show-past-events')}
+          name="show-past-events"
+        />
+
+        {renderCalendarItems()}
 
         <div className="flex flex-col gap-4 md:flex-row">
           {Object.values(CalendarEventTag).map((tag) => {

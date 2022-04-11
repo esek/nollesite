@@ -20,10 +20,12 @@ const Modal: React.FC<Props> = ({
 
   const { t } = useLocale();
 
+  // We can only render the modal on browser
   useEffect(() => {
     setIsBrowser(true);
   }, []);
 
+  // If the prop changes, we update the state
   useEffect(() => {
     setIsShown(isVisible);
   }, [isVisible]);
@@ -42,9 +44,11 @@ const Modal: React.FC<Props> = ({
       role="dialog"
     >
       <div className="absolute inset-0 bg-black/30" onClick={handleClose}></div>
+
       <div className="relative w-full max-w-sm bg-primary p-6 text-secondary shadow-sm shadow-secondary/10">
         <header className="flex items-center justify-between text-lg font-semibold">
           <span>{title}</span>
+
           <button onClick={handleClose} aria-label="Close modal">
             <FiX />
           </button>

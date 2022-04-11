@@ -32,15 +32,20 @@ type Params = {
   route?: string[];
 };
 
+/**
+ * Runs serverside before the page is rendered
+ */
 export const getServerSideProps: GetServerSideProps<Year, Params> = async ({
   req,
   locale,
   query,
 }) => {
+  // tries to get the year from the subdomain ex. 1234.nollning.esek.se
   const year = parseSubdomainToYear(req);
 
   const { password = '' } = query;
 
+  // fetches the year data from strapi
   const resp = await getAsync<Year>(`/years/${year}?password=${password}`, {
     locale,
   });
@@ -51,7 +56,10 @@ export const getServerSideProps: GetServerSideProps<Year, Params> = async ({
     };
   }
 
+  // get the css colors
   const colors = generateColors(resp.colors);
+
+  // build the nav links
   const navLinks = buildNavLinks(resp.content, locale ?? 'sv');
 
   return {

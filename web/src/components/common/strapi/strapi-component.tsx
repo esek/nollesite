@@ -4,7 +4,10 @@ export type StrapiComponentProps = {
   id: string;
   component: string;
 };
-
+/**
+ * Wrapper element for a component in strapi
+ * sets id's, classes and a data-attribute for easier debugging
+ */
 const StrapiComponent: React.FC<StrapiComponentProps> = ({
   id,
   children,

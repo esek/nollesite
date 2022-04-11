@@ -6,13 +6,17 @@ import Phos from './phos';
 
 const Phoset: React.FC<Content<'content.phoset'>> = ({ phoset }) => {
   const overphos = phoset[0];
+
+  // remove øverphøs from the list
   const cophos = phoset.length > 1 ? phoset.slice(1) : [];
+
   const { t } = useLocale();
 
   return (
     <>
       <Heading>{t('headers.phoset')}</Heading>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+        {/* Manually place øverphøs as we want it larger */}
         <div className="md:col-span-3">
           <Phos {...overphos} isOverphos />
         </div>

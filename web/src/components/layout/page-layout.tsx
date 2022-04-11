@@ -25,12 +25,14 @@ const PageLayout: React.FC<Props> = ({ cssColors, navLinks, ...props }) => {
       style={styles}
     >
       <Navbar links={navLinks} year={props.year} logo={props.logo} />
+
       <main className="flex-1">
         <Hero {...props} navLinks={navLinks} />
         <StrapiComponents content={props.content} />
       </main>
       <Footer year={props.year} />
-      {/* Modal wrapper */}
+
+      {/* Modal portal */}
       <div id="modal-root"></div>
     </div>
   );

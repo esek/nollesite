@@ -8,6 +8,9 @@ type Props = StrapiImage & {
   width?: number;
 };
 
+/**
+ * Wrapper for a strapi image so we don't need to set it everytime
+ */
 const StrapiImg: React.FC<Props> = ({ url, alternativeText, ...rest }) => {
   return <img src={url} alt={alternativeText} {...rest} />;
 };

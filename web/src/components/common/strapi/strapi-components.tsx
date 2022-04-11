@@ -15,6 +15,11 @@ type Props = {
 };
 
 const StrapiComponents: React.FC<Props> = ({ content }) => {
+  /**
+   * Checks what type of content we have and renders the correct one
+   * @param c The actual strapi-component
+   * @returns A tuple of the component ID and the component
+   */
   const mapContent = (c: Content): [string, FunctionComponent<any>] | null => {
     switch (c.__component) {
       case 'content.text':
@@ -54,6 +59,7 @@ const StrapiComponents: React.FC<Props> = ({ content }) => {
         break;
     }
 
+    // If we don't recognize the component, don't render anything
     return null;
   };
 

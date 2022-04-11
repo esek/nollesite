@@ -2,13 +2,13 @@ import { Content } from '@/models/content';
 import { NavLink } from '@/models/nav';
 import { IncomingMessage } from 'http';
 import absoluteUrl from 'next-absolute-url';
-import { Params } from 'next/dist/server/router';
 import { serverConfig } from '../config.server';
 
 /**
- * Converts
- * @param req
- * @returns
+ * Converts the subdomain into a year
+ * if no subdomain is provided, it will return the current year
+ * @param req the request from next
+ * @returns the year as a string
  */
 export const parseSubdomainToYear = (req?: IncomingMessage): string => {
   if (!req) {
@@ -25,13 +25,12 @@ export const parseSubdomainToYear = (req?: IncomingMessage): string => {
   return year;
 };
 
-export const buildFullPath = (params: Params = {}): string => {
-  const routePaths = params?.route?.join('/') ?? [];
-  const fullRoute = `/${routePaths}`;
-
-  return fullRoute;
-};
-
+/**
+ * Converts just an endpoint to an entire strapi url
+ * since the images are hosted on there
+ * @param endpoint ex. /image.png
+ * @returns ex. https://admin.nollning.esek.se/public/image.png
+ */
 export const imageUrl = (endpoint: string): string =>
   `${serverConfig.STRAPI_URL}${endpoint}`;
 
@@ -47,6 +46,9 @@ export const slugify = (str?: string): string => {
     .replace(/[^a-z0-9-]/g, '');
 };
 
+/**
+ * builds navlinks based on the content provided
+ */
 export const buildNavLinks = (
   content: Content[],
   locale: string

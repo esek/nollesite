@@ -1,6 +1,10 @@
 import axios from 'axios';
 import { serverConfig } from '../config.server';
 
+/**
+ * Creates an api instance to use towards
+ * Strapi setting the baseUrl and authentication
+ */
 const api = axios.create({
   baseURL: `${serverConfig.STRAPI_URL}/api`,
   headers: {

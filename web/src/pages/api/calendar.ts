@@ -13,6 +13,7 @@ const parseTagsFromTitle = (title: string): [string, CalendarEventTag[]] => {
   const tags: CalendarEventTag[] = [];
   let t = title;
 
+  // Remove the [XX] tags from the title and append them to the tags array
   Object.values(CalendarEventTag).forEach((k) => {
     if (t.includes(k)) {
       t = t.replace(`[${k}]`, '').replace(`[${k.toLowerCase()}]`, '');
@@ -20,19 +21,33 @@ const parseTagsFromTitle = (title: string): [string, CalendarEventTag[]] => {
     }
   });
 
+  // remove any whitespaces
   return [t.trim(), tags];
 };
 
+/**
+ * Gets the calendar events from the Google API
+ * @param calendarId The ID of the calendar to get events from
+ * @param includePast Whether or not to include past events
+ * @returns A mapped list of calendar events
+ */
 const getCalendarEvents = (
   calendarId: string,
   includePast: boolean
 ): Promise<CalendarEvent[]> => {
+  /**
+   * Maps a google calendar event to a nicer event with only
+   * the values we use
+   * @param item Google calendar event
+   * @returns A mapped `CalendarEvent`
+   */
   const mapEvent = (item: calendar_v3.Schema$Event): CalendarEvent => {
     const { id, description, summary, start, end, location } = item;
 
     const startDate = start?.date ?? start?.dateTime;
     const endDate = end?.date ?? end?.dateTime;
 
+    // Get the [XX] values from the title and remove them from the title
     const [title, tags] = parseTagsFromTitle(summary ?? '');
 
     return {
@@ -86,8 +101,20 @@ const groupEvents = (events: CalendarEvent[]) => {
     .sort((a, b) => (a.date > b.date ? 1 : -1));
 };
 
+/**
+ * Get endpoint for fetching calendar events from Google
+ */
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  // Get the calendarId from the query
   const calendarId = req.query.c?.toString() ?? '';
+
+  // If no calendar ID is provided, return an empty array
+  if (!calendarId) {
+    res.send([]);
+    return;
+  }
+
+  // Wether or not to include past events
   const hidePast = req.query.p !== 'true';
 
   const events = await getCalendarEvents(calendarId, !hidePast).catch(() => []);
