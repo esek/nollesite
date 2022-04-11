@@ -3,11 +3,17 @@ import React from 'react';
 
 type Props = {
   id?: string;
+  isSmall?: boolean;
 };
 
-const Heading: React.FC<Props> = ({ children, id }) => {
+const Heading: React.FC<Props> = ({ children, id, isSmall }) => {
   return (
-    <h2 className={styles['e-heading']} id={id}>
+    <h2
+      className={`${styles['e-heading']} ${
+        isSmall ? styles['e-heading--small'] : ''
+      }`}
+      id={id}
+    >
       {children}
     </h2>
   );

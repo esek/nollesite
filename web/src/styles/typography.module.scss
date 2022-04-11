@@ -1,6 +1,10 @@
 .e-heading {
   @apply relative mb-8 max-w-fit font-nolle text-3xl;
 
+  &--small {
+    @apply mb-4 text-xl;
+  }
+
   &::after {
     content: '';
     position: absolute;
@@ -15,5 +19,9 @@
 
   @screen md {
     @apply text-4xl;
+
+    &--small {
+      @apply text-2xl;
+    }
   }
 }

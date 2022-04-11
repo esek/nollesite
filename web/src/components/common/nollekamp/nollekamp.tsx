@@ -28,6 +28,9 @@ const Nollekamp: React.FC<Content<'content.nollekamp'>> = ({
           ></div>
         )}
 
+        <div className="mt-4">
+          <Heading isSmall>{t('nollekamp.missions')}</Heading>
+        </div>
         {showPoints && (
           <div className="mt-4 flex justify-between font-semibold">
             <h3 className="font-nolle text-xl">{t('nollekamp.title')}</h3>
@@ -47,7 +50,9 @@ const Nollekamp: React.FC<Content<'content.nollekamp'>> = ({
 
       {standings?.length && (
         <>
-          <h3 className="mt-8 font-nolle text-2xl font-semibold">Ställning</h3>
+          <div className="mt-8">
+            <Heading isSmall>{t('nollekamp.standings')}</Heading>
+          </div>
           <div className="mt-2 flex justify-between">
             <p className="font-semibold">{t('nollekamp.group')}</p>
             <p className="font-semibold">{t('nollekamp.points')}</p>

@@ -12,7 +12,9 @@
   "nollekamp": {
     "title": "Mission",
     "points": "Points",
-    "group": "Group"
+    "group": "Group",
+    "missions": "Missions",
+    "standings": "Standings"
   },
   "calendar": {
     "alcohol": "Alcoholic event",

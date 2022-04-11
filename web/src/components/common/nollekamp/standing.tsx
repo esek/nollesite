@@ -2,6 +2,10 @@ import { ContentStanding } from '@/models/content';
 import React from 'react';
 
 const Standing: React.FC<ContentStanding> = ({ group, points }) => {
+  if (!group) {
+    return null;
+  }
+
   return (
     <div className="flex justify-between">
       <p>

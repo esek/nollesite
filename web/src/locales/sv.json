@@ -12,7 +12,9 @@
   "nollekamp": {
     "title": "Uppdrag",
     "points": "Poäng",
-    "group": "Grupp"
+    "group": "Grupp",
+    "missions": "Uppdrag",
+    "standings": "Ställning"
   },
   "calendar": {
     "alcohol": "Alkoholhaltigt event",
