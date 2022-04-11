@@ -10,7 +10,7 @@ export type Content<T extends string = string> = {
   | NollekampContent
   | SponsorsContent
   | CalendarContent
-  | GroupsContent
+  | PhadderGroupsContent
 );
 
 /** TEXT */
@@ -64,8 +64,8 @@ type ContentMission = {
 
 type ContentStanding = {
   id: number;
-  groupName: string;
   points: number;
+  group: ContentPhadderGroup;
 };
 
 /** SPONSORS */
@@ -87,16 +87,16 @@ type CalendarContent = {
   calendarUrl: string;
 };
 
-/** Groups */
-type GroupsContent = {
-  __component: 'content.groups';
-  groups?: ContentGroup[];
+/** PHADDERGROUPS */
+type PhadderGroupsContent = {
+  __component: 'content.phaddergroups';
+  groups?: ContentPhadderGroup[];
 };
 
-type ContentGroup = {
+type ContentPhadderGroup = {
   id: number;
   name: string;
   number: number;
-  logo: StrapiImage;
   link?: string;
+  image?: StrapiImage;
 };

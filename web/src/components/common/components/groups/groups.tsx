@@ -1,12 +1,12 @@
 import Heading from '@/components/typography/heading';
 import { useLocale } from '@/hooks/locale.hook';
-import { Content, ContentGroup } from '@/models/content';
+import { Content, ContentPhadderGroup } from '@/models/content';
 import Group from './group';
 
-const Groups: React.FC<Content<'content.groups'>> = ({ groups }) => {
+const Groups: React.FC<Content<'content.phaddergroups'>> = ({ groups }) => {
   const { t } = useLocale();
 
-  const sortGroups = (g: ContentGroup[]) =>
+  const sortGroups = (g: ContentPhadderGroup[]) =>
     g.sort((a, b) => (a.number > b.number ? 1 : -1));
 
   return (

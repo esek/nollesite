@@ -104,7 +104,7 @@ export const buildNavLinks = (
           href: `#phos`,
         });
         break;
-      case 'content.groups':
+      case 'content.phaddergroups':
         links.push({
           title: isSwe ? 'Grupper' : 'Groups',
           href: `#groups`,

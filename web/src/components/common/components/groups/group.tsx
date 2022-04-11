@@ -1,8 +1,13 @@
-import { ContentGroup } from '@/models/content';
+import { ContentPhadderGroup } from '@/models/content';
 import React from 'react';
 import StrapiImg from '../../strapi/strapi-image';
 
-const Group: React.FC<ContentGroup> = ({ name, number, logo, link }) => {
+const Group: React.FC<ContentPhadderGroup> = ({
+  name,
+  number,
+  image,
+  link,
+}) => {
   return (
     <a
       href={link}
@@ -10,10 +15,12 @@ const Group: React.FC<ContentGroup> = ({ name, number, logo, link }) => {
       target="_blank"
       rel="noreferrer"
     >
-      <StrapiImg
-        {...logo}
-        className="rounded-full p-2 transition-all group-hover:bg-secondary/5"
-      />
+      {image && (
+        <StrapiImg
+          {...image}
+          className="rounded-full p-2 transition-all group-hover:bg-secondary/5"
+        />
+      )}
       <h3 className="mt-2 text-center">
         {number}. {name}
       </h3>

@@ -36,7 +36,7 @@ const Calendar: React.FC<Content<'content.calendar'>> = ({ calendarUrl }) => {
   useEffect(() => {
     dayjs.locale(locale);
     getCalendarInfo();
-  }, [calendarUrl]);
+  }, [calendarUrl, locale]);
 
   return (
     <>
