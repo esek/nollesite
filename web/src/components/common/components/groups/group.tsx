@@ -18,7 +18,9 @@ const Group: React.FC<ContentPhadderGroup> = ({
       {image && (
         <StrapiImg
           {...image}
-          className="rounded-full p-2 transition-all group-hover:bg-secondary/5"
+          className={`rounded-full p-2 transition-all ${
+            link ? 'group-hover:bg-secondary/5' : ''
+          }`}
         />
       )}
       <h3 className="mt-2 text-center">
