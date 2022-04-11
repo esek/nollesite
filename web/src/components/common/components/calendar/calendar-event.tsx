@@ -14,6 +14,7 @@ const CalendarEvent: React.FC<CalendarEvent> = ({
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { t } = useLocale();
+  const hasDescription = description && description.length > 0;
 
   const getTime = (date: Date) => {
     const d = dayjs(date);
@@ -21,13 +22,21 @@ const CalendarEvent: React.FC<CalendarEvent> = ({
   };
 
   const toggle = () => {
+    if (!hasDescription) {
+      return;
+    }
+
     setIsOpen(!isOpen);
   };
 
   return (
     <>
       <button
-        className="relative flex flex-col bg-accent p-4 text-primary transition-all hover:-translate-y-0.5 hover:opacity-80"
+        className={`relative flex flex-col bg-accent p-4 text-primary transition-all ${
+          hasDescription
+            ? 'hover:-translate-y-0.5 hover:opacity-80'
+            : 'pointer-events-none'
+        }`}
         onClick={toggle}
       >
         <h4 className="font-medium">{title}</h4>
@@ -45,7 +54,9 @@ const CalendarEvent: React.FC<CalendarEvent> = ({
           <span>{getTime(start)}</span>-<span>{getTime(end)}</span>
         </div>
 
-        <p className="mt-1 text-sm italic">{t('calendar.more-info')}</p>
+        {hasDescription && (
+          <p className="mt-1 text-sm italic">{t('calendar.more-info')}</p>
+        )}
       </button>
 
       <Modal title={title} isVisible={isOpen} onChange={setIsOpen}>
