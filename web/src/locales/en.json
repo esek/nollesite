@@ -19,6 +19,9 @@
   "calendar": {
     "alcohol": "Alcoholic event",
     "food": "Food is provided",
-    "ouvve": "Wear your Ouvve!"
+    "ouvve": "Wear your Ouvve!",
+    "loading": "Loading calendar",
+    "no-events": "There are no upcoming events",
+    "show-past-events": "Show past events"
   }
 }

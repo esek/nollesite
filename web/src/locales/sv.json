@@ -19,6 +19,9 @@
   "calendar": {
     "alcohol": "Alkoholhaltigt event",
     "food": "Mat erbjuds",
-    "ouvve": "Ha din Ouvve på dig!"
+    "ouvve": "Ha din Ouvve på dig!",
+    "loading": "Laddar kalender",
+    "no-events": "Det finns inga uppkommande events",
+    "show-past-events": "Visa tidigare event"
   }
 }

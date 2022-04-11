@@ -23,7 +23,10 @@ const parseTagsFromTitle = (title: string): [string, CalendarEventTag[]] => {
   return [t.trim(), tags];
 };
 
-const getCalendarEvents = (calendarId: string): Promise<CalendarEvent[]> => {
+const getCalendarEvents = (
+  calendarId: string,
+  includePast: boolean
+): Promise<CalendarEvent[]> => {
   const mapEvent = (item: calendar_v3.Schema$Event): CalendarEvent => {
     const { id, description, summary, start, end } = item;
 
@@ -43,9 +46,11 @@ const getCalendarEvents = (calendarId: string): Promise<CalendarEvent[]> => {
   };
 
   return new Promise((resolve, reject) => {
+    console.log(new Date().toISOString());
     calendar.events.list(
       {
         calendarId,
+        timeMin: includePast ? undefined : new Date().toISOString(),
       },
       (err, data) => {
         if (err || !data) {
@@ -61,7 +66,7 @@ const getCalendarEvents = (calendarId: string): Promise<CalendarEvent[]> => {
   });
 };
 
-const groupEvents = (events: CalendarEvent[], includePast: boolean) => {
+const groupEvents = (events: CalendarEvent[]) => {
   const grouped: Record<string, CalendarEvent[]> = {};
 
   events.forEach((event) => {
@@ -82,11 +87,11 @@ const groupEvents = (events: CalendarEvent[], includePast: boolean) => {
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const calendarId = req.query.c?.toString() ?? '';
-  const includePastEvents = req.query.p === 'true';
+  const hidePast = req.query.p !== 'true';
 
-  const events = await getCalendarEvents(calendarId).catch(() => []);
+  const events = await getCalendarEvents(calendarId, !hidePast).catch(() => []);
 
-  res.send(groupEvents(events, includePastEvents));
+  res.send(groupEvents(events));
 };
 
 export default handler;

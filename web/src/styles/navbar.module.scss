@@ -39,9 +39,9 @@
     width: $size;
     left: -1em;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%) rotate(45deg);
 
-    @apply rounded-full border-2 border-accent bg-primary;
+    @apply border-2 border-accent bg-primary;
   }
 
   &.nav-active::after {
