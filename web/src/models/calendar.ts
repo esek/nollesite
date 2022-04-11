@@ -20,6 +20,7 @@ export type CalendarEvent = {
   start: Date;
   end: Date;
   tags: CalendarEventTag[];
+  location: string;
 };
 
 export type CalendarResponse = {

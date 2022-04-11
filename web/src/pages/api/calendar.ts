@@ -28,7 +28,7 @@ const getCalendarEvents = (
   includePast: boolean
 ): Promise<CalendarEvent[]> => {
   const mapEvent = (item: calendar_v3.Schema$Event): CalendarEvent => {
-    const { id, description, summary, start, end } = item;
+    const { id, description, summary, start, end, location } = item;
 
     const startDate = start?.date ?? start?.dateTime;
     const endDate = end?.date ?? end?.dateTime;
@@ -42,6 +42,7 @@ const getCalendarEvents = (
       description: description ?? '',
       start: new Date(startDate ?? ''),
       end: new Date(endDate ?? ''),
+      location: location ?? '',
     };
   };
 

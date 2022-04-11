@@ -5,6 +5,7 @@ import Calendar from '../components/calendar/calendar';
 import Groups from '../components/groups/groups';
 import Images from '../components/images';
 import Phoset from '../components/phoset/phoset';
+import Sponsors from '../components/sponsors/sponsors';
 import Text from '../components/text';
 import Nollekamp from '../nollekamp/nollekamp';
 import StrapiComponent from './strapi-component';
@@ -45,6 +46,12 @@ const StrapiComponents: React.FC<Props> = ({ content }) => {
         if (c.groups?.length) {
           return ['groups', Groups];
         }
+        break;
+      case 'content.sponsors':
+        if (c.sponsors?.length) {
+          return ['sponsors', Sponsors];
+        }
+        break;
     }
 
     return null;

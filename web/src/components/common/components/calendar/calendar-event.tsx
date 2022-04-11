@@ -3,6 +3,7 @@ import { useLocale } from '@/hooks/locale.hook';
 import { CalendarEvent, TagIcons } from '@/models/calendar';
 import dayjs from 'dayjs';
 import { useState } from 'react';
+import { FiMapPin } from 'react-icons/fi';
 
 const CalendarEvent: React.FC<CalendarEvent> = ({
   id,
@@ -11,6 +12,7 @@ const CalendarEvent: React.FC<CalendarEvent> = ({
   end,
   description,
   tags,
+  location,
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { t } = useLocale();
@@ -50,8 +52,16 @@ const CalendarEvent: React.FC<CalendarEvent> = ({
             );
           })}
         </div>
+
+        {location && (
+          <div className="flex items-center gap-1">
+            <FiMapPin />
+            {location}
+          </div>
+        )}
+
         <div>
-          <span>{getTime(start)}</span>-<span>{getTime(end)}</span>
+          <span>{getTime(start)}</span> - <span>{getTime(end)}</span>
         </div>
 
         {hasDescription && (
@@ -60,6 +70,13 @@ const CalendarEvent: React.FC<CalendarEvent> = ({
       </button>
 
       <Modal title={title} isVisible={isOpen} onChange={setIsOpen}>
+        {location && (
+          <div className="mb-1 flex items-center gap-1 text-sm">
+            <FiMapPin />
+            {location}
+          </div>
+        )}
+
         <p className="text-sm">
           {getTime(start)} - {getTime(end)}
         </p>
