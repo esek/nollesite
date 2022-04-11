@@ -41,7 +41,7 @@ const StrapiComponents: React.FC<Props> = ({ content }) => {
           return ['nollekamp', Nollekamp];
         }
         break;
-      case 'content.groups':
+      case 'content.phaddergroups':
         if (c.groups?.length) {
           return ['groups', Groups];
         }
