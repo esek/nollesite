@@ -83,7 +83,7 @@ const StrapiComponents: React.FC<Props> = ({ content }) => {
     );
   };
 
-  return <div>{content.map(buildContent)}</div>;
+  return <>{content.map(buildContent)}</>;
 };
 
 export default StrapiComponents;

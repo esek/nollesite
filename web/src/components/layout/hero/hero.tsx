@@ -16,7 +16,7 @@ const Hero: React.FC<Props> = ({ logo, title, navLinks, year }) => {
   return (
     <section
       data-component="hero"
-      className="relative mt-20 flex h-[80vh] w-screen flex-col items-center justify-center"
+      className="relative mt-20 flex h-[80vh] flex-col items-center justify-center"
     >
       <h1 className="max-w-[30ch] self-center px-8 pb-8 text-center font-nolle text-5xl md:px-0 xl:text-7xl">
         {title}
