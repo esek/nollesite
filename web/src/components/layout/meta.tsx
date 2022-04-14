@@ -53,11 +53,11 @@ const Meta: React.FC<Props> = ({
       <meta name="msapplication-TileColor" content="#101826" />
       <meta name="theme-color" content="#ffffff" />
 
-      <meta property="og:title" content={`${title} | E-Nollning ${year}`} />
+      <meta property="og:title" content={t} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={logoUrl} />
 
-      <meta name="twitter:title" content={title} />
+      <meta name="twitter:title" content={t} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={logoUrl} />
 
