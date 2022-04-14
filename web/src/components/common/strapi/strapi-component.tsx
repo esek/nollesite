@@ -3,6 +3,7 @@ import React from 'react';
 export type StrapiComponentProps = {
   id: string;
   component: string;
+  children?: React.ReactNode;
 };
 /**
  * Wrapper element for a component in strapi

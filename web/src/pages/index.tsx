@@ -10,6 +10,7 @@ import { generateColors } from '../utils/style.utils';
 type Props = Year & {
   cssColors: Record<string, number>[];
   navLinks: NavLink[];
+  children?: React.ReactNode;
 };
 
 const Route: NextPage<Props> = ({ children, navLinks, ...props }) => {

@@ -1,7 +1,12 @@
 {
   "name": "E-Nollning",
   "short_name": "E-Nollning",
-  "start_url": "https://nollning.esek.se",
+  "start_url": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "description": "E-Nollning | E-Sektionen inom TLTH",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -13,8 +18,5 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "display": "standalone"
+  ]
 }

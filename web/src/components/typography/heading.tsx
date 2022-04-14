@@ -4,6 +4,7 @@ import React from 'react';
 type Props = {
   id?: string;
   isSmall?: boolean;
+  children?: React.ReactNode;
 };
 
 const Heading: React.FC<Props> = ({ children, id, isSmall }) => {

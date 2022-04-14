@@ -7,6 +7,7 @@ type Props = {
   title: string;
   isVisible?: boolean;
   onChange?: (value: boolean) => void;
+  children?: React.ReactNode;
 };
 
 const Modal: React.FC<Props> = ({
