@@ -25,18 +25,22 @@ const LanguageSelector: React.FC = ({}) => {
 
   return (
     <div className="group flex justify-center gap-2 px-3 py-2">
-      {locales.map((l) => (
-        <button
-          key={l.code}
-          onClick={() => changeLocale(l.code)}
-          className={`aspect-square h-8 rounded-full ${
-            l.code === locale ? 'bg-secondary/50' : ''
-          }`}
-          aria-label={l.name}
-        >
-          <l.component />
-        </button>
-      ))}
+      {locales.map((l) => {
+        if (l.code === locale) {
+          return null;
+        }
+
+        return (
+          <button
+            key={l.code}
+            onClick={() => changeLocale(l.code)}
+            className="aspect-square h-8 rounded-full"
+            aria-label={l.name}
+          >
+            <l.component />
+          </button>
+        );
+      })}
     </div>
   );
 };

@@ -49,7 +49,7 @@
   }
 
   @screen md {
-    @apply text-base font-normal;
+    @apply text-sm font-normal;
 
     &::before,
     &::after {

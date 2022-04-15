@@ -31,7 +31,7 @@ const Drawer: React.FC<Props> = ({ links, isOpen, close }) => {
           <LanguageSelector />
         </div>
 
-        <div className="links-wrapper flex flex-col gap-4 md:flex-row md:gap-6">
+        <div className="links-wrapper flex flex-col gap-4 md:flex-row md:gap-4">
           {links.map((link) => {
             return (
               <Link href={link.href} key={link.href}>
