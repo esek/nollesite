@@ -3,6 +3,10 @@ import React from 'react';
 import EnFlag from '../../icons/en';
 import SvFlag from '../../icons/sv';
 
+type Props = {
+  onClick: () => void;
+};
+
 const locales = [
   {
     code: 'sv',
@@ -16,10 +20,11 @@ const locales = [
   },
 ];
 
-const LanguageSelector: React.FC = ({}) => {
+const LanguageSelector: React.FC<Props> = ({ onClick }) => {
   const { locale, push, pathname, asPath } = useRouter();
 
   const changeLocale = (l: string) => {
+    onClick();
     push({ pathname: pathname }, asPath, { locale: l });
   };
 

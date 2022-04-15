@@ -28,7 +28,7 @@ const Drawer: React.FC<Props> = ({ links, isOpen, close }) => {
         className={`${styles.drawer} ${isOpen ? styles['drawer-open'] : ''}`}
       >
         <div className="absolute top-8 left-8 md:relative md:top-auto md:left-auto">
-          <LanguageSelector />
+          <LanguageSelector onClick={doClose} />
         </div>
 
         <div className="links-wrapper flex flex-col gap-4 md:flex-row md:gap-4">
