@@ -41,7 +41,7 @@ const Modal: React.FC<Props> = ({
 
   return createPortal(
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center`}
+      className="fixed inset-0 z-50 flex items-center justify-center"
       role="dialog"
     >
       <div className="absolute inset-0 bg-black/30" onClick={handleClose}></div>
