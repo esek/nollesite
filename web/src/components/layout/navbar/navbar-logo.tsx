@@ -21,7 +21,7 @@ const NavbarLogo: React.FC<StrapiImage> = ({ url, alternativeText }) => {
       // FROM
       {
         position: 'absolute',
-        scale: 4,
+        scale: 3.5,
         top: '30vh',
         left: '50%',
         translateX: '-50%',
