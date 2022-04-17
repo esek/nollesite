@@ -5,7 +5,7 @@ import '../styles/main.scss';
 import '../styles/strapi-text.scss';
 import '../styles/tailwind.scss';
 
-const App: NextPage<AppProps> = ({ Component, pageProps }) => {
+const App: NextPage<AppProps> = ({ Component, pageProps, router }) => {
   return (
     <>
       <Head>
@@ -44,6 +44,11 @@ const App: NextPage<AppProps> = ({ Component, pageProps }) => {
           href="/fonts/nollefont.ttf"
           as="font"
           crossOrigin=""
+        />
+        <script
+          defer
+          data-domain="nollning.esek.se"
+          src="https://analytics.esek.se/js/plausible.js"
         />
       </Head>
 
