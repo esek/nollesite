@@ -7,7 +7,7 @@ module.exports = {
     config: {
       provider: 'sendmail',
       settings: {
-        defaultFrom: 'noreply@esek.se',
+        defaultFrom: 'no-reply@esek.se',
         defaultReplyTo: 'macapar+strapi@esek.se',
       },
     },

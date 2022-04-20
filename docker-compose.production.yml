@@ -19,6 +19,7 @@ services:
       API_TOKEN_SALT: ${API_TOKEN_SALT}
       JWT_SECRET: ${JWT_SECRET}
       STRAPI_URL: https://nollning.esek.se
+      NODE_ENV: production
     networks:
       - traefik
       - nollning
