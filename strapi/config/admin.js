@@ -15,7 +15,7 @@ module.exports = ({ env }) => ({
   forgotPassword: {
     from: 'no-reply@esek.se',
     replyTo: 'macapar+strapi@esek.se',
-    template: {
+    emailTemplate: {
       subject: 'Glömt ditt lösenord?',
       text: emailTemplate,
       html: emailTemplate,
