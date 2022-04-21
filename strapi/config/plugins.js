@@ -5,7 +5,17 @@ module.exports = {
   },
   email: {
     config: {
-      provider: 'sendmail',
+      provider: 'nodemailer',
+      providerOptions: {
+        host: env('SMTP_HOST', 'smtp.google.com'),
+        port: env('SMTP_PORT', 465),
+        secure: true,
+        auth: {
+          user: env('SMTP_USERNAME'),
+          pass: env('SMTP_PASSWORD'),
+        },
+        // ... any custom nodemailer options
+      },
       settings: {
         defaultFrom: 'no-reply@esek.se',
         defaultReplyTo: 'macapar+strapi@esek.se',
