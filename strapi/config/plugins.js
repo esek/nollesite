@@ -17,7 +17,7 @@ module.exports = ({ env }) => ({
         // ... any custom nodemailer options
       },
       settings: {
-        defaultFrom: 'no-reply@esek.se',
+        defaultFrom: 'E-Sektionen <no-reply@esek.se>',
         defaultReplyTo: 'macapar+strapi@esek.se',
       },
     },
