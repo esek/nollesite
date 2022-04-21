@@ -1,4 +1,4 @@
-module.exports = {
+module.exports = ({ env }) => ({
   previewer: {
     enabled: true,
     resolve: './src/plugins/previewer',
@@ -22,4 +22,4 @@ module.exports = {
       },
     },
   },
-};
+});
