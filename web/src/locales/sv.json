@@ -4,7 +4,8 @@
     "calendar": "Kalender",
     "sponsors": "Sponsorer",
     "nollekamp": "Nollekampen",
-    "groups": "Grupper"
+    "groups": "Grupper",
+    "contact": "Kontakt"
   },
   "downloadCalendar": "Ladda ner kalender",
   "close": "Stäng",
@@ -24,5 +25,16 @@
     "no-events": "Det finns inga uppkommande events",
     "show-past-events": "Visa tidigare event",
     "more-info": "Klicka för mer information"
+  },
+  "contact": {
+    "email": "E-post",
+    "from": "Från",
+    "message": "Meddelande",
+    "send": "Skicka",
+    "message-placeholder": "Skriv ditt meddelande här...",
+    "from-helper": "Lämna tomt om du vill förbli anonym",
+    "sending": "Skickar...",
+    "sent": "Skickat!",
+    "error": "Något gick fel"
   }
 }

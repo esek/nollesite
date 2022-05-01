@@ -58,9 +58,14 @@ export const buildNavLinks = (
   const links: NavLink[] = [];
 
   content.forEach((c) => {
+    // all components have a "showInMenu" property, if this is false we just skip it
+    if (!c.showInMenu) {
+      return;
+    }
+
     switch (c.__component) {
       case 'content.text':
-        if (!c.showInMenu || !c.header) {
+        if (!c.header) {
           return;
         }
 
@@ -110,6 +115,12 @@ export const buildNavLinks = (
         links.push({
           title: isSwe ? 'Grupper' : 'Groups',
           href: `#groups`,
+        });
+        break;
+      case 'content.contact':
+        links.push({
+          title: c.title,
+          href: `#${slugify(c.title)}`,
         });
         break;
     }

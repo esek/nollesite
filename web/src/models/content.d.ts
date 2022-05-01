@@ -3,6 +3,7 @@ import { StrapiImage } from './image';
 export type Content<T extends string = string> = {
   __component: T;
   id: string;
+  showInMenu: boolean;
 } & (
   | TextContent
   | ImagesContent
@@ -11,6 +12,7 @@ export type Content<T extends string = string> = {
   | SponsorsContent
   | CalendarContent
   | PhadderGroupsContent
+  | ContactContent
 );
 
 /** TEXT */
@@ -18,7 +20,6 @@ type TextContent = {
   __component: 'content.text';
   header?: string;
   body?: string;
-  showInMenu: boolean;
 };
 
 /** IMAGES */
@@ -99,4 +100,11 @@ type ContentPhadderGroup = {
   number: number;
   link?: string;
   image?: StrapiImage;
+};
+
+/** CONTACT */
+type ContactContent = {
+  __component: 'content.contact';
+  title: string;
+  email: string;
 };

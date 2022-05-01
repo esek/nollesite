@@ -12,6 +12,11 @@
       "type": "component",
       "repeatable": true,
       "component": "content.phos"
+    },
+    "showInMenu": {
+      "type": "boolean",
+      "default": true,
+      "required": true
     }
   }
 }

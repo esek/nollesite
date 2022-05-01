@@ -25,6 +25,11 @@
       "type": "component",
       "repeatable": true,
       "component": "content.standings"
+    },
+    "showInMenu": {
+      "type": "boolean",
+      "default": true,
+      "required": true
     }
   }
 }

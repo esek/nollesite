@@ -2,13 +2,19 @@
   "collectionName": "components_content_calendars",
   "info": {
     "displayName": "calendar",
-    "icon": "calendar-alt"
+    "icon": "calendar-alt",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "calendarUrl": {
       "type": "string",
       "unique": false,
+      "required": true
+    },
+    "showInMenu": {
+      "type": "boolean",
+      "default": false,
       "required": true
     }
   }

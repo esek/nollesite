@@ -7,8 +7,9 @@ import Images from '../components/images';
 import Phoset from '../components/phoset/phoset';
 import Sponsors from '../components/sponsors/sponsors';
 import Text from '../components/text';
-import Nollekamp from '../nollekamp/nollekamp';
+import Nollekamp from '../components/nollekamp/nollekamp';
 import StrapiComponent from './strapi-component';
+import Contact from '../components/contact/contact';
 
 type Props = {
   content: Content[];
@@ -57,6 +58,10 @@ const StrapiComponents: React.FC<Props> = ({ content }) => {
           return ['sponsors', Sponsors];
         }
         break;
+      case 'content.contact':
+        if (c.email) {
+          return [slugify(c.title), Contact];
+        }
     }
 
     // If we don't recognize the component, don't render anything

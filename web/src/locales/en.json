@@ -4,7 +4,8 @@
     "calendar": "Calendar",
     "sponsors": "Sponsors",
     "nollekamp": "The Nollekamp",
-    "groups": "Groups"
+    "groups": "Groups",
+    "contact": "Contact"
   },
   "downloadCalendar": "Download calendar",
   "close": "Close",
@@ -25,5 +26,16 @@
     "show-past-events": "Show past events",
     "more-info": "Click for more info"
   },
-  "sponsors": {}
+  "sponsors": {},
+  "contact": {
+    "email": "E-post",
+    "from": "From",
+    "message": "Message",
+    "send": "Send",
+    "message-placeholder": "Write your message here",
+    "from-helper": "Leave this field empty if you wish to remain anonymous",
+    "sending": "Sending...",
+    "sent": "Sent!",
+    "error": "Something went wrong"
+  }
 }
