@@ -75,8 +75,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     templateName: '',
   };
 
-  const response = await sendEmail(mailBody);
-  res.status(200).json(response.data);
+  try {
+    const response = await sendEmail(mailBody);
+    res.status(200).json(response.data);
+  } catch (err) {
+    console.error(err);
+    res.status(500).end();
+  }
 };
 
 export default handler;
