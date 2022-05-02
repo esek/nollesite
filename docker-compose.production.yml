@@ -23,8 +23,6 @@ services:
       SMTP_PORT: ${SMTP_PORT}
       SMTP_USERNAME: ${SMTP_USERNAME}
       SMTP_PASSWORD: ${SMTP_PASSWORD}
-      EBREV_URL: ${EBREV_URL}
-      EBREV_API_KEY: ${EBREV_API_KEY}
       NODE_ENV: production
     networks:
       - traefik
@@ -41,6 +39,8 @@ services:
       STRAPI_URL: ${STRAPI_URL}
       STRAPI_API_TOKEN: ${STRAPI_API_TOKEN}
       GOOGLE_API_KEY: ${GOOGLE_API_KEY}
+      EBREV_URL: ${EBREV_URL}
+      EBREV_API_KEY: ${EBREV_API_KEY}
       NODE_ENV: production
     networks:
       - traefik
