@@ -33,7 +33,7 @@ const Contact: React.FC<Content<'content.contact'>> = ({ email, title }) => {
         headers: {
           'Content-Type': 'application/json',
         },
-      }).then((res) => res.json());
+      });
 
       // If successful, reset the form
       setButtonText(t('contact.sent'));

@@ -48,7 +48,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const { origin, host } = absoluteUrl(req);
 
-  if (req.headers.referer !== `${origin}/`) {
+  if (![req.headers.referer, req.headers.origin].includes(`${origin}/`)) {
     res.status(403).end();
     return;
   }
