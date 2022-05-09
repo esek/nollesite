@@ -1,7 +1,7 @@
-import { StrapiImage } from '@/models/image';
+import { StrapiFile } from '@/models/image';
 import React from 'react';
 
-type Props = StrapiImage & {
+type Props = StrapiFile & {
   className?: string;
   label?: string;
   height?: number;

@@ -1,4 +1,4 @@
-export type StrapiImage = {
+export type StrapiFile = {
   url: string;
   alternativeText: string;
 };

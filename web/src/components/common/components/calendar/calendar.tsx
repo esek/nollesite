@@ -77,7 +77,10 @@ const Calendar: React.FC<Content<'content.calendar'>> = ({ calendarUrl }) => {
     <>
       <Heading>{t('headers.calendar')}</Heading>
       <div className="space-y-4">
-        <button className="flex items-center gap-2" onClick={handleCalDownload}>
+        <button
+          className="flex items-center gap-2 hover:text-secondary/80"
+          onClick={handleCalDownload}
+        >
           <FiSave />
           <span>{t('downloadCalendar')}</span>
         </button>

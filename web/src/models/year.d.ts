@@ -1,12 +1,12 @@
 import { Content } from './content';
-import { StrapiImage } from './image';
+import { StrapiFile } from './image';
 
 export type Year = {
   id: number;
   year: string;
   title: string;
   description: string;
-  logo: StrapiImage;
+  logo: StrapiFile;
   colors: YearColors;
   content: Content[];
 };

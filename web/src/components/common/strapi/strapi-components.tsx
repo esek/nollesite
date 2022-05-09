@@ -10,6 +10,7 @@ import Text from '../components/text';
 import Nollekamp from '../components/nollekamp/nollekamp';
 import StrapiComponent from './strapi-component';
 import Contact from '../components/contact/contact';
+import Nolleguide from '../components/nolleguide';
 
 type Props = {
   content: Content[];
@@ -61,6 +62,11 @@ const StrapiComponents: React.FC<Props> = ({ content }) => {
       case 'content.contact':
         if (c.email) {
           return [slugify(c.title), Contact];
+        }
+        break;
+      case 'content.nolleguide':
+        if (c.file?.url) {
+          return ['nolleguide-download', Nolleguide];
         }
     }
 

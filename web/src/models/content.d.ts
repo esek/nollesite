@@ -1,4 +1,4 @@
-import { StrapiImage } from './image';
+import { StrapiFile } from './image';
 
 export type Content<T extends string = string> = {
   __component: T;
@@ -13,6 +13,7 @@ export type Content<T extends string = string> = {
   | CalendarContent
   | PhadderGroupsContent
   | ContactContent
+  | NolleguideContent
 );
 
 /** TEXT */
@@ -30,7 +31,7 @@ type ImagesContent = {
 };
 
 type ContentImage = {
-  image: StrapiImage;
+  image: StrapiFile;
   imageText: string;
   id: number;
 };
@@ -45,7 +46,7 @@ export type ContentPhos = {
   id: number;
   name: string;
   description: string;
-  image: StrapiImage;
+  image: StrapiFile;
 };
 
 /** NOLLEKAMP */
@@ -79,7 +80,7 @@ type ContentSponsor = {
   id: number;
   name: string;
   link: string;
-  image: StrapiImage;
+  image: StrapiFile;
 };
 
 /** CALENDAR */
@@ -99,7 +100,7 @@ type ContentPhadderGroup = {
   name: string;
   number: number;
   link?: string;
-  image?: StrapiImage;
+  image?: StrapiFile;
 };
 
 /** CONTACT */
@@ -107,4 +108,11 @@ type ContactContent = {
   __component: 'content.contact';
   title: string;
   email: string;
+};
+
+/** NOLLEGUIDE */
+type NolleguideContent = {
+  __component: 'content.nolleguide';
+  downloadText: string;
+  file: StrapiFile;
 };

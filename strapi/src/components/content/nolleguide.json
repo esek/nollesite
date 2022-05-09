@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_content_nolleguides",
+  "info": {
+    "displayName": "nolleguide",
+    "icon": "file-pdf"
+  },
+  "options": {},
+  "attributes": {
+    "downloadText": {
+      "type": "string",
+      "required": true
+    },
+    "file": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}

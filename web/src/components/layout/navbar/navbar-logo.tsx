@@ -1,11 +1,11 @@
-import { StrapiImage } from '@/models/image';
+import { StrapiFile } from '@/models/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react';
 gsap.registerPlugin(ScrollTrigger);
 
-const NavbarLogo: React.FC<StrapiImage> = ({ url, alternativeText }) => {
+const NavbarLogo: React.FC<StrapiFile> = ({ url, alternativeText }) => {
   const [isMounted, setIsMounted] = useState(false);
 
   const ref = useRef(null);

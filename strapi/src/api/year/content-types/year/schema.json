@@ -108,7 +108,8 @@
         "content.phaddergroups",
         "content.phoset",
         "content.sponsors",
-        "content.text"
+        "content.text",
+        "content.nolleguide"
       ]
     },
     "description": {

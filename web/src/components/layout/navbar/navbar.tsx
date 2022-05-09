@@ -1,4 +1,4 @@
-import { StrapiImage } from '@/models/image';
+import { StrapiFile } from '@/models/image';
 import React from 'react';
 import { useToggle } from '../../../hooks/toggle.hook';
 import { NavLink } from '../../../models/nav';
@@ -9,7 +9,7 @@ import NavbarLogo from './navbar-logo';
 type Props = {
   links: NavLink[];
   year: string;
-  logo: StrapiImage;
+  logo: StrapiFile;
 };
 
 const Navbar: React.FC<Props> = ({ logo, links }) => {
