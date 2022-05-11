@@ -1,7 +1,7 @@
 import Input from '@/components/forms/input';
 import Heading from '@/components/typography/heading';
 import { useLocale } from '@/hooks/locale.hook';
-import { ContactContent, Content } from '@/models/content';
+import { Content } from '@/models/content';
 import React, { FormEvent, useState } from 'react';
 import { FiLoader, FiSend } from 'react-icons/fi';
 
@@ -55,7 +55,7 @@ const Contact: React.FC<Content<'content.contact'>> = ({ email, title }) => {
 
   return (
     <>
-      <Heading id="contact">{title}</Heading>
+      {title && <Heading id="contact">{title}</Heading>}
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
         <Input
           name="from"

@@ -106,7 +106,7 @@ type ContentPhadderGroup = {
 /** CONTACT */
 type ContactContent = {
   __component: 'content.contact';
-  title: string;
+  title?: string;
   email: string;
 };
 
