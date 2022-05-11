@@ -77,7 +77,7 @@ const Contact: React.FC<Content<'content.contact'>> = ({ email, title }) => {
 
         <button
           type="submit"
-          className="mx-auto flex w-fit items-center gap-2 bg-accent px-8 py-4"
+          className="mx-auto flex w-fit items-center gap-2 bg-accent px-8 py-4 text-primary"
         >
           {/* When sending, we want to show a spinner */}
           {isLoading ? <FiLoader className="animate-spin" /> : <FiSend />}
