@@ -29,6 +29,8 @@ const Meta: React.FC<Props> = ({
         content="E-Sektionen, Nollning, Lunds Universitet, LTH"
       />
 
+      <link rel="icon" href={logoUrl} />
+
       <link rel="mask-icon" href="/safari-pinned-tab.svg" color={color} />
       <meta name="apple-mobile-web-app-title" content={t} />
       <meta name="application-name" content={t} />

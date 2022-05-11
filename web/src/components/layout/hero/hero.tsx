@@ -1,14 +1,11 @@
 import React from 'react';
 import { FiChevronDown } from 'react-icons/fi';
-import { NavLink } from '../../../models/nav';
-import { Year } from '../../../models/year';
 
-type Props = Year & {
+type Props = {
   title: string;
-  navLinks: NavLink[];
 };
 
-const Hero: React.FC<Props> = ({ logo, title, navLinks, year }) => {
+const Hero: React.FC<Props> = ({ title }) => {
   const scrollToFirst = () => {
     const sections = document.querySelectorAll('.strapi-component');
     window.location.hash = sections.item(0)?.id;
@@ -16,7 +13,7 @@ const Hero: React.FC<Props> = ({ logo, title, navLinks, year }) => {
   return (
     <section
       data-component="hero"
-      className="relative mt-20 flex h-[80vh] flex-col items-center justify-center"
+      className="relative mt-24 flex h-[80vh] flex-col items-center justify-center"
     >
       <h1 className="max-w-[30ch] self-center px-8 pb-8 text-center font-nolle text-5xl md:px-0 xl:text-7xl">
         {title}
