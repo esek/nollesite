@@ -7,8 +7,19 @@ type Props = {
 
 const Hero: React.FC<Props> = ({ title }) => {
   const scrollToFirst = () => {
-    const sections = document.querySelectorAll('.strapi-component');
-    window.location.hash = sections.item(0)?.id;
+    const section = document.querySelector('.strapi-component');
+    if (!section?.id) {
+      return;
+    }
+
+    const hashId = `#${section.id}`;
+
+    // temporarily remove it to scroll again
+    if (window.location.hash === hashId) {
+      window.location.hash = '';
+    }
+
+    window.location.hash = hashId;
   };
   return (
     <section
