@@ -27,11 +27,11 @@ const Drawer: React.FC<Props> = ({ links, isOpen, close }) => {
       <div
         className={`${styles.drawer} ${isOpen ? styles['drawer-open'] : ''}`}
       >
-        <div className="absolute top-8 left-8 md:relative md:top-auto md:left-auto">
+        <div className="absolute top-8 left-8 xl:relative xl:top-auto xl:left-auto">
           <LanguageSelector onClick={doClose} />
         </div>
 
-        <div className="links-wrapper flex flex-col gap-4 md:flex-row md:gap-4">
+        <div className="links-wrapper flex flex-col gap-4 xl:flex-row xl:gap-4">
           {links.map((link) => {
             return (
               <Link href={link.href} key={link.href}>

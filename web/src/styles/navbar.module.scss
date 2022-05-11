@@ -2,14 +2,16 @@
   --transition-delay: 100ms;
 
   @apply fixed top-0 left-0 flex h-screen w-screen translate-x-full items-center p-12 font-nolle duration-500;
+
   transition: transform 300ms ease-in-out,
     background 300ms ease-in-out var(--transition-delay);
+
   &-open {
     --transition-delay: 0ms;
     @apply translate-x-0 bg-primary;
   }
 
-  @screen md {
+  @screen xl {
     @apply relative h-auto w-auto translate-x-0 flex-row-reverse gap-4 p-0;
   }
 }
@@ -23,14 +25,6 @@
     display: block;
     content: '';
   }
-
-  // &::before {
-  //   left: 0;
-  //   right: 0;
-  //   bottom: -0.25em;
-  //   height: 1px;
-
-  // }
 
   &::after {
     $size: 10px;
@@ -48,7 +42,7 @@
     @apply bg-accent;
   }
 
-  @screen md {
+  @screen xl {
     @apply text-sm font-normal;
 
     &::before,

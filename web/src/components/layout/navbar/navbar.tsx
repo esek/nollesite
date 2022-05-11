@@ -26,7 +26,7 @@ const Navbar: React.FC<Props> = ({ logo, links }) => {
 
         <Drawer isOpen={isOpen} links={links} close={close} />
 
-        <div className="relative z-10 md:hidden">
+        <div className="relative z-10 xl:hidden">
           <BurgerMenuBtn isOpen={isOpen} onClick={toggle} />
         </div>
       </div>
