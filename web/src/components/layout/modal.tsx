@@ -44,7 +44,10 @@ const Modal: React.FC<Props> = ({
       className="fixed inset-0 z-50 flex items-center justify-center"
       role="dialog"
     >
-      <div className="absolute inset-0 bg-black/30" onClick={handleClose}></div>
+      <div
+        className="absolute inset-0 bg-gray-800/50"
+        onClick={handleClose}
+      ></div>
 
       <div className="relative w-full max-w-sm bg-primary p-6 text-secondary shadow-sm shadow-secondary/10">
         <header className="flex items-center justify-between text-lg font-semibold">
