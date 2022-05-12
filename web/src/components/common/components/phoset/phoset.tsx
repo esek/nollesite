@@ -2,6 +2,7 @@ import { useLocale } from '@/hooks/locale.hook';
 import { Content } from '@/models/content';
 import React from 'react';
 import Heading from '../../../typography/heading';
+import styles from '@/styles/phoset.module.scss';
 import Phos from './phos';
 
 const Phoset: React.FC<Content<'content.phoset'>> = ({ phoset }) => {
@@ -15,7 +16,7 @@ const Phoset: React.FC<Content<'content.phoset'>> = ({ phoset }) => {
   return (
     <>
       <Heading>{t('headers.phoset')}</Heading>
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+      <div className={styles.phoscontainer}>
         {/* Manually place øverphøs as we want it larger */}
         <div className="md:col-span-3">
           <Phos {...overphos} isOverphos />

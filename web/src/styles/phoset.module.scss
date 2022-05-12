@@ -1,0 +1,14 @@
+.phoscontainer {
+  @apply grid grid-cols-1 gap-16 md:grid-cols-3;
+
+  :last-child {
+    grid-column-end: -1;
+  }
+
+  > :nth-child(2),
+  > :nth-child(4),
+  > :nth-child(5),
+  > :last-child {
+    @apply md:-mt-52;
+  }
+}
