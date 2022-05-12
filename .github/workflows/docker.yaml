@@ -164,7 +164,7 @@ jobs:
             echo "${{ secrets.PR_ENV_VARS }}" > .env
           fi
 
-          echo "CI_REGISTRY_IMAGE=${{ env.REGISTRY }}${{ github.repository }}" >> .env >> $GITHUB_ENV
+          echo "CI_REGISTRY_IMAGE=${{ env.REGISTRY }}/${{ github.repository }}" >> .env >> $GITHUB_ENV
 
           echo "TAG=$TAG" >> $GITHUB_ENV
           echo "CONTAINER_NAME=$CONTAINER_NAME" >> $GITHUB_ENV
