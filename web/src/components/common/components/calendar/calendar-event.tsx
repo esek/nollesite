@@ -36,7 +36,7 @@ const CalendarEvent: React.FC<CalendarEvent> = ({
   return (
     <>
       <button
-        className={`relative flex flex-col bg-accent p-4 text-primary transition-all ${
+        className={`relative flex h-fit flex-col bg-accent p-4 text-primary transition-all ${
           hasDescription
             ? 'hover:-translate-y-0.5 hover:opacity-80'
             : 'pointer-events-none'

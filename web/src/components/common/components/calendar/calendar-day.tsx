@@ -1,11 +1,14 @@
-import { CalendarResponse } from '@/models/calendar';
+import { CalendarEventsGroupedByDay } from '@/models/calendar';
 import dayjs from 'dayjs';
 import React from 'react';
 import CalendarEvent from './calendar-event';
 
-const CalendarDay: React.FC<CalendarResponse> = ({ date, events }) => {
+const CalendarDay: React.FC<CalendarEventsGroupedByDay> = ({
+  date,
+  events,
+}) => {
   return (
-    <div className="mt-4 space-y-4">
+    <div className="my-4 space-y-4">
       <h3 className="text-lg font-semibold capitalize">
         {dayjs(date).format('dddd, D MMMM')}
       </h3>

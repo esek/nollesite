@@ -24,7 +24,8 @@
     "loading": "Loading calendar",
     "no-events": "There are no upcoming events",
     "show-past-events": "Show past events",
-    "more-info": "Click for more info"
+    "more-info": "Click for more info",
+    "week": "Week"
   },
   "sponsors": {},
   "contact": {

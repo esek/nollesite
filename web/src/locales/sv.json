@@ -24,7 +24,8 @@
     "loading": "Laddar kalender",
     "no-events": "Det finns inga uppkommande events",
     "show-past-events": "Visa tidigare event",
-    "more-info": "Klicka för mer information"
+    "more-info": "Klicka för mer information",
+    "week": "Vecka"
   },
   "contact": {
     "email": "E-post",

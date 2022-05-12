@@ -2,8 +2,8 @@ import Cbx from '@/components/forms/cbx';
 import Heading from '@/components/typography/heading';
 import { useLocale } from '@/hooks/locale.hook';
 import {
+  CalendarEventsGroupedByWeek,
   CalendarEventTag,
-  CalendarResponse,
   TagIcons,
 } from '@/models/calendar';
 import { Content } from '@/models/content';
@@ -11,13 +11,14 @@ import dayjs from 'dayjs';
 import React, { useEffect, useState } from 'react';
 import { FiLoader, FiSave } from 'react-icons/fi';
 import CalendarDay from './calendar-day';
+import CalendarWeek from './calendar-week';
 require('dayjs/locale/sv');
 
 const Calendar: React.FC<Content<'content.calendar'>> = ({ calendarUrl }) => {
-  const [events, setEvents] = useState<CalendarResponse[]>([]);
+  const [events, setEvents] = useState<CalendarEventsGroupedByWeek[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const [includePast, setIncludePast] = useState<boolean>(false);
+  const [includePast, setIncludePast] = useState<boolean>(true);
 
   const { t, locale } = useLocale();
 
@@ -29,7 +30,7 @@ const Calendar: React.FC<Content<'content.calendar'>> = ({ calendarUrl }) => {
    */
   const getCalendarInfo = async (includePast: boolean) => {
     setIsLoading(true);
-    const events: CalendarResponse[] = await fetch(
+    const events: CalendarEventsGroupedByWeek[] = await fetch(
       `/api/calendar?c=${calendarUrl}&p=${includePast}`
     ).then((res) => res.json());
     setIsLoading(false);
@@ -69,7 +70,7 @@ const Calendar: React.FC<Content<'content.calendar'>> = ({ calendarUrl }) => {
     }
 
     return events.map((event) => (
-      <CalendarDay {...event} key={`calendar-day-${event.date}`} />
+      <CalendarWeek {...event} key={`calendar-week-${event.weekNumber}`} />
     ));
   };
 

@@ -1,8 +1,14 @@
-import { CalendarEvent, CalendarEventTag } from '@/models/calendar';
+import {
+  CalendarEvent,
+  CalendarEventsGroupedByDay,
+  CalendarEventsGroupedByWeek,
+  CalendarEventTag,
+} from '@/models/calendar';
 import dayjs from 'dayjs';
 import { calendar_v3, google } from 'googleapis';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { serverConfig } from '../../config.server';
+import { weekNumber } from 'weeknumber';
 
 const calendar = google.calendar({
   version: 'v3',
@@ -49,11 +55,15 @@ const getCalendarEvents = (
   const mapEvent = (item: calendar_v3.Schema$Event): CalendarEvent => {
     const { id, description, summary, start, end, location } = item;
 
-    const startDate = start?.date ?? start?.dateTime;
-    const endDate = end?.date ?? end?.dateTime;
+    const startDateOrTime = start?.date ?? start?.dateTime;
+    const endDateOrTime = end?.date ?? end?.dateTime;
 
     // Get the [XX] values from the title and remove them from the title
     const [title, tags] = parseTagsFromTitle(summary ?? '');
+
+    const startDate = new Date(startDateOrTime ?? '');
+
+    const week = weekNumber(startDate);
 
     return {
       title,
@@ -61,8 +71,9 @@ const getCalendarEvents = (
       id: id ?? '',
       description: description ?? '',
       start: new Date(startDate ?? ''),
-      end: new Date(endDate ?? ''),
+      end: new Date(endDateOrTime ?? ''),
       location: location ?? '',
+      weekNumber: week,
     };
   };
 
@@ -87,7 +98,9 @@ const getCalendarEvents = (
   });
 };
 
-const groupEvents = (events: CalendarEvent[]) => {
+const groupEventsByDay = (
+  events: CalendarEvent[]
+): CalendarEventsGroupedByDay[] => {
   const grouped: Record<string, CalendarEvent[]> = {};
 
   events.forEach((event) => {
@@ -102,14 +115,51 @@ const groupEvents = (events: CalendarEvent[]) => {
   });
 
   return Object.entries(grouped)
-    .map(([date, events]) => ({ events, date }))
+    .map(([date, events]) => ({ date, events }))
     .sort((a, b) => (a.date > b.date ? 1 : -1));
+};
+
+const groupEventsByWeek = (events: CalendarEvent[]) => {
+  const grouped: Record<number, CalendarEvent[]> = {};
+
+  events.forEach((event) => {
+    const { weekNumber } = event;
+
+    if (!grouped[weekNumber]) {
+      grouped[weekNumber] = [];
+    }
+
+    grouped[weekNumber].push(event);
+  });
+
+  return Object.entries(grouped).map(([weekNumber, events]) => ({
+    weekNumber: parseInt(weekNumber),
+    events,
+  }));
+};
+
+const groupEvents = (
+  events: CalendarEvent[]
+): CalendarEventsGroupedByWeek[] => {
+  const byWeek = groupEventsByWeek(events);
+
+  return byWeek
+    .map(({ weekNumber, events }) => ({
+      weekNumber,
+      days: groupEventsByDay(events),
+    }))
+    .sort((a, b) => (a.weekNumber > b.weekNumber ? 1 : -1));
 };
 
 /**
  * Get endpoint for fetching calendar events from Google
  */
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  if (req.method !== 'GET') {
+    res.status(404).end();
+    return;
+  }
+
   // Get the calendarId from the query
   const calendarId = req.query.c?.toString() ?? '';
 

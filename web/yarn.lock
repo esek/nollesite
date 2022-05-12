@@ -1714,6 +1714,11 @@ csstype@^3.0.2:
   resolved "https://registry.npmjs.org/csstype/-/csstype-3.0.10.tgz"
   integrity sha512-2u44ZG2OcNUO9HDp/Jl8C07x6pU/eTR3ncV91SiK3dhG9TWvRVsCoJw14Ckx5DgWkzGA3waZWO3d7pgqpUI/XA==
 
+current-week-number@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/current-week-number/-/current-week-number-1.0.7.tgz#567278aeb5fe58decb150b9ac864f93dce4ed972"
+  integrity sha1-VnJ4rrX+WN7LFQuayGT5Pc5O2XI=
+
 damerau-levenshtein@^1.0.7:
   version "1.0.8"
   resolved "https://registry.npmjs.org/damerau-levenshtein/-/damerau-levenshtein-1.0.8.tgz"
@@ -4030,6 +4035,11 @@ webpack-sources@^1.4.3:
   dependencies:
     source-list-map "^2.0.0"
     source-map "~0.6.1"
+
+weeknumber@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/weeknumber/-/weeknumber-1.2.1.tgz#f407e7a2eaef1e625610404d1dcbab845b891e85"
+  integrity sha512-F5AbhjKQhRDHweBnDuYRiJvS9/2f19/3/431+ZiZQb/jTgLKuAg8kwZzgS9/9a1SyA1KeJPEfQpf6dggaw7NBg==
 
 whatwg-url@^5.0.0:
   version "5.0.0"

@@ -13,7 +13,7 @@ module.exports = ({ env }) => ({
     secret: env('ADMIN_JWT_SECRET', '9f1c6109a159dca881e139dc6edf1393'),
   },
   forgotPassword: {
-    from: 'no-reply@esek.se',
+    from: 'E-Sektionen <no-reply@esek.se>',
     replyTo: 'macapar+strapi@esek.se',
     emailTemplate: {
       subject: 'Glömt ditt lösenord?',

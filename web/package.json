@@ -13,6 +13,7 @@
   "dependencies": {
     "axios": "^0.26.1",
     "colortranslator": "^1.9.2",
+    "current-week-number": "^1.0.7",
     "dayjs": "^1.11.0",
     "googleapis": "^100.0.0",
     "gsap": "^3.10.3",
@@ -23,7 +24,8 @@
     "react-dom": "^18.0.0",
     "react-gsap": "^3.2.1",
     "react-icons": "^4.3.1",
-    "sass": "^1.50.0"
+    "sass": "^1.50.0",
+    "weeknumber": "^1.2.1"
   },
   "devDependencies": {
     "@types/gsap": "^3.0.0",

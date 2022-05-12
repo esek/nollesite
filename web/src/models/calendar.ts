@@ -1,5 +1,7 @@
 import { IconType } from 'react-icons';
-import { GiArmoredPants, GiBeerBottle, GiMeal } from 'react-icons/gi';
+import { GiArmoredPants, GiMeal } from 'react-icons/gi';
+import { FaBeer } from 'react-icons/fa';
+import { MdFastfood } from 'react-icons/md';
 
 export enum CalendarEventTag {
   Ouvve = 'OUVVE',
@@ -9,8 +11,8 @@ export enum CalendarEventTag {
 
 export const TagIcons: Record<CalendarEventTag, IconType> = {
   OUVVE: GiArmoredPants,
-  ALCOHOL: GiBeerBottle,
-  FOOD: GiMeal,
+  ALCOHOL: FaBeer,
+  FOOD: MdFastfood,
 };
 
 export type CalendarEvent = {
@@ -21,9 +23,15 @@ export type CalendarEvent = {
   end: Date;
   tags: CalendarEventTag[];
   location: string;
+  weekNumber: number;
 };
 
-export type CalendarResponse = {
+export type CalendarEventsGroupedByDay = {
   date: string;
   events: CalendarEvent[];
+};
+
+export type CalendarEventsGroupedByWeek = {
+  weekNumber: number;
+  days: CalendarEventsGroupedByDay[];
 };
