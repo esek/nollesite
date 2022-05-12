@@ -31,7 +31,7 @@ services:
       - 'traefik.http.routers.strapi.rule=Host(`admin.nollning.esek.se`)'
 
   web:
-    image: '${CI_REGISTRY_IMAGE}'
+    image: '${CI_REGISTRY_IMAGE}/web'
     environment:
       STRAPI_URL: ${STRAPI_URL}
       STRAPI_API_TOKEN: ${STRAPI_API_TOKEN}

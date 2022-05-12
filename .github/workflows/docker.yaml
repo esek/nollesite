@@ -201,13 +201,9 @@ jobs:
         run: |
           docker pull $CI_REGISTRY_IMAGE/web:$TAG
           docker pull $CI_REGISTRY_IMAGE/strapi:$TAG
-      - name: Stop old container
-        run: |
-          docker stop $CONTAINER_NAME 2> /dev/null || true
-          docker rm --force $CONTAINER_NAME 2> /dev/null || true
       - name: deploy to host
         run: >
-          docker-compose -f docker-compose.production.yml ${{ env.DEPLOY_ARGS }} up -d
+          docker-compose -f docker-compose.production.yml ${{ env.DEPLOY_ARGS }} up -d --force-recreate
       - name: prune system
         run: docker system prune -f 2> /dev/null || true
       - name: update deployment status
