@@ -196,7 +196,9 @@ jobs:
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
       - name: pull image
-        run: docker pull $IMAGE_NAME
+        run: |
+          docker pull $CI_REGISTRY_IMAGE/web:$TAG
+          docker pull $CI_REGISTRY_IMAGE/strapi:$TAG
       - name: Stop old container
         run: |
           docker stop $CONTAINER_NAME 2> /dev/null || true
