@@ -118,6 +118,10 @@ export const buildNavLinks = (
         });
         break;
       case 'content.contact':
+        if (!c.title) {
+          return;
+        }
+
         links.push({
           title: c.title,
           href: `#${slugify(c.title)}`,
