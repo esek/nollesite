@@ -80,12 +80,18 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
-      - name: build and push image
+      - name: build and push web image
         uses: docker/build-push-action@v3
         with:
-          context: .
+          context: ./web
           push: true
-          tags: ${{ env.REGISTRY }}/${{ github.repository }}:${{ env.TAG }}
+          tags: ${{ env.REGISTRY }}/${{ github.repository }}/web:${{ env.TAG }}
+      - name: build and push strapi image
+        uses: docker/build-push-action@v3
+        with:
+          context: ./strapi
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ github.repository }}/strapi:${{ env.TAG }}
 
   deploy:
     # To run this locally using act set act to false in event.json
@@ -157,6 +163,8 @@ jobs:
             DEPLOY_ARGS="${{ format('{0} {1}', env.DEPLOY_ARGS, secrets.PR_DEPLOY_ARGS) }}"
             echo "${{ secrets.PR_ENV_VARS }}" > .env
           fi
+
+          echo "CI_REGISTRY_IMAGE=${{ env.REGISTRY }}${{ github.repository }}"
 
           echo "TAG=$TAG" >> $GITHUB_ENV
           echo "CONTAINER_NAME=$CONTAINER_NAME" >> $GITHUB_ENV
