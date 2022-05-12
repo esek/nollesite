@@ -101,6 +101,8 @@ jobs:
     steps:
       - name: self hosted runner post job cleanup action
         uses: TooMuch4U/actions-clean@v2.1
+      - name: checkout repo
+        uses: actions/checkout@v3
       - name: set variables
         run: |
           eval "$SLUGIFY_FUNCTION"
