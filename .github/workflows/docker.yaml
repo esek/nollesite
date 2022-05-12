@@ -134,7 +134,7 @@ jobs:
           DEPLOY_URL=$REPO_NAME_SLUG.testing.esek.se
           DEPLOY_ENV=${BRANCH_SLUG/${{ env.DEFAULT_BRANCH }}/testing}
           DEPLOY_ARGS="${{ format('{0} {1}', env.DEPLOY_ARGS, secrets.TESTING_DEPLOY_ARGS) }}"
-          echo "${{ secrets.TESTING_ENV_VARS }}" > .env
+          echo '${{ secrets.TESTING_ENV_VARS }}' > .env
 
           if ${{ (github.event_name == 'release' && github.event.action == 'released') || env.ONLY_PROD == 'true' }}; then
             DEPLOY_ENV=production
@@ -144,7 +144,7 @@ jobs:
               DEPLOY_URL=${{ env.PROD_URL }}
             fi
             DEPLOY_ARGS="${{ format('{0} {1}', env.DEPLOY_ARGS, secrets.PROD_DEPLOY_ARGS) }}"
-            echo "${{ secrets.PROD_ENV_VARS }}" > .env
+            echo '${{ secrets.PROD_ENV_VARS }}' > .env
           fi
 
           if ${{ github.event_name == 'release' && github.event.action == 'prereleased' }}; then
@@ -155,7 +155,7 @@ jobs:
               DEPLOY_URL=${{ env.STAGING_URL }}
             fi
             DEPLOY_ARGS="${{ format('{0} {1}', env.DEPLOY_ARGS, secrets.STAGING_DEPLOY_ARGS) }}"
-            echo "${{ secrets.STAGING_ENV_VARS }}" > .env
+            echo '${{ secrets.STAGING_ENV_VARS }}' > .env
           fi
 
           if ${{ github.event_name == 'pull_request' }}; then
@@ -163,10 +163,10 @@ jobs:
             CONTAINER_NAME=$CONTAINER_NAME-review
             DEPLOY_URL=$REPO_NAME_SLUG-$BRANCH_SLUG.review.esek.se
             DEPLOY_ARGS="${{ format('{0} {1}', env.DEPLOY_ARGS, secrets.PR_DEPLOY_ARGS) }}"
-            echo "${{ secrets.PR_ENV_VARS }}" > .env
+            echo '${{ secrets.PR_ENV_VARS }}' > .env
           fi
 
-          echo "CI_REGISTRY_IMAGE=${{ env.REGISTRY }}/${{ github.repository }}" >> .env >> $GITHUB_ENV
+          echo 'CI_REGISTRY_IMAGE=${{ env.REGISTRY }}/${{ github.repository }}' >> .env >> $GITHUB_ENV
 
           echo "TAG=$TAG" >> $GITHUB_ENV
           echo "CONTAINER_NAME=$CONTAINER_NAME" >> $GITHUB_ENV
