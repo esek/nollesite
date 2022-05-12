@@ -2,15 +2,13 @@ version: '3.8'
 networks:
   traefik:
     external: true
-  nollning:
-    driver: bridge
 
 services:
   strapi:
     image: '${CI_REGISTRY_IMAGE}/strapi'
     environment:
-      DB_HOST: postgres
-      DB_USERNAME: ${DB_USER}
+      DB_HOST: ${DB_HOST}
+      DB_USERNAME: ${DB_USERNAME}
       DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: ${DB_NAME}
       STRAPI_HOST: '0.0.0.0'
@@ -26,7 +24,6 @@ services:
       NODE_ENV: production
     networks:
       - traefik
-      - nollning
     restart: always
     volumes:
       - /srv/nollning/uploads:/app/public/uploads
@@ -47,18 +44,3 @@ services:
     restart: always
     labels:
       - 'traefik.http.routers.nollning-web.rule=HostRegexp(`nollning.esek.se`, `{subdomain:[\d]{4}}.nollning.esek.se`)'
-
-  postgres:
-    image: postgres:latest
-    env_file:
-      - .env
-    environment:
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_NAME}
-    restart: always
-    volumes:
-      - /srv/nollning/postgres:/var/lib/postgresql/data
-    networks:
-      - nollning
-      - traefik
