@@ -63,6 +63,7 @@ const getCalendarEvents = (
 
     const startDate = new Date(startDateOrTime ?? '');
 
+    // get the week number of the event
     const week = weekNumber(startDate);
 
     return {
@@ -119,6 +120,12 @@ const groupEventsByDay = (
     .sort((a, b) => (a.date > b.date ? 1 : -1));
 };
 
+/**
+ * Converts a list of events and groups them into objects
+ * grouped by their weeknumber
+ * @param events The events to group
+ * @returns Calendar events grouped by week
+ */
 const groupEventsByWeek = (events: CalendarEvent[]) => {
   const grouped: Record<number, CalendarEvent[]> = {};
 
@@ -143,12 +150,16 @@ const groupEvents = (
 ): CalendarEventsGroupedByWeek[] => {
   const byWeek = groupEventsByWeek(events);
 
-  return byWeek
-    .map(({ weekNumber, events }) => ({
-      weekNumber,
-      days: groupEventsByDay(events),
-    }))
-    .sort((a, b) => (a.weekNumber > b.weekNumber ? 1 : -1));
+  return (
+    byWeek
+      .map(({ weekNumber, events }) => ({
+        weekNumber,
+        // Group events by day
+        days: groupEventsByDay(events),
+      }))
+      // sort the events by week number
+      .sort((a, b) => (a.weekNumber > b.weekNumber ? 1 : -1))
+  );
 };
 
 /**

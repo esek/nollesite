@@ -4,12 +4,16 @@ import CalendarDay from './calendar-day';
 import { FiChevronDown } from 'react-icons/fi';
 import { useToggle } from '@/hooks/toggle.hook';
 import { useLocale } from '@/hooks/locale.hook';
+import { weekNumber as getWeekNumber } from 'weeknumber';
 
 const CalendarWeek: React.FC<CalendarEventsGroupedByWeek> = ({
   weekNumber,
   days,
 }) => {
-  const { isOpen, toggle } = useToggle(false);
+  const thisWeek = getWeekNumber(new Date());
+
+  // default is opened if this is the current week
+  const { isOpen, toggle } = useToggle(weekNumber === thisWeek);
   const { t } = useLocale();
 
   return (
