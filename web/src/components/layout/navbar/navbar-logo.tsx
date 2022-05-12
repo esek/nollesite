@@ -35,7 +35,7 @@ const NavbarLogo: React.FC<StrapiFile> = ({ url, alternativeText }) => {
         scrollTrigger: {
           start: 'top top',
           end: `${window.innerHeight * 0.8}px`, // 80% of screen height
-          scrub: true,
+          scrub: 1.25,
         },
       }
     );
