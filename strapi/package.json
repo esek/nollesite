@@ -12,12 +12,12 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "@strapi/plugin-i18n": "4.1.9",
-    "@strapi/plugin-users-permissions": "4.1.9",
-    "@strapi/provider-email-nodemailer": "^4.1.9",
-    "@strapi/strapi": "4.1.9",
+    "@strapi/plugin-i18n": "4.1.10",
+    "@strapi/plugin-users-permissions": "4.1.10",
+    "@strapi/provider-email-nodemailer": "^4.1.10",
+    "@strapi/strapi": "4.1.10",
     "pg": "8.7.3",
-    "strapi-tiptap-editor": "^0.7.9"
+    "strapi-tiptap-editor": "^0.7.11"
   },
   "author": {
     "name": "Axel Froborg <axel.froborg@gmail.com>"
