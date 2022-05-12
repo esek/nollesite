@@ -24,7 +24,7 @@ const CalendarWeek: React.FC<CalendarEventsGroupedByWeek> = ({
           {t('calendar.week')} {weekNumber}
         </h2>
 
-        <button>
+        <button aria-label={`${isOpen ? 'Close' : 'Open'} content`}>
           <FiChevronDown
             className={`transition-all ${isOpen ? 'rotate-180' : ''}`}
           />

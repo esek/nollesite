@@ -23,7 +23,7 @@ const Cbx: React.FC<Props> = ({ value, onChange, label, name }) => {
         id={n}
       />
       <div className="flex items-center gap-2">
-        <button onClick={toggle}>
+        <button onClick={toggle} aria-label={value ? 'Uncheck' : 'Check'}>
           <div
             className={`grid aspect-square h-6 place-items-center border border-accent ${
               value ? 'bg-accent' : ''
