@@ -12,10 +12,10 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "@strapi/plugin-i18n": "4.1.10",
-    "@strapi/plugin-users-permissions": "4.1.10",
-    "@strapi/provider-email-nodemailer": "^4.1.10",
-    "@strapi/strapi": "4.1.10",
+    "@strapi/plugin-i18n": "4.1.11",
+    "@strapi/plugin-users-permissions": "4.1.11",
+    "@strapi/provider-email-nodemailer": "^4.1.11",
+    "@strapi/strapi": "4.1.11",
     "pg": "8.7.3",
     "strapi-tiptap-editor": "^0.7.11"
   },
