@@ -79,6 +79,7 @@ type SponsorsContent = {
 type ContentSponsor = {
   id: number;
   name: string;
+  description: string;
   link: string;
   image: StrapiFile;
 };

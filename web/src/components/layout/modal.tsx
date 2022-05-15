@@ -62,7 +62,7 @@ const Modal: React.FC<Props> = ({
 
         <footer className="mt-2">
           <button
-            className="float-right bg-accent px-4 py-1"
+            className="float-right bg-accent px-4 py-1 text-primary"
             onClick={handleClose}
           >
             {t('close')}

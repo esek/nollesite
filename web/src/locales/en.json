@@ -27,7 +27,9 @@
     "more-info": "Click for more info",
     "week": "Week"
   },
-  "sponsors": {},
+  "sponsors": {
+    "read-more": "Read more about "
+  },
   "contact": {
     "email": "E-post",
     "from": "From",
