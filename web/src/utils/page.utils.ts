@@ -42,7 +42,7 @@ export const slugify = (str?: string): string => {
     .toLowerCase()
     .replace(/\s/g, '-')
     .replace(/[åäæ]/g, 'a')
-    .replace(/[öø]/, 'o')
+    .replace(/[öø]/g, 'o')
     .replace(/[^a-z0-9-]/g, '');
 };
 
