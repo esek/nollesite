@@ -18,7 +18,7 @@ const Group: React.FC<ContentPhadderGroup> = ({
       {image && (
         <StrapiImg
           {...image}
-          className={`aspect-square rounded-full p-2 transition-all ${
+          className={`aspect-square rounded-full object-cover p-2 transition-all ${
             link ? 'group-hover:bg-secondary/5' : ''
           }`}
         />
