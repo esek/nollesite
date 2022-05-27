@@ -22,7 +22,7 @@ const Phos: React.FC<Props> = ({
       <div>
         <StrapiImg {...image} />
       </div>
-      <h2 className="font-nolle text-lg font-bold">{name}</h2>
+      <h3 className="font-nolle text-lg font-bold">{name}</h3>
       <div
         className="text-sm"
         dangerouslySetInnerHTML={{ __html: description }}
