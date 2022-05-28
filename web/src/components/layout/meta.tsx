@@ -19,13 +19,14 @@ const Meta: React.FC<Props> = ({
   color,
   logoUrl,
 }) => {
-  const t = `${title} - Nollning E-Sektionen ${year}`;
+  const t = `${title} | E-Nollning ${year}`;
 
   return (
     <Head>
       <title>{t}</title>
       <meta name="description" content={description} />
       <link rel="icon" href={logoUrl} />
+
       <link rel="mask-icon" href="/safari-pinned-tab.svg" color={color} />
       <meta name="apple-mobile-web-app-title" content={t} />
       <meta name="application-name" content={t} />
