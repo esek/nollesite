@@ -19,18 +19,13 @@ const Meta: React.FC<Props> = ({
   color,
   logoUrl,
 }) => {
-  const t = `${title} | E-Nollning ${year}`;
+  const t = `${title} - Nollning E-Sektionen ${year}`;
+
   return (
     <Head>
       <title>{t}</title>
       <meta name="description" content={description} />
-      <meta
-        name="keywords"
-        content="E-Sektionen, Nollning, Lunds Universitet, LTH"
-      />
-
       <link rel="icon" href={logoUrl} />
-
       <link rel="mask-icon" href="/safari-pinned-tab.svg" color={color} />
       <meta name="apple-mobile-web-app-title" content={t} />
       <meta name="application-name" content={t} />
