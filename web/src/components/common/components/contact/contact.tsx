@@ -1,3 +1,4 @@
+import Btn from '@/components/forms/btn';
 import Input from '@/components/forms/input';
 import Heading from '@/components/typography/heading';
 import { useLocale } from '@/hooks/locale.hook';
@@ -22,7 +23,7 @@ const Contact: React.FC<Content<'content.contact'>> = ({ email, title }) => {
 
     try {
       // Send the email to the server
-      await fetch('/api/email', {
+      const res = await fetch('/api/email', {
         method: 'POST',
         body: JSON.stringify({
           to: email,
@@ -34,6 +35,10 @@ const Contact: React.FC<Content<'content.contact'>> = ({ email, title }) => {
           'Content-Type': 'application/json',
         },
       });
+
+      if (!res.ok) {
+        throw new Error('Something went wrong');
+      }
 
       // If successful, reset the form
       setButtonText(t('contact.sent'));
@@ -75,14 +80,14 @@ const Contact: React.FC<Content<'content.contact'>> = ({ email, title }) => {
           label={t('contact.message')}
         />
 
-        <button
+        <Btn
           type="submit"
-          className="mx-auto flex w-fit items-center gap-2 bg-accent px-8 py-4 text-primary hover:bg-accent/80"
+          className="flex w-fit items-center gap-2 self-center !px-8 !py-4"
         >
           {/* When sending, we want to show a spinner */}
           {isLoading ? <FiLoader className="animate-spin" /> : <FiSend />}
           {buttonText}
-        </button>
+        </Btn>
       </form>
     </>
   );

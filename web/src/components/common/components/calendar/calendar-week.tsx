@@ -5,6 +5,7 @@ import { FiChevronDown } from 'react-icons/fi';
 import { useToggle } from '@/hooks/toggle.hook';
 import { useLocale } from '@/hooks/locale.hook';
 import { weekNumber as getWeekNumber } from 'weeknumber';
+import { motion } from 'framer-motion';
 
 const CalendarWeek: React.FC<CalendarEventsGroupedByWeek> = ({
   weekNumber,
@@ -35,11 +36,25 @@ const CalendarWeek: React.FC<CalendarEventsGroupedByWeek> = ({
         </button>
       </div>
 
-      <div className={`overflow-hidden  ${!isOpen ? 'max-h-0' : 'max-h-full'}`}>
-        {days.map((d) => (
-          <CalendarDay {...d} key={`calendar-week--${weekNumber}-${d.date}`} />
-        ))}
-      </div>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: 1,
+            transition: {
+              ease: 'easeInOut',
+              duration: 0.1,
+            },
+          }}
+        >
+          {days.map((d) => (
+            <CalendarDay
+              {...d}
+              key={`calendar-week--${weekNumber}-${d.date}`}
+            />
+          ))}
+        </motion.div>
+      )}
     </div>
   );
 };

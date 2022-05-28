@@ -24,31 +24,44 @@ const Calendar: React.FC<Content<'content.calendar'>> = ({ calendarUrl }) => {
 
   const iCalLink = `https://calendar.google.com/calendar/ical/${calendarUrl}/public/basic.ics`;
 
-  /**
-   * Fetches the calendar events from the given url
-   * @param includePast Whether or not to include past events
-   */
-  const getCalendarInfo = async (includePast: boolean) => {
-    setIsLoading(true);
-    const events: CalendarEventsGroupedByWeek[] = await fetch(
-      `/api/calendar?c=${calendarUrl}&p=${includePast}`
-    ).then((res) => res.json());
-    setIsLoading(false);
-    setEvents(events);
-  };
-
   const handleCalDownload = () => {
     window.open(iCalLink, '_blank');
   };
 
   /**
-   * Runs anytime locale, includePast or calendarUrl changes
+   * Runs anytime includePast or calendarUrl changes
    * and refetches the calendar info
    */
   useEffect(() => {
-    dayjs.locale(locale);
+    /**
+     * Fetches the calendar events from the given url
+     * @param includePast Whether or not to include past events
+     */
+    const getCalendarInfo = async (includePast: boolean) => {
+      setIsLoading(true);
+
+      const events: CalendarEventsGroupedByWeek[] = await fetch(
+        `/api/calendar?c=${calendarUrl}&p=${includePast}`
+      )
+        .then((res) => res.json())
+        .catch(() => []);
+
+      setIsLoading(false);
+
+      setEvents(events);
+    };
+
     getCalendarInfo(includePast);
-  }, [calendarUrl, locale, includePast]);
+  }, [calendarUrl, includePast]);
+
+  /**
+   * Runs when the locale changes
+   * lets the locale of dates
+   */
+  useEffect(() => {
+    // set the date locale
+    dayjs.locale(locale);
+  }, [locale]);
 
   const renderCalendarItems = () => {
     if (isLoading) {

@@ -2,6 +2,8 @@ import { useLocale } from '@/hooks/locale.hook';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { FiX } from 'react-icons/fi';
+import { motion } from 'framer-motion';
+import Btn from '../forms/btn';
 
 type Props = {
   title: string;
@@ -44,31 +46,42 @@ const Modal: React.FC<Props> = ({
       className="fixed inset-0 z-50 flex items-center justify-center"
       role="dialog"
     >
-      <div
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, transition: { duration: 0.2, ease: 'linear' } }}
+        exit={{ opacity: 0 }}
         className="absolute inset-0 bg-gray-800/50"
         onClick={handleClose}
-      ></div>
+      ></motion.div>
 
-      <div className="relative w-full max-w-sm bg-primary p-6 text-secondary shadow-sm shadow-secondary/10">
+      <motion.div
+        initial={{ y: '-20px', opacity: 0 }}
+        animate={{
+          y: 0,
+          opacity: 1,
+          transition: { duration: 0.3, ease: 'backOut' },
+        }}
+        className="relative w-full max-w-sm bg-primary p-6 text-secondary shadow-sm shadow-secondary/10"
+      >
         <header className="flex items-center justify-between text-lg font-semibold">
           <span>{title}</span>
 
-          <button onClick={handleClose} aria-label="Close modal">
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={handleClose}
+            aria-label="Close modal"
+          >
             <FiX />
-          </button>
+          </motion.button>
         </header>
 
         <main>{children}</main>
 
-        <footer className="mt-2">
-          <button
-            className="float-right bg-accent px-4 py-1 text-primary"
-            onClick={handleClose}
-          >
-            {t('close')}
-          </button>
+        <footer className="mt-2 text-right">
+          <Btn onClick={handleClose}>{t('close')}</Btn>
         </footer>
-      </div>
+      </motion.div>
     </div>,
     document.getElementById('modal-root')!
   );

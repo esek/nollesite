@@ -15,6 +15,7 @@
     "colortranslator": "^1.9.2",
     "current-week-number": "^1.0.7",
     "dayjs": "^1.11.2",
+    "framer-motion": "^6.3.4",
     "googleapis": "^100.0.0",
     "gsap": "^3.10.4",
     "next": "12.1.6",
@@ -29,7 +30,7 @@
   },
   "devDependencies": {
     "@types/gsap": "^3.0.0",
-    "@types/node": "17.0.35",
+    "@types/node": "17.0.36",
     "@types/react": "18.0.9",
     "@types/react-dom": "^18.0.5",
     "autoprefixer": "^10.4.7",
