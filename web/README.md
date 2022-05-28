@@ -22,7 +22,7 @@ yarn run dev
 
 ## 🎨 Design
 
-Designen är gjord av `Phøset 2022` tillsammans med [`@afroborg`](https://gitlab.com/afroborg) och [`@blennster`](https://gitlab.com/blennster) (och säkert andra som inte får cred). Målet var att hitta en lösning som kan fungera flera år framåt, med endast tweaking på t.ex. färger, bilder och innehåll.
+Designen är gjord av `Phøset 2022` tillsammans med [`@afroborg`](https://github.com/afroborg) och [`@blennster`](https://github.com/blennster) (och säkert andra som inte får cred). Målet var att hitta en lösning som kan fungera flera år framåt, med endast tweaking på t.ex. färger, bilder och innehåll.
 
 > Vi gissar att detta kommer ändras lite varje år men skitsamma
 
