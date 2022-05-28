@@ -12,12 +12,14 @@ const Images: React.FC<Content<'content.images'>> = ({ images, title }) => {
         {images.map(
           ({ id, image, imageText }) =>
             image.url && (
-              <div
-                key={`images-image-${id}`}
-                className="relative aspect-square max-h-80 overflow-hidden rounded-md"
-              >
-                <StrapiImg {...image} className="h-full w-full" />
-                {imageText && <p className="text-accent">{imageText}</p>}
+              <div key={`images-image-${id}`} className="space-y-2">
+                <StrapiImg
+                  {...image}
+                  className="aspect-square max-h-80 rounded-md object-cover"
+                />
+                {imageText && (
+                  <p className="text-sm text-secondary">{imageText}</p>
+                )}
               </div>
             )
         )}

@@ -104,12 +104,12 @@
         "content.calendar",
         "content.contact",
         "content.images",
+        "content.nolleguide",
         "content.nollekamp",
         "content.phaddergroups",
         "content.phoset",
         "content.sponsors",
-        "content.text",
-        "content.nolleguide"
+        "content.text"
       ]
     },
     "description": {

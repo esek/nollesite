@@ -4,7 +4,8 @@
   "info": {
     "singularName": "group",
     "pluralName": "groups",
-    "displayName": "Groups"
+    "displayName": "Groups",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -16,15 +17,16 @@
       "required": true
     },
     "number": {
-      "type": "integer"
+      "type": "integer",
+      "required": true
     },
     "image": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": false
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "link": {
       "type": "string",

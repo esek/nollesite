@@ -18,7 +18,7 @@
     "imageText": {
       "type": "string",
       "unique": false,
-      "required": true
+      "required": false
     }
   }
 }
