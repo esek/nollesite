@@ -75,6 +75,10 @@ export const buildNavLinks = (
         });
         break;
       case 'content.calendar':
+        if (!c.calendarUrl) {
+          return;
+        }
+
         links.push({
           title: isSwe ? 'Kalender' : 'Calendar',
           href: `#calendar`,

@@ -48,7 +48,7 @@ API-anropet kommer då innehålla ett objekt som ser ut enligt följande:
 }
 ```
 
-Komponenten [`<StrapiComponents content={content} />`](src/components/common/strapi-components.tsx) gör sedan en `switch`-check och renderar ut en komponent med en färdig layout för just text.
+Komponenten [`<StrapiComponents content={content} />`](src/components/common/strapi/strapi-components.tsx) gör sedan en `switch`-check och renderar ut en komponent med en färdig layout för just text.
 
 ## ⌛️ Hämta tidigare år
 
@@ -62,7 +62,7 @@ Om inget prefix sätts, så kommer det göras en default mot nuvarande året (`n
 
 ### Med prefix (ex. `2020.nollning.esek.se`)
 
-[`[[...route]]`](src/pages/[[...route]].tsx) komponenten kommer då att parsa ut årtalet (i detta fallet `2020`) och göra en filtrerad sökning mot api:et för att hämta just det årets data. På så sätt kan vi se till att alltid spara information för tidigare år.
+[`index.tsx`](src/pages/index.tsx) komponenten kommer då att parsa ut årtalet (i detta fallet `2020`) och göra en filtrerad sökning mot api:et för att hämta just det årets data. På så sätt kan vi se till att alltid spara information för tidigare år.
 
 ## 👻 Passwords
 
