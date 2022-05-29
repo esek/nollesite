@@ -1,7 +1,5 @@
-import { CalendarEventTag } from '@/models/calendar';
 import { stripCalendarTags } from '@/utils/style.utils';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { GiConsoleController } from 'react-icons/gi';
 
 const toiCalLink = (calendarUrl: string) =>
   `https://calendar.google.com/calendar/ical/${calendarUrl}/public/basic.ics`;
