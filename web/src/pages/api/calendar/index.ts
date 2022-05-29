@@ -7,7 +7,7 @@ import {
 import dayjs from 'dayjs';
 import { calendar_v3, google } from 'googleapis';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { serverConfig } from '../../config.server';
+import { serverConfig } from '@/config.server';
 import { weekNumber } from 'weeknumber';
 
 const calendar = google.calendar({
@@ -27,7 +27,7 @@ const parseTagsFromTitle = (title: string): [string, CalendarEventTag[]] => {
   // Remove the [XX] tags from the title and append them to the tags array
   Object.values(CalendarEventTag).forEach((k) => {
     if (t.includes(k)) {
-      t = t.replace(`[${k}]`, '').replace(`[${k.toLowerCase()}]`, '');
+      t = t.replaceAll(`[${k}]`, '').replaceAll(`[${k.toLowerCase()}]`, '');
       tags.push(k);
     }
   });
@@ -167,7 +167,7 @@ const groupEvents = (
  */
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'GET') {
-    res.status(404).end();
+    res.status(405).end();
     return;
   }
 

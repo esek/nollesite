@@ -22,10 +22,8 @@ const Calendar: React.FC<Content<'content.calendar'>> = ({ calendarUrl }) => {
 
   const { t, locale } = useLocale();
 
-  const iCalLink = `https://calendar.google.com/calendar/ical/${calendarUrl}/public/basic.ics`;
-
   const handleCalDownload = () => {
-    window.open(iCalLink, '_blank');
+    window.open(`/api/calendar/download?c=${calendarUrl}`, '_blank');
   };
 
   /**
