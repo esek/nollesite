@@ -1,3 +1,4 @@
+import { CalendarEventTag } from '@/models/calendar';
 import { ColorTranslator } from 'colortranslator';
 import { YearColors } from '../models/year';
 
@@ -31,3 +32,27 @@ export const toInlineStyles = (obj: Record<string, string>) =>
   Object.entries(obj).reduce((prev, [key, value]) => {
     return `${prev} ${key}: ${value};`;
   }, '');
+
+/**
+ * Remove the [XX] tags from the title and call an optional callback with the tag
+ * @param text the text to strip tags from
+ * @param cb optional callback that sends the tag back
+ */
+export const stripCalendarTags = (
+  text: string,
+  cb?: (tag: CalendarEventTag) => void
+) => {
+  let t = text;
+
+  Object.values(CalendarEventTag).forEach((k) => {
+    if (t.includes(k)) {
+      t = t.replaceAll(`[${k}]`, '').replaceAll(`[${k.toLowerCase()}]`, '');
+
+      // if we have a callback, send the tag back
+      cb?.(k);
+    }
+  });
+
+  // remove any whitespaces
+  return t.trim();
+};

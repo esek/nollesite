@@ -1,4 +1,5 @@
 import { CalendarEventTag } from '@/models/calendar';
+import { stripCalendarTags } from '@/utils/style.utils';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { GiConsoleController } from 'react-icons/gi';
 
@@ -24,14 +25,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const iCalLink = toiCalLink(calendarUrl);
 
-  let icsText = await fetch(iCalLink).then((res) => res.text());
-
-  // Remove the [XX] tags from the titles
-  Object.values(CalendarEventTag).forEach((k) => {
-    icsText = icsText
-      .replaceAll(`[${k}]`, '')
-      .replaceAll(`[${k.toLowerCase()}]`, '');
-  });
+  const icsText = await fetch(iCalLink).then((res) => res.text());
 
   res.setHeader('Content-Type', 'text/calendar');
   res.setHeader(
@@ -39,7 +33,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     'attachment; filename="nollning-schema.ics"'
   );
 
-  res.send(icsText);
+  res.send(stripCalendarTags(icsText));
 };
 
 export default handler;

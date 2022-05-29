@@ -9,6 +9,7 @@ import { calendar_v3, google } from 'googleapis';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { serverConfig } from '@/config.server';
 import { weekNumber } from 'weeknumber';
+import { stripCalendarTags } from '@/utils/style.utils';
 
 const calendar = google.calendar({
   version: 'v3',
@@ -22,18 +23,9 @@ const calendar = google.calendar({
  */
 const parseTagsFromTitle = (title: string): [string, CalendarEventTag[]] => {
   const tags: CalendarEventTag[] = [];
-  let t = title;
 
-  // Remove the [XX] tags from the title and append them to the tags array
-  Object.values(CalendarEventTag).forEach((k) => {
-    if (t.includes(k)) {
-      t = t.replaceAll(`[${k}]`, '').replaceAll(`[${k.toLowerCase()}]`, '');
-      tags.push(k);
-    }
-  });
-
-  // remove any whitespaces
-  return [t.trim(), tags];
+  const strippedTitle = stripCalendarTags(title, (tag) => tags.push(tag));
+  return [strippedTitle, tags];
 };
 
 /**
