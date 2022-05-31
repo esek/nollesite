@@ -20,15 +20,22 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   const iCalLink = `https://calendar.google.com/calendar/ical/${calendarUrl}/public/basic.ics`;
-  const icsText = await fetch(iCalLink).then((res) => res.text());
 
-  res.setHeader('Content-Type', 'text/calendar');
-  res.setHeader(
-    'Content-Disposition',
-    'attachment; filename="nollning-schema.ics"'
-  );
+  try {
+    const icsText = await fetch(iCalLink).then((res) => res.text());
 
-  res.send(stripCalendarTags(icsText));
+    // set the content type so the browser knows that it's an ics
+    res.setHeader('Content-Type', 'text/calendar');
+    res.setHeader(
+      'Content-Disposition',
+      'attachment; filename="nollning-schema.ics"'
+    );
+
+    res.send(stripCalendarTags(icsText));
+  } catch (error) {
+    console.error(error);
+    res.status(500).end();
+  }
 };
 
 export default handler;
