@@ -10,6 +10,7 @@ const nextConfig = {
   i18n: {
     locales: ['en', 'sv'],
     defaultLocale: 'sv',
+    localeDetection: false,
   },
   images: {
     domains: ['localhost'],
