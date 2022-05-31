@@ -1,11 +1,9 @@
 import { stripCalendarTags } from '@/utils/style.utils';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-const toiCalLink = (calendarUrl: string) =>
-  `https://calendar.google.com/calendar/ical/${calendarUrl}/public/basic.ics`;
-
 /**
- * Get endpoint for fetching calendar events from Google
+ * Get endpoint for downloading the calendar
+ * proxies the response to remove the [XX] tags from titles
  */
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'GET') {
@@ -21,8 +19,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return;
   }
 
-  const iCalLink = toiCalLink(calendarUrl);
-
+  const iCalLink = `https://calendar.google.com/calendar/ical/${calendarUrl}/public/basic.ics`;
   const icsText = await fetch(iCalLink).then((res) => res.text());
 
   res.setHeader('Content-Type', 'text/calendar');
