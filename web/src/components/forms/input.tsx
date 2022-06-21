@@ -20,7 +20,7 @@ const Input: React.FC<Props> = ({ label, type, helper, ...inputProps }) => {
     'border-2 border-accent bg-secondary/10 p-4 outline-none focus:bg-secondary/10';
 
   return (
-    <div className="input-container relative flex flex-col gap-2" id={n}>
+    <div className="input-container relative flex flex-col gap-2">
       {label && (
         <label className="input-label font-medium" htmlFor={n}>
           {label}
