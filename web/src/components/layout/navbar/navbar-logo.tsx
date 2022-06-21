@@ -1,3 +1,4 @@
+import StrapiImg from '@/components/common/strapi/strapi-image';
 import { StrapiFile } from '@/models/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -43,16 +44,19 @@ const NavbarLogo: React.FC<StrapiFile> = ({ url, alternativeText }) => {
     setIsMounted(true);
   }, [ref]);
 
+  const imgSize = 64; // the size we want the image to be in the navbar
+  const src = `${url}?format=webp&height=${imgSize * 5}&width=${imgSize * 5}`; // 5x the size of the logo so that it's still clear when scaled
+
   return (
     <div className="h-16 w-16">
       <Link href="/">
         <a>
           <img
-            src={url}
-            alt={alternativeText}
-            height="64"
-            width="64"
             ref={ref}
+            src={src}
+            alt={alternativeText}
+            width={`${imgSize}px`}
+            height={`${imgSize}px`}
             style={{ visibility: isMounted ? 'visible' : 'hidden' }}
           />
         </a>

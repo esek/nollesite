@@ -12,12 +12,19 @@ const File = () => {
 export const getServerSideProps: GetServerSideProps<
   {},
   { file: string }
-> = async ({ params }) => {
+> = async ({ params, query }) => {
   const file = params?.file ?? '';
+  delete query.file;
+
+  const q = new URLSearchParams(query as {});
+
+  if (!query.format) {
+    q.append('format', 'webp');
+  }
 
   return {
     redirect: {
-      destination: `${serverConfig.STRAPI_URL}/uploads/${file}`,
+      destination: `${serverConfig.STRAPI_URL}/uploads/${file}?${q.toString()}`,
       permanent: true,
     },
   };

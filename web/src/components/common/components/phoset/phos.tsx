@@ -20,7 +20,11 @@ const Phos: React.FC<Props> = ({
       }`}
     >
       <div>
-        <StrapiImg {...image} alternativeText={name} />
+        <StrapiImg
+          {...image}
+          alternativeText={name}
+          options={{ height: 320, width: 320 }}
+        />
       </div>
       <h3 className="font-nolle text-lg font-bold">{name}</h3>
       <div

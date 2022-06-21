@@ -15,6 +15,7 @@ const Images: React.FC<Content<'content.images'>> = ({ images, title }) => {
               <div key={`images-image-${id}`} className="space-y-2">
                 <StrapiImg
                   {...image}
+                  options={{ width: 320 }}
                   className="aspect-square max-h-80 rounded-md object-cover"
                 />
                 {imageText && (
