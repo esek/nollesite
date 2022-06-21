@@ -27,9 +27,9 @@ const Input: React.FC<Props> = ({ label, type, helper, ...inputProps }) => {
         </label>
       )}
       {type === 'multiline' ? (
-        <textarea {...inputProps} rows={6} className={className} />
+        <textarea {...inputProps} rows={6} className={className} id={n} />
       ) : (
-        <input {...inputProps} type={type} className={className} />
+        <input {...inputProps} type={type} className={className} id={n} />
       )}
       {helper && <p className="text-sm italic">{helper}</p>}
     </div>
