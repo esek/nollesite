@@ -1,4 +1,3 @@
-import StrapiImg from '@/components/common/strapi/strapi-image';
 import { StrapiFile } from '@/models/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';

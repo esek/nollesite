@@ -18,13 +18,17 @@ const Sponsor: React.FC<ContentSponsor> = ({
   return (
     <>
       <button className="flex flex-col items-center" onClick={toggle}>
-        <StrapiImg {...image} />
+        <StrapiImg {...image} options={{ width: 320, height: 320 }} />
         <p className="text-secondary">{name}</p>
       </button>
 
       <Modal isVisible={isOpen} title={name} onChange={toggle}>
         <div className="my-4">
-          <StrapiImg {...image} className="mx-auto w-[50%]" />
+          <StrapiImg
+            {...image}
+            className="mx-auto w-[50%]"
+            options={{ width: 320, height: 320 }}
+          />
         </div>
 
         <div
