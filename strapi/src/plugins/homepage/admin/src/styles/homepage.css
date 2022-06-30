@@ -1,0 +1,89 @@
+.plugin-active--homepage main > div:last-child {
+  display: none;
+}
+
+.plugin-active--homepage .wiki-text {
+  line-height: 1.5;
+}
+
+.plugin-active--homepage .wiki-text > *:not(:first-child) {
+  margin-top: 1em;
+}
+
+.plugin-active--homepage .wiki-text a {
+  text-decoration: none;
+  color: currentColor;
+  pointer-events: none;
+}
+
+.plugin-active--homepage .wiki-text b {
+  font-weight: 600;
+}
+
+.plugin-active--homepage .wiki-text i {
+  font-style: italic;
+}
+
+.plugin-active--homepage .wiki-text h2 {
+  font-weight: 700;
+  font-size: 1.5em;
+}
+
+.plugin-active--homepage .wiki-text h3 {
+  font-weight: 700;
+  font-size: 1.25em;
+}
+
+.plugin-active--homepage .wiki-text h4 {
+  font-weight: 700;
+  font-size: 1.15em;
+}
+
+.plugin-active--homepage .wiki-text code,
+.plugin-active--homepage .wiki-text pre {
+  font-family: monospace;
+  padding: 0.2em;
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 0.25em;
+  white-space: pre-wrap;
+}
+
+.plugin-active--homepage .wiki-text ul {
+  list-style: disc;
+  padding-left: 1em;
+}
+
+.plugin-active--homepage .wiki-text ul li {
+  margin-bottom: 0.75em;
+}
+
+.plugin-active--homepage .wiki-text .mw-editsection {
+  display: none;
+}
+
+.plugin-active--homepage .wiki-text table {
+}
+
+.plugin-active--homepage .wiki-text tr {
+  border-top: 1px solid #ddd;
+}
+
+.plugin-active--homepage .wiki-text tr:first-child {
+  border-top: none;
+}
+
+.plugin-active--homepage .wiki-text th {
+  text-align: left;
+  font-weight: 600;
+  padding: 0.5em;
+}
+
+.plugin-active--homepage .wiki-text td {
+  padding: 0.25em 0.5em;
+}
+
+.plugin-active--homepage .wiki-text > h2:last-of-type,
+.plugin-active--homepage .wiki-text > ul:last-of-type {
+  display: none;
+}

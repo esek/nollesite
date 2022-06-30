@@ -1,0 +1,21 @@
+{
+  "name": "homepage",
+  "version": "0.0.0",
+  "description": "This is the description of the plugin.",
+  "strapi": {
+    "name": "Homepage override",
+    "description": "Overrides the homepage to add an iframe with instructions",
+    "kind": "plugin",
+    "displayName": "Homepage"
+  },
+  "dependencies": {},
+  "author": {
+    "name": "Axel Froborg <axel.froborg@gmail.com>"
+  },
+  "maintainers": [],
+  "engines": {
+    "node": ">=14.19.1 <=16.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}

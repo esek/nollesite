@@ -5,4 +5,8 @@ module.exports = ({ env }) => ({
   app: {
     keys: env.array('STRAPI_APP_KEYS'),
   },
+  webUrl: env('WEB_URL', 'https://nollning.esek.se'),
+  wikiUrl: env('WIKI_URL', 'https://ddgwiki.esek.se'),
+  wikiUsername: env('WIKI_USERNAME'),
+  wikiPassword: env('WIKI_PASSWORD'),
 });

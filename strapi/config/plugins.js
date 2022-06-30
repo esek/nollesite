@@ -22,4 +22,8 @@ module.exports = ({ env }) => ({
       },
     },
   },
+  homepage: {
+    enabled: true,
+    resolve: './src/plugins/homepage',
+  },
 });
