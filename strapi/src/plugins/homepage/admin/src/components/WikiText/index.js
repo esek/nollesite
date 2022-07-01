@@ -15,7 +15,7 @@ const IFrame = () => {
   }, []);
 
   return (
-    <Box padding={8} background="neutral0" width="60%">
+    <Box padding={8} background="neutral0" style={{ maxWidth: '850px' }}>
       {isLoaded ? (
         <WikiTextContainer
           dangerouslySetInnerHTML={{ __html: wikiData.body }}
