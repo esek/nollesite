@@ -21,6 +21,9 @@ services:
       SMTP_PORT: ${SMTP_PORT}
       SMTP_USERNAME: ${SMTP_USERNAME}
       SMTP_PASSWORD: ${SMTP_PASSWORD}
+      WIKI_URL: ${WIKI_URL}
+      WIKI_USERNAME: ${WIKI_USERNAME}
+      WIKI_PASSWORD: ${WIKI_PASSWORD}
       NODE_ENV: production
     networks:
       - traefik
