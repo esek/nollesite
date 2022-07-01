@@ -42,7 +42,6 @@ export const WikiTextContainer = styled.div`
     font-family: monospace;
     padding: 0.15em 0.5em;
     background: ${({ theme }) => theme.colors.neutral100};
-    border: 1px solid ${({ theme }) => theme.colors.neutral300};
     border-radius: 0.25em;
     white-space: pre-wrap;
   }
