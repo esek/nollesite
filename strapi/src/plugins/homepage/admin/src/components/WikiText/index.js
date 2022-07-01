@@ -2,6 +2,7 @@ import { Box } from '@strapi/design-system/Box';
 import { Loader } from '@strapi/design-system/Loader';
 import { request } from '@strapi/helper-plugin';
 import React, { useEffect, useState } from 'react';
+import { WikiTextContainer } from './styles/container';
 
 const IFrame = () => {
   const [wikiData, setWikiData] = useState('');
@@ -16,10 +17,9 @@ const IFrame = () => {
   return (
     <Box padding={8} background="neutral0" width="60%">
       {isLoaded ? (
-        <div
-          className="wiki-text"
+        <WikiTextContainer
           dangerouslySetInnerHTML={{ __html: wikiData.body }}
-        ></div>
+        />
       ) : (
         <Loader>Loading data...</Loader>
       )}
