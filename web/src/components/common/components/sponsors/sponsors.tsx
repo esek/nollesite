@@ -9,7 +9,7 @@ const Sponsors: React.FC<Content<'content.sponsors'>> = ({ sponsors }) => {
   return (
     <>
       <Heading>{t('headers.sponsors')}</Heading>
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-6">
+      <div className="grid grid-cols-2 gap-8 md:grid-cols-6">
         {sponsors.map((s) => (
           <Sponsor {...s} key={`sponsor-${s.id}`} />
         ))}

@@ -58,14 +58,9 @@ const Nollekamp: React.FC<Content<'content.nollekamp'>> = ({
             <Heading isSmall>{t('nollekamp.standings')}</Heading>
           </div>
 
-          <div className="mt-2 flex justify-between">
-            <p className="font-semibold">{t('nollekamp.group')}</p>
-            <p className="font-semibold">{t('nollekamp.points')}</p>
-          </div>
-
-          <div className="mt-2 space-y-2">
-            {sortGroups(standings).map((s) => (
-              <Standing {...s} key={`standing--${s.id}`} />
+          <div className="space-y-2 pt-2">
+            {sortGroups(standings).map((s, i) => (
+              <Standing {...s} index={i + 1} key={`standing--${s.id}`} />
             ))}
           </div>
         </>

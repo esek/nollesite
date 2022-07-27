@@ -17,7 +17,10 @@ const Sponsor: React.FC<ContentSponsor> = ({
 
   return (
     <>
-      <button className="flex flex-col items-center" onClick={toggle}>
+      <button
+        className="flex h-full flex-col items-center justify-center"
+        onClick={toggle}
+      >
         <StrapiImg {...image} options={{ width: 320, height: 320 }} />
         <p className="text-secondary">{name}</p>
       </button>

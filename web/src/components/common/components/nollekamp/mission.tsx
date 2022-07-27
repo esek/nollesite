@@ -1,5 +1,6 @@
 import { ContentMission } from '@/models/content';
 import React from 'react';
+import Striped from './striped';
 
 type Props = ContentMission & {
   index: number;
@@ -8,13 +9,13 @@ type Props = ContentMission & {
 
 const Mission: React.FC<Props> = ({ name, points, index, showPoints }) => {
   return (
-    <div className="flex justify-between">
+    <Striped idx={index}>
       <p>
         {index}. {name}
       </p>
 
       {showPoints && <p>{points}</p>}
-    </div>
+    </Striped>
   );
 };
 
