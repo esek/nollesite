@@ -5,6 +5,8 @@ När detta projektet skrevs hade `Strapi@4` typ precis kommit ut och såklart va
 
 ## 🌏 Att bygga ett nollningsår
 
+Detta är endast en bråkdel av dokumentationen, mer info finns på [DDGWiki](https://ddgwiki.esek.se/index.php/Nollningshemsidan).
+
 ### Years
 
 Ett år skapas genom att göra en ny entry i `Years`-collectionen. Här lägger man in logotyp, phøs, nollekamp, färger etc. som inte behöver ändras beroende på vilken sida man är på.
