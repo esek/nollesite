@@ -5,7 +5,7 @@ networks:
 
 services:
   strapi:
-    image: '${CI_REGISTRY_IMAGE}/strapi'
+    image: '${IMAGE_NAME}-strapi'
     environment:
       DB_HOST: ${DB_HOST}
       DB_USERNAME: ${DB_USERNAME}
@@ -27,14 +27,15 @@ services:
       NODE_ENV: production
     networks:
       - traefik
-    restart: always
+      - default
+    restart: unless-stopped
     volumes:
       - /srv/nollning/uploads:/app/public/uploads
     labels:
-      - 'traefik.http.routers.strapi.rule=Host(`admin.nollning.esek.se`)'
+      - 'traefik.http.routers.$COMPOSE_PROJECT_NAME-strapi.rule=Host(`admin.$DEPLOY_URL`)'
 
   web:
-    image: '${CI_REGISTRY_IMAGE}/web'
+    image: '${IMAGE_NAME}-web'
     environment:
       STRAPI_URL: ${STRAPI_URL}
       STRAPI_API_TOKEN: ${STRAPI_API_TOKEN}
@@ -44,6 +45,7 @@ services:
       NODE_ENV: production
     networks:
       - traefik
-    restart: always
+      - default
+    restart: unless-stopped
     labels:
-      - 'traefik.http.routers.nollning-web.rule=HostRegexp(`nollning.esek.se`, `{subdomain:[\d]{4}}.nollning.esek.se`)'
+      - 'traefik.http.routers.$COMPOSE_PROJECT_NAME-web.rule=HostRegexp(`$DEPLOY_URL`, `{subdomain:[\d]{4}}.$DEPLOY_URL`)'
