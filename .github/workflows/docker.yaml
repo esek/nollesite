@@ -152,7 +152,7 @@ jobs:
         with:
           context: ./strapi
           push: true
-          tags: ${{ needs.env-vars.outputs.image_name_root }}-strapi
+          tags: ${{ needs.env-vars.outputs.image_name }}-strapi
 
   # This should need build and use the image to test
   test:
