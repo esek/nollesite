@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "description": "CMS System för att hantera nollningshemsidor",
   "scripts": {
-    "dev": "strapi develop",
+    "dev": "strapi develop --watch-admin",
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
@@ -13,14 +13,14 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "@strapi/plugin-i18n": "4.2.2",
-    "@strapi/plugin-users-permissions": "4.2.2",
-    "@strapi/provider-email-nodemailer": "^4.2.2",
-    "@strapi/strapi": "4.2.2",
+    "@strapi/plugin-i18n": "4.3.2",
+    "@strapi/plugin-users-permissions": "4.3.2",
+    "@strapi/provider-email-nodemailer": "^4.3.2",
+    "@strapi/strapi": "4.3.2",
     "patch-package": "^6.4.7",
     "pg": "8.7.3",
     "set-cookie-parser": "^2.5.1",
-    "strapi-plugin-local-image-sharp": "^1.1.0",
+    "strapi-plugin-local-image-sharp": "^1.2.0",
     "strapi-tiptap-editor": "^0.7.14"
   },
   "author": {
