@@ -1,4 +1,5 @@
 import { StrapiFile } from '@/models/image';
+import getConfig from 'next/config';
 import Image, { ImageLoader, ImageProps } from 'next/image';
 import React from 'react';
 
@@ -15,6 +16,9 @@ type Props = StrapiFile &
     label?: string;
     options?: SharpOptions;
   };
+
+const { publicRuntimeConfig } = getConfig();
+const { DEPLOY_URL } = publicRuntimeConfig;
 
 /**
  * Wrapper for a strapi image so we don't need to set it everytime
@@ -49,7 +53,7 @@ const StrapiImg: React.FC<Props> = ({
     <Image
       {...rest}
       loader={imageLoader}
-      src={`http://127.0.0.1/${url}`}
+      src={`http://${DEPLOY_URL}${url}`}
       alt={alternativeText}
       height={height}
       width={width}

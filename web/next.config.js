@@ -1,5 +1,7 @@
 const path = require('path');
 
+const publicUrl = process.env.DEPLOY_URL ?? 'localhost:3000';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -12,7 +14,10 @@ const nextConfig = {
     localeDetection: false,
   },
   images: {
-    domains: ['localhost', '127.0.0.1'],
+    domains: ['localhost', '127.0.0.1', publicUrl],
+  },
+  publicRuntimeConfig: {
+    DEPLOY_URL: publicUrl,
   },
 };
 
