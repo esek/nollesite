@@ -15,7 +15,7 @@ const Phos: React.FC<Props> = ({
 }) => {
   return (
     <div
-      className={`mx-auto flex max-w-xs flex-col space-y-2 ${
+      className={`mx-auto flex w-full max-w-xs flex-col space-y-2 ${
         isOverphos ? 'md:max-w-xs' : 'md:max-w-[240px]'
       }`}
     >

@@ -7,7 +7,7 @@
 const { createCoreController } = require('@strapi/strapi').factories;
 
 // when we fetch images, only the url and alt-text are important
-const imagePopulate = ['url', 'alternativeText'];
+const imagePopulate = ['url', 'alternativeText', 'width', 'height'];
 const groupPopulate = ['name', 'number', 'link'];
 
 module.exports = createCoreController('api::year.year', ({ strapi }) => ({

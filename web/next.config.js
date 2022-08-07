@@ -1,5 +1,4 @@
 const path = require('path');
-const withPWA = require('next-pwa');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -13,7 +12,7 @@ const nextConfig = {
     localeDetection: false,
   },
   images: {
-    domains: ['localhost'],
+    domains: ['localhost', '127.0.0.1'],
   },
 };
 

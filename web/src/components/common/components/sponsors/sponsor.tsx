@@ -17,11 +17,7 @@ const Sponsor: React.FC<ContentSponsor> = ({
 
   return (
     <>
-      <button
-        className="h-full"
-        onClick={toggle}
-        title={name}
-      >
+      <button className="block h-full w-full" onClick={toggle} title={name}>
         <StrapiImg {...image} options={{ width: 320, height: 320 }} />
       </button>
 

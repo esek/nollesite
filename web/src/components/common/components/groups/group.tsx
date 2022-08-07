@@ -16,13 +16,16 @@ const Group: React.FC<ContentPhadderGroup> = ({
       rel="noreferrer"
     >
       {image && (
-        <StrapiImg
-          {...image}
-          options={{ width: 300, height: 300 }}
-          className={`aspect-square rounded-full object-cover p-2 transition-all ${
-            link ? 'group-hover:bg-secondary/5' : ''
-          }`}
-        />
+        <div className="relative aspect-square max-w-sm">
+          <StrapiImg
+            {...image}
+            options={{ width: 300, height: 300 }}
+            layout="fill"
+            className={`rounded-full transition-all ${
+              link ? 'group-hover:bg-secondary/5' : ''
+            }`}
+          />
+        </div>
       )}
       <h3 className="mt-2 text-center">
         {number}. {name}

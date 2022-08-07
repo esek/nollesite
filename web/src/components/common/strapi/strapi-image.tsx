@@ -1,4 +1,5 @@
 import { StrapiFile } from '@/models/image';
+import Image, { ImageLoader, ImageProps } from 'next/image';
 import React from 'react';
 
 type SharpOptions = {
@@ -8,11 +9,12 @@ type SharpOptions = {
   height?: number;
 };
 
-type Props = StrapiFile & {
-  className?: string;
-  label?: string;
-  options?: SharpOptions;
-};
+type Props = StrapiFile &
+  Omit<ImageProps, 'src'> & {
+    className?: string;
+    label?: string;
+    options?: SharpOptions;
+  };
 
 /**
  * Wrapper for a strapi image so we don't need to set it everytime
@@ -20,36 +22,38 @@ type Props = StrapiFile & {
 const StrapiImg: React.FC<Props> = ({
   url,
   alternativeText,
+  height,
+  width,
   options = { format: 'webp' },
+  layout = 'intrinsic',
   ...rest
 }) => {
-  const params = new URLSearchParams();
+  const imageLoader: ImageLoader = ({ src, width, quality }) => {
+    const params = new URLSearchParams();
+    params.append('format', options.format ?? 'webp');
 
-  Object.entries(options).forEach(([key, value]) => {
-    if (value) {
-      params.append(key, value.toString());
-    }
-  });
+    const qali = options.quality ?? quality;
 
-  if (!options.format) {
-    params.append('format', 'webp');
-  }
-
-  const withPx = (dimension?: number) => {
-    if (!dimension) {
-      return;
+    if (qali) {
+      params.append('quality', qali.toString());
     }
 
-    return `${dimension}px`;
+    if (width) {
+      params.append('width', Math.min(width, 1920).toString());
+    }
+
+    return `${src}?${params.toString()}`;
   };
 
   return (
-    <img
-      src={`${url}?${params.toString()}`}
-      alt={alternativeText}
-      width={withPx(options.width)}
-      height={withPx(options.height)}
+    <Image
       {...rest}
+      loader={imageLoader}
+      src={`http://127.0.0.1/${url}`}
+      alt={alternativeText}
+      height={height}
+      width={width}
+      layout={layout}
     />
   );
 };
