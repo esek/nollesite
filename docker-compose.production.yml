@@ -42,7 +42,7 @@ services:
       GOOGLE_API_KEY: ${GOOGLE_API_KEY}
       EBREV_URL: ${EBREV_URL}
       EBREV_API_KEY: ${EBREV_API_KEY}
-      DEPLOY_URL: ${DEPLOY_URL}
+      DEPLOY_URL: https://${DEPLOY_URL}
       NODE_ENV: production
     networks:
       - traefik

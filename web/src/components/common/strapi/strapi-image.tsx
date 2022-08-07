@@ -53,7 +53,7 @@ const StrapiImg: React.FC<Props> = ({
     <Image
       {...rest}
       loader={imageLoader}
-      src={`http://${DEPLOY_URL}${url}`}
+      src={`${DEPLOY_URL}${url}`}
       alt={alternativeText}
       height={height}
       width={width}
