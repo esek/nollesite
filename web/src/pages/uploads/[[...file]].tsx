@@ -20,7 +20,7 @@ export const getServerSideProps: GetServerSideProps<
 
   const q = new URLSearchParams(query as {});
 
-  const extension = file.split('.').pop();
+  const extension = file?.split('.').pop();
 
   if (!query.format && extension && IMAGE_EXTENSIONS.includes(extension)) {
     q.append('format', 'webp');
