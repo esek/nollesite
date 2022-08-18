@@ -11,16 +11,28 @@ const File = () => {
   return <div>Not found</div>;
 };
 
+const getFile = (param?: string | string[]) => {
+  if (!param) {
+    return '';
+  }
+
+  if (typeof param === 'string') {
+    return param;
+  }
+
+  return param[0] ?? '';
+};
+
 export const getServerSideProps: GetServerSideProps<
   {},
   { file: string }
 > = async ({ params, query }) => {
-  const file = params?.file ?? '';
+  const file = getFile(params?.file);
   delete query.file;
 
   const q = new URLSearchParams(query as {});
 
-  const extension = file?.split('.').pop();
+  const extension = file.split('.').pop();
 
   if (!query.format && extension && IMAGE_EXTENSIONS.includes(extension)) {
     q.append('format', 'webp');
