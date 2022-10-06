@@ -16,6 +16,11 @@ const Contact: React.FC<Content<'content.contact'>> = ({ email, title }) => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
+    if (!message) {
+      return;
+    }
+
     setIsLoading(true);
 
     // Change the button text to indicate that the form is sending
