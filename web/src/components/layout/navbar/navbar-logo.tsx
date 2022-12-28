@@ -49,16 +49,14 @@ const NavbarLogo: React.FC<StrapiFile> = ({ url, alternativeText }) => {
   return (
     <div className="h-16 w-16">
       <Link href="/">
-        <a>
-          <img
-            ref={ref}
-            src={src}
-            alt={alternativeText}
-            width={`${imgSize}px`}
-            height={`${imgSize}px`}
-            style={{ visibility: isMounted ? 'visible' : 'hidden' }}
-          />
-        </a>
+        <img
+          ref={ref}
+          src={src}
+          alt={alternativeText}
+          width={`${imgSize}px`}
+          height={`${imgSize}px`}
+          style={{ visibility: isMounted ? 'visible' : 'hidden' }}
+        />
       </Link>
     </div>
   );

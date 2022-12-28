@@ -43,7 +43,7 @@ const Error: NextPage<Props> = ({ statusCode, title, btnText }) => {
   );
 };
 
-Error.getInitialProps = ({ res, err, locale }: NextPageContext) => {
+Error.getInitialProps = async ({ res, err, locale }: NextPageContext) => {
   const m = messsages[locale ?? 'sv'];
 
   const statusCode = res?.statusCode ?? err?.statusCode ?? 404;

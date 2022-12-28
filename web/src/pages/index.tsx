@@ -53,6 +53,7 @@ export const getServerSideProps: GetServerSideProps<Year, Params> = async ({
 
   if (!resp?.year) {
     return {
+      props: {},
       notFound: true,
     };
   }

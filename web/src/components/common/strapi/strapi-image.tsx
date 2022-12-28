@@ -57,7 +57,6 @@ const StrapiImg: React.FC<Props> = ({
       alt={alternativeText}
       height={height}
       width={width}
-      layout={layout}
     />
   );
 };

@@ -34,10 +34,13 @@ const Drawer: React.FC<Props> = ({ links, isOpen, close }) => {
         <div className="links-wrapper flex flex-col gap-4 xl:flex-row xl:gap-4">
           {links.map((link) => {
             return (
-              <Link href={link.href} key={link.href}>
-                <a onClick={doClose} className={`${styles.navlink}`}>
-                  {link.title}
-                </a>
+              <Link
+                href={link.href}
+                key={link.href}
+                className={styles.navlink}
+                onClick={doClose}
+              >
+                {link.title}
               </Link>
             );
           })}

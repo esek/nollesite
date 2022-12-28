@@ -19,6 +19,7 @@ const Group: React.FC<ContentPhadderGroup> = ({
         <div className="relative aspect-square max-w-sm">
           <StrapiImg
             {...image}
+            alt={name}
             options={{ width: 300, height: 300 }}
             layout="fill"
             className={`rounded-full transition-all ${
