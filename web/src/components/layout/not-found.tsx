@@ -36,7 +36,7 @@ const YearNotFound: React.FC<IndexPropsNotFound> = ({
             <a
               href={`https://${year.year}.nollning.esek.se`}
               key={year.year}
-              className="flex flex-col items-center justify-center gap-4 rounded-md border-2 p-4 font-semibold"
+              className="flex flex-col items-center justify-center gap-4 rounded-md border-2 p-4"
               style={{
                 backgroundColor: year.colors.primary,
                 borderColor: year.colors.accent,
@@ -49,7 +49,10 @@ const YearNotFound: React.FC<IndexPropsNotFound> = ({
                 width={150}
                 height={150}
               />
-              <h2>{year.title}</h2>
+              <div className="flex flex-col gap-2 text-center">
+                <h2 className="font-semibold">{year.title}</h2>
+                <p className="text-sm">{year.year}</p>
+              </div>
             </a>
           ))}
         </div>
