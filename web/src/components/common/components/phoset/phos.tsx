@@ -22,6 +22,7 @@ const Phos: React.FC<Props> = ({
       <div>
         <StrapiImg
           {...image}
+          alt={name}
           alternativeText={name}
           options={{ height: 320, width: 320 }}
         />

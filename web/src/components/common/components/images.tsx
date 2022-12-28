@@ -16,7 +16,11 @@ const Images: React.FC<Content<'content.images'>> = ({ images, title }) => {
                 key={`images-image-${id}`}
                 className="mx-auto max-w-2xl space-y-2"
               >
-                <StrapiImg {...image} className="rounded-md object-cover" />
+                <StrapiImg
+                  {...image}
+                  className="rounded-md object-cover"
+                  alt={imageText}
+                />
                 {imageText && (
                   <p className="text-sm text-secondary">{imageText}</p>
                 )}

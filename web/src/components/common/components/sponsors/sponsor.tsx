@@ -18,7 +18,11 @@ const Sponsor: React.FC<ContentSponsor> = ({
   return (
     <>
       <button className="block h-full w-full" onClick={toggle} title={name}>
-        <StrapiImg {...image} options={{ width: 320, height: 320 }} />
+        <StrapiImg
+          {...image}
+          options={{ width: 320, height: 320 }}
+          alt={name}
+        />
       </button>
 
       <Modal isVisible={isOpen} title={name} onChange={toggle}>
@@ -27,6 +31,7 @@ const Sponsor: React.FC<ContentSponsor> = ({
             {...image}
             className="mx-auto w-[50%]"
             options={{ width: 320, height: 320 }}
+            alt={name}
           />
         </div>
 
