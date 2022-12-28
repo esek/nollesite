@@ -5,7 +5,7 @@ import '../styles/main.scss';
 import '../styles/strapi-text.scss';
 import '../styles/tailwind.scss';
 
-const App: NextPage<AppProps> = ({ Component, pageProps, router }) => {
+const App: NextPage<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
       <Head>

@@ -7,7 +7,7 @@ import Hero from './hero/hero';
 import Navbar from './navbar/navbar';
 
 type Props = Year & {
-  cssColors: Record<string, number>[];
+  cssColors: Record<string, string>[];
   navLinks: NavLink[];
 };
 

@@ -1,5 +1,8 @@
 import Meta from '@/components/layout/meta';
+import YearNotFound from '@/components/layout/not-found';
+import { getYearData } from '@/lib/years';
 import { NavLink } from '@/models/nav';
+import { IndexProps } from '@/models/props';
 import { Year } from '@/models/year';
 import { GetServerSideProps, NextPage } from 'next';
 import PageLayout from '../components/layout/page-layout';
@@ -7,13 +10,11 @@ import { getAsync } from '../lib/axios';
 import { buildNavLinks, parseSubdomainToYear } from '../utils/page.utils';
 import { generateColors } from '../utils/style.utils';
 
-type Props = Year & {
-  cssColors: Record<string, number>[];
-  navLinks: NavLink[];
-  children?: React.ReactNode;
-};
+const Route: NextPage<IndexProps> = (props) => {
+  if (!props.found) {
+    return <YearNotFound {...props} />;
+  }
 
-const Route: NextPage<Props> = ({ children, navLinks, ...props }) => {
   return (
     <>
       <Meta
@@ -24,7 +25,7 @@ const Route: NextPage<Props> = ({ children, navLinks, ...props }) => {
         logoUrl={props.logo.url}
       />
 
-      <PageLayout {...props} navLinks={navLinks} />
+      <PageLayout {...props} navLinks={props.navLinks} />
     </>
   );
 };
@@ -36,40 +37,18 @@ type Params = {
 /**
  * Runs serverside before the page is rendered
  */
-export const getServerSideProps: GetServerSideProps<Year, Params> = async ({
-  req,
-  locale,
-  query,
-}) => {
-  // tries to get the year from the subdomain ex. 1234.nollning.esek.se
+export const getServerSideProps: GetServerSideProps<
+  IndexProps,
+  Params
+> = async ({ req, locale, query }) => {
+  const l = locale ?? 'sv';
+  const { password = '' } = query;
   const year = parseSubdomainToYear(req);
 
-  const { password = '' } = query;
-
-  // fetches the year data from strapi
-  const resp = await getAsync<Year>(`/years/${year}?password=${password}`, {
-    locale,
-  });
-
-  if (!resp?.year) {
-    return {
-      props: {},
-      notFound: true,
-    };
-  }
-
-  // get the css colors
-  const colors = generateColors(resp.colors);
-
-  // build the nav links
-  const navLinks = buildNavLinks(resp.content, locale ?? 'sv');
+  const data = getYearData(year, password.toString(), l);
 
   return {
-    props: {
-      ...resp,
-      navLinks,
-      cssColors: colors,
-    },
+    props: data,
   };
 };
 

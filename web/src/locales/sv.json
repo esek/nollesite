@@ -40,5 +40,9 @@
     "sending": "Skickar...",
     "sent": "Skickat!",
     "error": "Något gick fel"
+  },
+  "not_found": {
+    "title": "Vi kunde inte hitta nollningsåret du sökte",
+    "description": "Men kolla in våra tidigare år nedan"
   }
 }

@@ -40,5 +40,9 @@
     "sending": "Sending...",
     "sent": "Sent!",
     "error": "Something went wrong"
+  },
+  "not_found": {
+    "title": "We could not find the year you were looking for",
+    "description": "But check out our other years below"
   }
 }
