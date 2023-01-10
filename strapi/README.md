@@ -40,3 +40,4 @@ Det är viktigt att man skapar sidor både på svenska och engelska för att sid
 För att göra användningen lättare kan kan skriva egna controllers (api-routes). I dagsläget finns:
 
 - [`year:findOne(year:number)`](src/api/year/controllers/year.js) - Hämtar årsinformation för ett specifikt år.
+- [`year:find()`](src/api/year/controllers/year.js) - Hämtar tidigare år och returnerar dess logga, titel och färger
