@@ -10,7 +10,7 @@ const emailTemplate = `<p>Hejsan lille <%= user.firstname %>!</p>
 module.exports = ({ env }) => ({
   url: '/dashboard',
   auth: {
-    secret: env('ADMIN_JWT_SECRET', '9f1c6109a159dca881e139dc6edf1393'),
+    secret: env('JWT_SECRET', '9f1c6109a159dca881e139dc6edf1393'),
   },
   forgotPassword: {
     from: 'E-Sektionen <no-reply@esek.se>',
