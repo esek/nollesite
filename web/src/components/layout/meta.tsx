@@ -36,6 +36,7 @@ const Meta: React.FC<Props> = ({
             href={font}
             as="font"
             type={`font/${font.split('.').pop()}`}
+            crossOrigin="anonymous"
           />
           <style>{`
             @font-face {
