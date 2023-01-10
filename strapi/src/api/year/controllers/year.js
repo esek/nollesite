@@ -10,7 +10,63 @@ const { createCoreController } = require('@strapi/strapi').factories;
 const imagePopulate = ['url', 'alternativeText', 'width', 'height'];
 const groupPopulate = ['name', 'number', 'link'];
 
+const filters = (locale, password) => [
+  {
+    $or: [
+      {
+        password: {
+          $eq: password,
+        },
+      },
+      {
+        password: {
+          $eq: '',
+        },
+      },
+      {
+        password: {
+          $null: true,
+        },
+      },
+    ],
+  },
+  {
+    locale: {
+      $eq: locale,
+    },
+  },
+];
+
 module.exports = createCoreController('api::year.year', ({ strapi }) => ({
+  async find(ctx) {
+    const { locale = 'sv', password = '' } = ctx.query;
+    const where = filters(locale, password);
+
+    const entries = await strapi.db.query('api::year.year').findMany({
+      where: {
+        $and: where,
+      },
+      populate: {
+        logo: {
+          select: imagePopulate,
+        },
+      },
+    });
+
+    return entries.map((entry) => {
+      const { primaryColor, secondaryColor, accentColor, ...reduced } = entry;
+
+      return {
+        ...reduced,
+        colors: {
+          primary: primaryColor,
+          secondary: secondaryColor,
+          accent: accentColor,
+        },
+      };
+    });
+  },
+
   /**
    * OK SO THIS DOES A LOT!
    * it gets the year, path and locale and makes a ton of ugly strapi calls
@@ -19,38 +75,13 @@ module.exports = createCoreController('api::year.year', ({ strapi }) => ({
   async findOne(ctx) {
     const { locale = 'sv', password = '' } = ctx.query;
     const { id } = ctx.params;
+    const where = filters(locale, password);
 
-    const where = [
-      {
-        $or: [
-          {
-            password: {
-              $eq: password,
-            },
-          },
-          {
-            password: {
-              $eq: '',
-            },
-          },
-          {
-            password: {
-              $null: true,
-            },
-          },
-        ],
+    where.push({
+      year: {
+        $eq: id,
       },
-      {
-        year: {
-          $eq: id,
-        },
-      },
-      {
-        locale: {
-          $eq: locale,
-        },
-      },
-    ];
+    });
 
     // Fetch the year based on the query param
     const entry = await strapi.db.query('api::year.year').findOne({

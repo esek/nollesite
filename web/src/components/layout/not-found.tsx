@@ -44,7 +44,7 @@ const YearNotFound: React.FC<IndexPropsNotFound> = ({
               }}
             >
               <Image
-                src={`${DEPLOY_URL}${year.logo.url}?w=300&h=300&format=webp`}
+                src={`${DEPLOY_URL}${year.logo.url}?width=300&height=300&format=webp`}
                 alt={year.title}
                 width={150}
                 height={150}

@@ -1,4 +1,3 @@
-import { YearsResponse } from '@/models/cms';
 import {
   IndexProps,
   IndexPropsFound,
@@ -44,21 +43,13 @@ const getPreviousYears = async (
   const title = isSwe ? 'Nollningsåret hittades inte' : 'Year not found';
   const description = isSwe ? 'Nollningsåret hittades inte' : 'Year not found';
 
-  const resp = await getAsync<YearsResponse>('/years?populate=logo', {});
+  const resp = await getAsync<Year[]>('/years', {});
 
   return {
     title,
     description,
     found: false,
-    years: resp.data.map((year) => ({
-      ...year.attributes,
-      logo: year.attributes.logo.data.attributes,
-      colors: {
-        primary: year.attributes.primaryColor,
-        secondary: year.attributes.secondaryColor,
-        accent: year.attributes.accentColor,
-      },
-    })),
+    years: resp,
   };
 };
 
