@@ -3,7 +3,6 @@ import YearNotFound from '@/components/layout/not-found';
 import { getYearData } from '@/lib/years';
 import { IndexProps } from '@/models/props';
 import { GetServerSideProps, NextPage } from 'next';
-import { useCallback, useEffect, useMemo } from 'react';
 import PageLayout from '../components/layout/page-layout';
 import { parseSubdomainToYear } from '../utils/page.utils';
 
