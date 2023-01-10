@@ -15,24 +15,6 @@ const App: NextPage<AppProps> = ({ Component, pageProps }) => {
           href="/apple-touch-icon.png"
         />
         <link rel="manifest" href="/site.webmanifest" />
-        <link
-          rel="preload"
-          href="/fonts/nollefont.woff"
-          as="font"
-          crossOrigin=""
-        />
-        <link
-          rel="preload"
-          href="/fonts/nollefont.woff2"
-          as="font"
-          crossOrigin=""
-        />
-        <link
-          rel="preload"
-          href="/fonts/nollefont.ttf"
-          as="font"
-          crossOrigin=""
-        />
         <script
           defer
           data-domain="nollning.esek.se"

@@ -78,7 +78,6 @@ const getCalendarEvents = (
       },
       (err, data) => {
         if (err || !data) {
-          console.error('Calendar API errored: ', err);
           reject(err);
           return;
         }

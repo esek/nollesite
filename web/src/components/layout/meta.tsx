@@ -7,6 +7,7 @@ type Props = {
   description: string;
   color: string;
   logoUrl: string;
+  font?: string;
 };
 
 /** IDK What half of these are
@@ -18,6 +19,7 @@ const Meta: React.FC<Props> = ({
   description,
   color,
   logoUrl,
+  font,
 }) => {
   const t = `${title} | E-Nollning ${year}`;
 
@@ -26,6 +28,26 @@ const Meta: React.FC<Props> = ({
       <title>{t}</title>
       <meta name="description" content={description} />
       <link rel="icon" href={logoUrl} />
+
+      {font && (
+        <>
+          <link
+            rel="preload"
+            href={font}
+            as="font"
+            type={`font/${font.split('.').pop()}`}
+          />
+          <style>{`
+            @font-face {
+              font-family: 'Nollefont';
+              src: url('${font}');
+              font-weight: normal;
+              font-style: normal;
+              font-display: swap;
+            }
+          `}</style>
+        </>
+      )}
 
       <link rel="mask-icon" href="/safari-pinned-tab.svg" color={color} />
       <meta name="apple-mobile-web-app-title" content={t} />

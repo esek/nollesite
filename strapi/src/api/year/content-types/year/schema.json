@@ -120,6 +120,18 @@
       },
       "type": "text",
       "required": true
+    },
+    "font": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }

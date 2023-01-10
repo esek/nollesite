@@ -9,6 +9,7 @@ export type Year = {
   logo: StrapiFile;
   colors: YearColors;
   content: Content[];
+  font?: StrapiFile;
 };
 
 export type YearColors = {
