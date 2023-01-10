@@ -8,7 +8,7 @@ COPY package.json .
 
 COPY yarn.lock .
 
-COPY patches ./patches
+# COPY patches ./patches
 
 RUN yarn install --frozen-lockfile
 
@@ -22,7 +22,7 @@ EXPOSE 1337
 
 RUN apk add curl
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3\
- CMD [ "curl", "--fail", "localhost:1337" ]
+    CMD [ "curl", "--fail", "localhost:1337" ]
 
 CMD ["yarn", "deploy"]
 
