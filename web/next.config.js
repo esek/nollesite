@@ -1,5 +1,5 @@
 const path = require('path');
-const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
+const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL ?? 'http://127.0.0.1:8000';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
