@@ -23,12 +23,13 @@ const Meta: React.FC<Props> = ({
   font,
 }) => {
   const t = `${title} | E-Nollning ${year}`;
+  const logo = toAssetUrl(logoUrl);
 
   return (
     <Head>
       <title>{t}</title>
       <meta name="description" content={description} />
-      <link rel="icon" href={toAssetUrl(logoUrl)} />
+      <link rel="icon" href={logo} />
 
       {font && (
         <>
@@ -59,17 +60,17 @@ const Meta: React.FC<Props> = ({
 
       <meta property="og:title" content={t} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={logoUrl} />
+      <meta property="og:image" content={logo} />
 
       <meta name="twitter:title" content={t} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={logoUrl} />
+      <meta name="twitter:image" content={logo} />
 
-      <meta name="msapplication-TileImage" content={logoUrl} />
-      <meta name="msapplication-square70x70logo" content={logoUrl} />
-      <meta name="msapplication-square150x150logo" content={logoUrl} />
-      <meta name="msapplication-wide310x150logo" content={logoUrl} />
-      <meta name="msapplication-square310x310logo" content={logoUrl} />
+      <meta name="msapplication-TileImage" content={logo} />
+      <meta name="msapplication-square70x70logo" content={logo} />
+      <meta name="msapplication-square150x150logo" content={logo} />
+      <meta name="msapplication-wide310x150logo" content={logo} />
+      <meta name="msapplication-square310x310logo" content={logo} />
     </Head>
   );
 };
