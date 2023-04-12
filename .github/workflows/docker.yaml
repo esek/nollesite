@@ -129,6 +129,7 @@ jobs:
           secrets: |
             kv/data/common registry_username;
             kv/data/common registry_password;
+            kv/data/${{ needs.env-vars.outputs.basename }}/${{ needs.env-vars.outputs.env }} STRAPI_URL;
       - name: setup buildx
         uses: docker/setup-buildx-action@v2
         with:
@@ -147,6 +148,8 @@ jobs:
           context: ./web
           push: true
           tags: ${{ needs.env-vars.outputs.image_name }}-web
+          build-args: |
+            NEXT_PUBLIC_STRAPI_URL={{ steps.s.outputs.STRAPI_URL }}
       - name: build and push image
         uses: docker/build-push-action@v3
         with:
@@ -164,9 +167,9 @@ jobs:
       postgres:
         image: postgres:alpine
         env:
-         POSTGRES_USER: postgres
-         POSTGRES_PASSWORD: password
-         POSTGRES_DB: ekorre_foot
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: ekorre_foot
     container: node:16-alpine
     steps:
       - name: add bash (needed for actions)
@@ -175,8 +178,8 @@ jobs:
         uses: actions/checkout@v3
       - name: setup env
         run: |
-         mv .env.example .env
-         sed -i 's/localhost/postgres/' .env
+          mv .env.example .env
+          sed -i 's/localhost/postgres/' .env
       - name: install deps
         run: npm ci
       - name: lint
@@ -229,7 +232,7 @@ jobs:
     # To run this locally using act set act to false in event.json
     if: ${{ !github.event.act || !(github.event_name == 'pull_request' && github.event.action == 'closed') }}
     runs-on: self-hosted
-    needs: 
+    needs:
       - env-vars
       - build
     steps:
@@ -296,7 +299,7 @@ jobs:
       - name: login to host
         uses: blennster/setup-docker-remote-tls@v4
         with:
-          tls_key: ${{ steps.s.outputs.docker_key }} 
+          tls_key: ${{ steps.s.outputs.docker_key }}
           tls_ca: ${{ steps.s.outputs.docker_ca }}
           tls_cert: ${{ steps.s.outputs.docker_cert }}
           tcp_host: ${{ steps.s.outputs.docker_host }}:2376
@@ -368,7 +371,7 @@ jobs:
       - name: login to host
         uses: blennster/setup-docker-remote-tls@v4
         with:
-          tls_key: ${{ steps.s.outputs.docker_key }} 
+          tls_key: ${{ steps.s.outputs.docker_key }}
           tls_ca: ${{ steps.s.outputs.docker_ca }}
           tls_cert: ${{ steps.s.outputs.docker_cert }}
           tcp_host: ${{ steps.s.outputs.docker_host }}:2376

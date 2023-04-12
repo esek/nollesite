@@ -5,7 +5,10 @@ ARG NODE_VERSION=16-alpine
 ##
 FROM node:${NODE_VERSION} as BUILD_IMAGE
 
+ARG NEXT_PUBLIC_STRAPI_URL
+
 ENV WORKING_DIR=/usr/src/app
+ENV NEXT_PUBLIC_STRAPI_URL=$NEXT_PUBLIC_STRAPI_URL
 
 # Create app directory
 WORKDIR $WORKING_DIR
@@ -47,7 +50,7 @@ RUN yarn install --frozen-lockfile --production
 
 RUN apk add curl
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3\
- CMD [ "curl", "--fail", "--silent", "--output", "/dev/null", "localhost:3000/api/health" ]
+    CMD [ "curl", "--fail", "--silent", "--output", "/dev/null", "localhost:3000/api/health" ]
 
 EXPOSE 3000
 CMD [ "yarn", "start" ]
