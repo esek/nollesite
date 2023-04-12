@@ -4,7 +4,7 @@ import Heading from '../../typography/heading';
 
 const Text: React.FC<Content<'content.text'>> = ({ header, body }) => {
   return (
-    <div className="strapi-wysiwyg space-y-4 text-white">
+    <div className="strapi-wysiwyg space-y-4">
       {header && <Heading>{header}</Heading>}
 
       {body && (
