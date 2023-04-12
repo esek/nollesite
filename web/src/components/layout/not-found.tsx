@@ -4,6 +4,7 @@ import { toAssetUrl } from '@/utils/style.utils';
 import Head from 'next/head';
 import Image from 'next/image';
 import React from 'react';
+import StrapiImg from '../common/strapi/strapi-image';
 
 const YearNotFound: React.FC<IndexPropsNotFound> = ({
   years,
@@ -37,13 +38,12 @@ const YearNotFound: React.FC<IndexPropsNotFound> = ({
                 color: year.colors.secondary,
               }}
             >
-              <Image
-                src={toAssetUrl(
-                  `${year.logo.url}?width=300&height=300&format=webp`
-                )}
+              <StrapiImg
+                url={year.logo.url}
                 alt={year.title}
-                width={150}
-                height={150}
+                height={300}
+                width={300}
+                alternativeText={year.title}
               />
               <div className="flex flex-col gap-2 text-center">
                 <h2 className="font-semibold">{year.title}</h2>
