@@ -1,4 +1,3 @@
-import { clientConfig } from '@/config.client';
 import { StrapiFile } from '@/models/image';
 import { toAssetUrl } from '@/utils/style.utils';
 import Image, { ImageLoader, ImageProps } from 'next/image';
@@ -12,7 +11,7 @@ type SharpOptions = {
 };
 
 type Props = StrapiFile &
-  Omit<ImageProps, 'src'> & {
+  Omit<ImageProps, 'src' | 'placeholder'> & {
     className?: string;
     label?: string;
     options?: SharpOptions;
