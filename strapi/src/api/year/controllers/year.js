@@ -7,7 +7,13 @@
 const { createCoreController } = require('@strapi/strapi').factories;
 
 // when we fetch images, only the url and alt-text are important
-const imagePopulate = ['url', 'alternativeText', 'width', 'height'];
+const imagePopulate = [
+  'url',
+  'alternativeText',
+  'width',
+  'height',
+  'placeholder',
+];
 const groupPopulate = ['name', 'number', 'link'];
 
 const filters = (locale, password) => [

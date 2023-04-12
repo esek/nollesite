@@ -1,4 +1,6 @@
+import { clientConfig } from '@/config.client';
 import { StrapiFile } from '@/models/image';
+import { toAssetUrl } from '@/utils/style.utils';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Link from 'next/link';
@@ -44,7 +46,9 @@ const NavbarLogo: React.FC<StrapiFile> = ({ url, alternativeText }) => {
   }, [ref]);
 
   const imgSize = 64; // the size we want the image to be in the navbar
-  const src = `${url}?format=webp&height=${imgSize * 5}&width=${imgSize * 5}`; // 5x the size of the logo so that it's still clear when scaled
+  const src = toAssetUrl(
+    `${url}?format=webp&height=${imgSize * 5}&width=${imgSize * 5}`
+  ); // 5x the size of the logo so that it's still clear when scaled
 
   return (
     <div className="h-16 w-16">

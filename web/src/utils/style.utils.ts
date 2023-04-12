@@ -1,6 +1,7 @@
 import { CalendarEventTag } from '@/models/calendar';
 import { ColorTranslator } from 'colortranslator';
 import { YearColors } from '../models/year';
+import { clientConfig } from '@/config.client';
 
 /**
  * Converts the hex colors set in strapi to hsl
@@ -55,4 +56,8 @@ export const stripCalendarTags = (
 
   // remove any whitespaces
   return t.trim();
+};
+
+export const toAssetUrl = (href: string) => {
+  return `${clientConfig.STRAPI_URL}${href}`;
 };

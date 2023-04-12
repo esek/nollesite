@@ -1,15 +1,9 @@
 import { useLocale } from '@/hooks/locale.hook';
 import { IndexPropsNotFound } from '@/models/props';
-import getConfig from 'next/config';
+import { toAssetUrl } from '@/utils/style.utils';
 import Head from 'next/head';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import React from 'react';
-import Heading from '../typography/heading';
-import Meta from './meta';
-
-const { publicRuntimeConfig } = getConfig();
-const { DEPLOY_URL } = publicRuntimeConfig;
 
 const YearNotFound: React.FC<IndexPropsNotFound> = ({
   years,
@@ -44,7 +38,9 @@ const YearNotFound: React.FC<IndexPropsNotFound> = ({
               }}
             >
               <Image
-                src={`${DEPLOY_URL}${year.logo.url}?width=300&height=300&format=webp`}
+                src={toAssetUrl(
+                  `${year.logo.url}?width=300&height=300&format=webp`
+                )}
                 alt={year.title}
                 width={150}
                 height={150}

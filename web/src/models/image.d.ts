@@ -3,4 +3,5 @@ export type StrapiFile = {
   alternativeText: string;
   height: number;
   width: number;
+  placeholder?: string;
 };

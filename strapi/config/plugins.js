@@ -22,8 +22,10 @@ module.exports = ({ env }) => ({
       },
     },
   },
-  // homepage: {
-  //   enabled: true,
-  //   resolve: './src/plugins/homepage',
-  // },
+  placeholder: {
+    enabled: true,
+    config: {
+      size: 10,
+    },
+  },
 });

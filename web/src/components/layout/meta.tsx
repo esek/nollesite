@@ -1,3 +1,4 @@
+import { toAssetUrl } from '@/utils/style.utils';
 import Head from 'next/head';
 import React from 'react';
 
@@ -27,13 +28,13 @@ const Meta: React.FC<Props> = ({
     <Head>
       <title>{t}</title>
       <meta name="description" content={description} />
-      <link rel="icon" href={logoUrl} />
+      <link rel="icon" href={toAssetUrl(logoUrl)} />
 
       {font && (
         <>
           <link
             rel="preload"
-            href={font}
+            href={toAssetUrl(font)}
             as="font"
             type={`font/${font.split('.').pop()}`}
             crossOrigin="anonymous"
@@ -41,7 +42,7 @@ const Meta: React.FC<Props> = ({
           <style>{`
             @font-face {
               font-family: 'Nollefont';
-              src: url('${font}');
+              src: url('${toAssetUrl(font)}');
               font-weight: normal;
               font-style: normal;
               font-display: swap;

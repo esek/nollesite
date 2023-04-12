@@ -1,5 +1,6 @@
+import { clientConfig } from '@/config.client';
 import { StrapiFile } from '@/models/image';
-import getConfig from 'next/config';
+import { toAssetUrl } from '@/utils/style.utils';
 import Image, { ImageLoader, ImageProps } from 'next/image';
 import React from 'react';
 
@@ -17,9 +18,6 @@ type Props = StrapiFile &
     options?: SharpOptions;
   };
 
-const { publicRuntimeConfig } = getConfig();
-const { DEPLOY_URL } = publicRuntimeConfig;
-
 /**
  * Wrapper for a strapi image so we don't need to set it everytime
  */
@@ -28,8 +26,8 @@ const StrapiImg: React.FC<Props> = ({
   alternativeText,
   height,
   width,
+  placeholder,
   options = { format: 'webp' },
-  layout = 'intrinsic',
   ...rest
 }) => {
   const imageLoader: ImageLoader = ({ src, width, quality }) => {
@@ -46,17 +44,19 @@ const StrapiImg: React.FC<Props> = ({
       params.append('width', Math.min(width, 1920).toString());
     }
 
-    return `${src}?${params.toString()}`;
+    return toAssetUrl(`${src}?${params.toString()}`);
   };
 
   return (
     <Image
       {...rest}
       loader={imageLoader}
-      src={`${DEPLOY_URL}${url}`}
-      alt={alternativeText}
+      placeholder={placeholder ? 'blur' : 'empty'}
+      src={url}
+      alt={alternativeText ?? 'Missing text'}
       height={height}
       width={width}
+      blurDataURL={placeholder}
     />
   );
 };

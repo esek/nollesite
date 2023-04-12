@@ -8,8 +8,6 @@ COPY package.json .
 
 COPY yarn.lock .
 
-# COPY patches ./patches
-
 RUN yarn install --frozen-lockfile
 
 COPY . ./
