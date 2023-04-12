@@ -149,7 +149,7 @@ jobs:
           push: true
           tags: ${{ needs.env-vars.outputs.image_name }}-web
           build-args: |
-            NEXT_PUBLIC_STRAPI_URL={{ steps.s.outputs.STRAPI_URL }}
+            NEXT_PUBLIC_STRAPI_URL=https://{{ steps.s.outputs.STRAPI_URL }}
       - name: build and push image
         uses: docker/build-push-action@v3
         with:
