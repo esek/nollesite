@@ -1,8 +1,10 @@
 module.exports = ({ env }) => ({
+  // enable the custom previewer plugin
   previewer: {
     enabled: true,
     resolve: './src/plugins/previewer',
   },
+  // setup nodemailer to send emails
   email: {
     config: {
       provider: 'nodemailer',
@@ -22,6 +24,7 @@ module.exports = ({ env }) => ({
       },
     },
   },
+  // add the placeholder plugin, which will generate base64 placeholder images
   placeholder: {
     enabled: true,
     config: {

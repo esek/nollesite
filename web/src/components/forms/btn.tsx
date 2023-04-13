@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import React from 'react';
 
 type Props = {
@@ -15,15 +14,13 @@ const Btn: React.FC<Props> = ({
   className,
 }) => {
   return (
-    <motion.button
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.9 }}
-      className={`bg-accent px-4 py-2 text-primary ${className}`}
+    <button
+      className={`rounded-sm bg-accent px-4 py-2 text-primary transition-transform hover:scale-[1.02] active:scale-[0.95] ${className}`}
       onClick={onClick}
       type={type}
     >
       {children}
-    </motion.button>
+    </button>
   );
 };
 

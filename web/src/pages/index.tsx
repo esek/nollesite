@@ -1,14 +1,16 @@
 import Meta from '@/components/layout/meta';
-import YearNotFound from '@/components/layout/not-found';
 import { getYearData } from '@/lib/years';
 import { IndexProps } from '@/models/props';
 import { GetServerSideProps, NextPage } from 'next';
 import PageLayout from '../components/layout/page-layout';
 import { parseSubdomainToYear } from '../utils/page.utils';
+import dynamic from 'next/dynamic';
+
+const NotFound = dynamic(() => import('@/components/layout/not-found'));
 
 const Route: NextPage<IndexProps> = (props) => {
   if (!props.found) {
-    return <YearNotFound {...props} />;
+    return <NotFound {...props} />;
   }
 
   return (
@@ -37,7 +39,13 @@ type Params = {
 export const getServerSideProps: GetServerSideProps<
   IndexProps,
   Params
-> = async ({ req, locale, query }) => {
+> = async ({ req, locale, query, res }) => {
+  // Set cache headers
+  res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=10, stale-while-revalidate=59'
+  );
+
   const l = locale ?? 'sv';
   const { password = '' } = query;
   const year = parseSubdomainToYear(req);

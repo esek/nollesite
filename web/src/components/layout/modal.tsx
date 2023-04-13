@@ -66,14 +66,13 @@ const Modal: React.FC<Props> = ({
         <header className="flex items-center justify-between text-lg font-semibold">
           <span>{title}</span>
 
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+          <button
+            className="transition-transform hover:scale-[1.1] active:scale-[0.9]"
             onClick={handleClose}
             aria-label="Close modal"
           >
             <FiX />
-          </motion.button>
+          </button>
         </header>
 
         <main>{children}</main>

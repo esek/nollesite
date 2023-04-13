@@ -1,11 +1,13 @@
-import Modal from '@/components/layout/modal';
 import { useLocale } from '@/hooks/locale.hook';
 import { CalendarEvent, TagIcons } from '@/models/calendar';
 import dayjs from 'dayjs';
+import dynamic from 'next/dynamic';
 import { useState } from 'react';
 import { FiMapPin } from 'react-icons/fi';
 
-const CalendarEvent: React.FC<CalendarEvent> = ({
+const DynamicModal = dynamic(() => import('@/components/layout/modal'));
+
+const CalendarEventComponent: React.FC<CalendarEvent> = ({
   id,
   title,
   start,
@@ -44,7 +46,7 @@ const CalendarEvent: React.FC<CalendarEvent> = ({
         onClick={toggle}
       >
         <h4 className="font-medium">{title}</h4>
-        <div className="absolute right-4 top-0 bottom-0 flex flex-col items-center justify-center gap-1 text-xl">
+        <div className="absolute bottom-0 right-4 top-0 flex flex-col items-center justify-center gap-1 text-xl">
           {tags.map((t) => {
             const Icon = TagIcons[t];
             return (
@@ -74,7 +76,7 @@ const CalendarEvent: React.FC<CalendarEvent> = ({
       </button>
 
       {/* A popup modal for displaying more information about the event */}
-      <Modal title={title} isVisible={isOpen} onChange={setIsOpen}>
+      <DynamicModal title={title} isVisible={isOpen} onChange={setIsOpen}>
         {location && (
           <div className="mb-1 flex items-center gap-1 text-sm">
             <FiMapPin />
@@ -104,9 +106,9 @@ const CalendarEvent: React.FC<CalendarEvent> = ({
         </div>
 
         <p className="mt-2">{description}</p>
-      </Modal>
+      </DynamicModal>
     </>
   );
 };
 
-export default CalendarEvent;
+export default CalendarEventComponent;

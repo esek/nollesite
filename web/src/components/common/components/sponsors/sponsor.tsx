@@ -1,10 +1,12 @@
-import Modal from '@/components/layout/modal';
 import { useLocale } from '@/hooks/locale.hook';
 import { useToggle } from '@/hooks/toggle.hook';
 import { ContentSponsor } from '@/models/content';
 import React from 'react';
 import { FiArrowRight } from 'react-icons/fi';
 import StrapiImg from '../../strapi/strapi-image';
+import dynamic from 'next/dynamic';
+
+const DynamicModal = dynamic(() => import('@/components/layout/modal'));
 
 const Sponsor: React.FC<ContentSponsor> = ({
   image,
@@ -25,7 +27,7 @@ const Sponsor: React.FC<ContentSponsor> = ({
         />
       </button>
 
-      <Modal isVisible={isOpen} title={name} onChange={toggle}>
+      <DynamicModal isVisible={isOpen} title={name} onChange={toggle}>
         <div className="my-4">
           <StrapiImg
             {...image}
@@ -40,7 +42,7 @@ const Sponsor: React.FC<ContentSponsor> = ({
           className="text-sm"
         ></div>
 
-        <div className="pt-4 pb-8">
+        <div className="pb-8 pt-4">
           <a
             href={link}
             target="_blank"
@@ -55,7 +57,7 @@ const Sponsor: React.FC<ContentSponsor> = ({
             </span>
           </a>
         </div>
-      </Modal>
+      </DynamicModal>
     </>
   );
 };

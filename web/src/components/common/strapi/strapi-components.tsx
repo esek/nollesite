@@ -1,16 +1,23 @@
 import { slugify } from '@/utils/page.utils';
-import { FunctionComponent } from 'react';
+import { ComponentType } from 'react';
 import { Content } from '../../../models/content';
-import Calendar from '../components/calendar/calendar';
-import Groups from '../components/groups/groups';
-import Images from '../components/images';
-import Phoset from '../components/phoset/phoset';
-import Sponsors from '../components/sponsors/sponsors';
-import Text from '../components/text';
-import Nollekamp from '../components/nollekamp/nollekamp';
 import StrapiComponent from './strapi-component';
-import Contact from '../components/contact/contact';
-import Nolleguide from '../components/nolleguide';
+import dynamic from 'next/dynamic';
+
+/* load all components dynamically, reduces bundle size */
+
+const DynamicText = dynamic(() => import('../components/text'));
+const DynamicNolleguide = dynamic(() => import('../components/nolleguide'));
+const DynamicContact = dynamic(() => import('../components/contact/contact'));
+// prettier-ignore
+const DynamicNollekamp = dynamic(() => import('../components/nollekamp/nollekamp'));
+const DynamicGroups = dynamic(() => import('../components/groups/groups'));
+// prettier-ignore
+const DynamicSponsors = dynamic(() => import('../components/sponsors/sponsors'));
+const DynamicPhoset = dynamic(() => import('../components/phoset/phoset'));
+const DynamicImages = dynamic(() => import('../components/images'));
+// prettier-ignore
+const DynamicCalendar = dynamic(() => import('../components/calendar/calendar'));
 
 type Props = {
   content: Content[];
@@ -22,51 +29,51 @@ const StrapiComponents: React.FC<Props> = ({ content }) => {
    * @param c The actual strapi-component
    * @returns A tuple of the component ID and the component
    */
-  const mapContent = (c: Content): [string, FunctionComponent<any>] | null => {
+  const mapContent = (c: Content): [string, ComponentType<any>] | null => {
     switch (c.__component) {
       case 'content.text':
         if (c.body || c.header) {
-          return [slugify(c.header), Text];
+          return [slugify(c.header), DynamicText];
         }
         break;
       case 'content.images':
         if (c.images.length) {
-          return [slugify(c.title), Images];
+          return [slugify(c.title), DynamicImages];
         }
         break;
       case 'content.phoset':
         if (c.phoset.length) {
-          return ['phos', Phoset];
+          return ['phos', DynamicPhoset];
         }
         break;
       case 'content.calendar':
         if (c.calendarUrl) {
-          return ['calendar', Calendar];
+          return ['calendar', DynamicCalendar];
         }
         break;
       case 'content.nollekamp':
         if (c.missions?.length) {
-          return ['nollekamp', Nollekamp];
+          return ['nollekamp', DynamicNollekamp];
         }
         break;
       case 'content.phaddergroups':
         if (c.groups?.length) {
-          return ['groups', Groups];
+          return ['groups', DynamicGroups];
         }
         break;
       case 'content.sponsors':
         if (c.sponsors?.length) {
-          return ['sponsors', Sponsors];
+          return ['sponsors', DynamicSponsors];
         }
         break;
       case 'content.contact':
         if (c.email) {
-          return [slugify(c.title), Contact];
+          return [slugify(c.title), DynamicContact];
         }
         break;
       case 'content.nolleguide':
         if (c.file?.url) {
-          return ['nolleguide-download', Nolleguide];
+          return ['nolleguide-download', DynamicNolleguide];
         }
     }
 

@@ -1,11 +1,7 @@
-import { clientConfig } from '@/config.client';
 import { StrapiFile } from '@/models/image';
 import { toAssetUrl } from '@/utils/style.utils';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react';
-gsap.registerPlugin(ScrollTrigger);
 
 const NavbarLogo: React.FC<StrapiFile> = ({ url, alternativeText }) => {
   const [isMounted, setIsMounted] = useState(false);
@@ -13,36 +9,45 @@ const NavbarLogo: React.FC<StrapiFile> = ({ url, alternativeText }) => {
   const ref = useRef(null);
 
   useEffect(() => {
-    if (!ref.current) {
-      return;
-    }
+    const initializeGsap = async () => {
+      // dynamically import gsap and scrolltrigger
+      const { default: gsap } = await import('gsap');
+      const { ScrollTrigger } = await import('gsap/dist/ScrollTrigger');
+      gsap.registerPlugin(ScrollTrigger);
 
-    // we initialize the animation only once the component is mounted
-    gsap.fromTo(
-      ref.current,
-      // FROM
-      {
-        position: 'absolute',
-        scale: 4.5,
-        top: '30vh',
-        left: '50%',
-        translateX: '-50%',
-      },
-      // TO
-      {
-        top: '16px',
-        scale: 1,
-        left: window.innerWidth < 1024 ? '32px' : '0px',
-        translateX: '0%',
-        scrollTrigger: {
-          start: 'top top',
-          end: `${window.innerHeight * 0.8}px`, // 80% of screen height
-          scrub: 1.25,
-        },
+      if (!ref.current) {
+        return;
       }
-    );
 
-    setIsMounted(true);
+      // we initialize the animation only once the component is mounted
+      gsap.fromTo(
+        ref.current,
+        // FROM
+        {
+          position: 'absolute',
+          scale: 4.5,
+          top: '30vh',
+          left: '50%',
+          translateX: '-50%',
+        },
+        // TO
+        {
+          top: '16px',
+          scale: 1,
+          left: window.innerWidth < 1024 ? '32px' : '0px',
+          translateX: '0%',
+          scrollTrigger: {
+            start: 'top top',
+            end: `${window.innerHeight * 0.8}px`, // 80% of screen height
+            scrub: 1.25,
+          },
+        }
+      );
+
+      setIsMounted(true);
+    };
+
+    initializeGsap();
   }, [ref]);
 
   const imgSize = 64; // the size we want the image to be in the navbar
