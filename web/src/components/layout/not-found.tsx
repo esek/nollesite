@@ -44,6 +44,7 @@ const YearNotFound: React.FC<IndexPropsNotFound> = ({
                 height={300}
                 width={300}
                 alternativeText={year.title}
+                className="max-w-[150px]"
               />
               <div className="flex flex-col gap-2 text-center">
                 <h2 className="font-semibold">{year.title}</h2>
