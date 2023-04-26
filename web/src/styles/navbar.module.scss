@@ -1,7 +1,7 @@
 .drawer {
   --transition-delay: 100ms;
 
-  @apply fixed top-0 left-0 flex h-screen w-screen translate-x-full items-center p-12 font-nolle duration-500;
+  @apply fixed left-0 top-0 flex h-screen w-screen translate-x-full items-center p-12 font-nolle duration-500;
 
   transition: transform 300ms ease-in-out,
     background 300ms ease-in-out var(--transition-delay);
@@ -57,8 +57,7 @@
   --translate-y: 0;
   --rotate: 0deg;
 
-  @apply h-[4px] w-[28px] rounded-full;
-  background: white;
+  @apply h-[4px] w-[28px] rounded-full bg-secondary;
   transition: all 200ms ease-in-out 300ms;
   opacity: var(--opacity, 1);
   transform: rotate(var(--rotate)) translateY(var(--translate-y))

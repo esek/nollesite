@@ -20,8 +20,7 @@ const Group: React.FC<ContentPhadderGroup> = ({
           <StrapiImg
             {...image}
             alt={name}
-            options={{ width: 300, height: 300 }}
-            layout="fill"
+            options={{ height: 300 }}
             className={`rounded-full transition-all ${
               link ? 'group-hover:bg-secondary/5' : ''
             }`}

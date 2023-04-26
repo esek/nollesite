@@ -17,7 +17,7 @@ const Input: React.FC<Props> = ({ label, type, helper, ...inputProps }) => {
   const n = `input--${inputProps.name}`;
 
   const className =
-    'border-2 border-accent bg-secondary/10 p-4 outline-none focus:bg-secondary/10';
+    'border-2 border-accent bg-secondary/10 p-4 outline-none focus:bg-secondary/10 placeholder:text-secondary/60';
 
   return (
     <div className="input-container relative flex flex-col gap-2">
