@@ -7,6 +7,11 @@ const CalendarDay: React.FC<CalendarEventsGroupedByDay> = ({
   date,
   events,
 }) => {
+  // Sorting events based on the start time
+  events.sort((a, b) =>
+    a.start.toString() > b.start.toString() ? 1 : -1
+  )
+
   return (
     <div className="my-4 space-y-4">
       <h3 className="text-lg font-semibold capitalize">
