@@ -9,7 +9,7 @@ const CalendarDay: React.FC<CalendarEventsGroupedByDay> = ({
 }) => {
   // Sorting events based on the start time
   events.sort((a, b) =>
-    a.start.toString() > b.start.toString() ? 1 : -1
+    a.start > b.start ? 1 : -1
   )
 
   return (
