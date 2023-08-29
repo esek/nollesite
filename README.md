@@ -1,6 +1,6 @@
-# 🥷🏻 Nollesite
+# 🧙‍♀️ Nollesite
 
-Repo för Nollningshemsidorna [`nollning.esek.se`](https://nollning.esek.se) och <s title="deprecated since 2022">[`e-nollning.nu`](https://e-nollning.nu)</s> samt alla alias `*.nollning.esek.se`.
+Repo för Nollningshemsidorna [`nollning.esek.se`](https://nollning.esek.se) och <s title="deprecated since 2022">[`e-nollning.nu`](https://e-nollning.nu)</s> samt alla alias `/\d{4}/.nollning.esek.se`.
 
 ## ⚡️ Quickstart
 
