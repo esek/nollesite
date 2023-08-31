@@ -19,11 +19,11 @@ Följande steg förklarar hur en strapi instans skapas, där du kan redigera nol
 #### ⚙ Strapi
 
 Skapa CMS:et på följande sätt:
-1. Skapa en `.env`-fil i `strapi/`
-   - Kopiera över innehållet från `.env.example`
-   - Fyll `.env`-filen med värden för `STRAPI_APP_KEYS`, `API_TOKEN_SALT` och `JWT_SECRET` från Bitwarden
-   - **OBS:** Använd ej `DB` variablerna från Bitwarden vid testning, då ändringar i så fall påverkar prod!
-   - > TODO: `SMTP` och `WIKI` variabler behövs ej för att få CMS:et att fungera. Men det används till ...
+1. Skapa en `.env`-fil i `strapi/` och kopiera över innehållet från `.env.example`. Inga ytterligare ändringar behöver göras för att få lokala strapi-instansen att fungera. I testing används variablerna för följande syften:
+   - `DB` - värdena för lokala postgres-instansen
+   - `STRAPI_HOST` och `STRAPI_PORT` - adressen som servern kör på
+   - `SMTP` - för att testa skicka mejl lokalt, exempelvis för att testa funktionaliteten för att ha glömt sitt lösenord
+   - <s title="deprecated">`WIKI` - används för att kunna visa en sida från DDGWikin i Strapi</s>
 2. `cd strapi`, `yarn install` och `yarn dev`
 3. En lokal strapi instans kommer startas på http://localhost:8000
 4. Skapa ett lokalt konto
