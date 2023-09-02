@@ -6,20 +6,6 @@ Skriven i [Next.js](https://nextjs.org/) för att få SSR (och för att `@afrobo
 
 Däremot används såklart [TailwindCSS](https://tailwindcss.com/) för att inte behöva skriva egen csskod (🤮).
 
-## ⚡️ Quickstart
-
-Detta är ett vanligt `Next.js`-projekt som använder sig av `yarn`, så för att starta kör du:
-
-```bash
-yarn install
-```
-
-och sedan
-
-```bash
-yarn run dev
-```
-
 ## 🎨 Design
 
 Designen är gjord av `Phøset 2022` tillsammans med [`@afroborg`](https://github.com/afroborg) och [`@blennster`](https://github.com/blennster) (och säkert andra som inte får cred). Målet var att hitta en lösning som kan fungera flera år framåt, med endast tweaking på t.ex. färger, bilder och innehåll.

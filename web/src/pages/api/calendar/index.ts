@@ -95,7 +95,9 @@ const groupEventsByDay = (
 ): CalendarEventsGroupedByDay[] => {
   const grouped: Record<string, CalendarEvent[]> = {};
 
-  events.forEach((event) => {
+  events.sort(
+    (a, b) => (a.start > b.start ? 1 : -1)
+  ).forEach((event) => {
     const start = dayjs(event.start);
     const key = start.format('YYYY-MM-DD');
 
@@ -107,8 +109,7 @@ const groupEventsByDay = (
   });
 
   return Object.entries(grouped)
-    .map(([date, events]) => ({ date, events }))
-    .sort((a, b) => (a.date > b.date ? 1 : -1));
+    .map(([date, events]) => ({date, events}))
 };
 
 /**
