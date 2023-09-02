@@ -1,7 +1,7 @@
-import { CalendarEvent, CalendarEventsGroupedByDay } from '@/models/calendar';
+import { CalendarEventsGroupedByDay } from '@/models/calendar';
 import dayjs from 'dayjs';
 import React from 'react';
-import CalendarEventComponent from './calendar-event';
+import CalendarEvent from './calendar-event';
 
 const CalendarDay: React.FC<CalendarEventsGroupedByDay> = ({
   date,
@@ -15,7 +15,7 @@ const CalendarDay: React.FC<CalendarEventsGroupedByDay> = ({
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         {events.map((e) => (
-          <CalendarEventComponent {...e} key={`calendar-event-${e.id}`} />
+          <CalendarEvent {...e} key={`calendar-event-${e.id}`} />
         ))}
       </div>
     </div>
