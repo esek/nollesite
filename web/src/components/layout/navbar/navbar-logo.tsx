@@ -52,8 +52,8 @@ const NavbarLogo: React.FC<StrapiFile> = ({ url, alternativeText }) => {
 
   const imgSize = 64; // the size we want the image to be in the navbar
   const src = toAssetUrl(
-    `${url}?format=webp&height=2000&width=2000`
-  ); // Setting the resolution of the logo to 2000x2000 px so that it's still clear when scaled
+    `${url}?format=webp&height=500&width=500`
+  ); // Setting the resolution of the logo to 500x500 px so that it's still clear when scaled
 
   return (
     <div className="h-16 w-16">
