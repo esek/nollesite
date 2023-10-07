@@ -87,3 +87,7 @@ En lokal strapi instans kommer startas på <http://localhost:8000>
    ```
 
 En lokal instans kommer startas på <http://localhost:3000>.
+
+## User guide
+
+Se [user guide](./docs/user-guide.md) för information om hur man skapar ett nollningsår och lägger till innehåll.
