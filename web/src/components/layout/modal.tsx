@@ -41,48 +41,55 @@ const Modal: React.FC<Props> = ({
     onChange?.(false);
   };
 
-  return createPortal(
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center"
-      role="dialog"
-    >
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, transition: { duration: 0.2, ease: 'linear' } }}
-        exit={{ opacity: 0 }}
-        className="absolute inset-0 bg-gray-800/50"
-        onClick={handleClose}
-      ></motion.div>
-
-      <motion.div
-        initial={{ y: '-20px', opacity: 0 }}
-        animate={{
-          y: 0,
-          opacity: 1,
-          transition: { duration: 0.3, ease: 'backOut' },
-        }}
-        className="relative w-full max-w-sm bg-primary p-6 text-secondary shadow-sm shadow-secondary/10"
-      >
-        <header className="flex items-center justify-between text-lg font-semibold">
-          <span>{title}</span>
-
-          <button
-            className="transition-transform hover:scale-[1.1] active:scale-[0.9]"
+  return (
+    <>
+      {createPortal(
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center"
+          role="dialog"
+        >
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: 1,
+              transition: { duration: 0.2, ease: 'linear' },
+            }}
+            exit={{ opacity: 0 }}
+            className="absolute inset-0 bg-gray-800/50"
             onClick={handleClose}
-            aria-label="Close modal"
+          ></motion.div>
+
+          <motion.div
+            initial={{ y: '-20px', opacity: 0 }}
+            animate={{
+              y: 0,
+              opacity: 1,
+              transition: { duration: 0.3, ease: 'backOut' },
+            }}
+            className="relative w-full max-w-sm bg-primary p-6 text-secondary shadow-sm shadow-secondary/10"
           >
-            <FiX />
-          </button>
-        </header>
+            <header className="flex items-center justify-between text-lg font-semibold">
+              <span>{title}</span>
 
-        <main>{children}</main>
+              <button
+                className="transition-transform hover:scale-[1.1] active:scale-[0.9]"
+                onClick={handleClose}
+                aria-label="Close modal"
+              >
+                <FiX />
+              </button>
+            </header>
 
-        <footer className="mt-2 text-right">
-          <Btn onClick={handleClose}>{t('close')}</Btn>
-        </footer>
-      </motion.div>
-    </div>,
-    document.getElementById('modal-root')!
+            <main>{children}</main>
+
+            <footer className="mt-2 text-right">
+              <Btn onClick={handleClose}>{t('close')}</Btn>
+            </footer>
+          </motion.div>
+        </div>,
+        document.getElementById('modal-root')!,
+      )}
+    </>
   );
 };
 
