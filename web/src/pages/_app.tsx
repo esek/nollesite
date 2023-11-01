@@ -4,6 +4,7 @@ import Head from 'next/head';
 import '../styles/main.scss';
 import '../styles/strapi-text.scss';
 import '../styles/tailwind.scss';
+import Script from 'next/script';
 
 const App: NextPage<AppProps> = ({ Component, pageProps }) => {
   return (
@@ -15,12 +16,14 @@ const App: NextPage<AppProps> = ({ Component, pageProps }) => {
           href="/apple-touch-icon.png"
         />
         <link rel="manifest" href="/site.webmanifest" />
-        <script
-          defer
-          data-domain="nollning.esek.se"
-          src="https://analytics.esek.se/js/plausible.js"
-        />
       </Head>
+
+      <Script
+        async
+        defer
+        data-domain="nollning.esek.se"
+        src="https://analytics.esek.se/js/plausible.js"
+      />
 
       <Component {...pageProps} />
     </>
