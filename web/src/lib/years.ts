@@ -11,7 +11,7 @@ import { getAsync } from './axios';
 const getCurrentYear = async (
   year: string,
   password: string,
-  locale: string
+  locale: string,
 ): Promise<IndexPropsFound | null> => {
   // fetches the year data from strapi
   const resp = await getAsync<Year>(`/years/${year}?password=${password}`, {
@@ -37,7 +37,7 @@ const getCurrentYear = async (
 };
 
 const getPreviousYears = async (
-  locale: string
+  locale: string,
 ): Promise<IndexPropsNotFound> => {
   const isSwe = locale === 'sv';
   const title = isSwe ? 'Nollningsåret hittades inte' : 'Year not found';
@@ -49,14 +49,14 @@ const getPreviousYears = async (
     title,
     description,
     found: false,
-    years: resp,
+    years: resp.toSorted((a, b) => Number(b.year) - Number(a.year)),
   };
 };
 
 export const getYearData = async (
   year: string,
   password: string,
-  locale: string
+  locale: string,
 ): Promise<IndexProps> => {
   const currentYear = await getCurrentYear(year, password, locale);
 

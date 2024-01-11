@@ -31,7 +31,7 @@ const YearNotFound: React.FC<IndexPropsNotFound> = ({
             <a
               href={`https://${year.year}.nollning.esek.se`}
               key={year.year}
-              className="flex flex-col items-center justify-center gap-4 rounded-md border-2 p-4"
+              className="flex flex-col items-center justify-center gap-4 rounded-md border-2 p-4 w-[200px] h-full"
               style={{
                 backgroundColor: year.colors.primary,
                 borderColor: year.colors.accent,
