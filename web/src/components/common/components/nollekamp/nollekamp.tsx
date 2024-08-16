@@ -30,14 +30,12 @@ const Nollekamp: React.FC<Content<'content.nollekamp'>> = ({
           ></div>
         )}
 
-        <div className="mt-4">
-          <Heading isSmall>{t('nollekamp.missions')}</Heading>
-        </div>
+  
 
         {/* Show headings for the points if it's set in strapi */}
         {showPoints && (
           <div className="mt-4 flex justify-between font-semibold">
-            <h3 className="font-nolle text-xl">{t('nollekamp.title')}</h3>
+            <Heading isSmall>{t('nollekamp.missions')}</Heading>
             <span>{t('nollekamp.points')}</span>
           </div>
         )}
