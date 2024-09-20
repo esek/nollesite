@@ -34,7 +34,7 @@ const Calendar: React.FC<Content<'content.calendar'>> = ({ calendarUrl }) => {
 
   // Triggers on page load to update the includePast variable to the value last set by the user
   useEffect(() => {
-    setIncludePast(window.localStorage.getItem("includePast")==="true")
+    setIncludePast(window.localStorage.getItem("includePast") === "true")
   }, []);
 
   /**
