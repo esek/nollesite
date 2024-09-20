@@ -26,6 +26,17 @@ const Calendar: React.FC<Content<'content.calendar'>> = ({ calendarUrl }) => {
     window.open(`/api/calendar/download?c=${calendarUrl}`, '_blank');
   };
 
+  // Function to update localstorage whenever the includePast variable is set
+  const updateIncludePast = (value: boolean) => {
+    localStorage.setItem("includePast", String(value))
+    setIncludePast(value)
+  }
+
+  // Triggers on page load to update the includePast variable to the value last set by the user
+  useEffect(() => {
+    setIncludePast(window.localStorage.getItem("includePast") === "true")
+  }, []);
+
   /**
    * Runs anytime includePast or calendarUrl changes
    * and refetches the calendar info
@@ -98,7 +109,7 @@ const Calendar: React.FC<Content<'content.calendar'>> = ({ calendarUrl }) => {
         </button>
         <Cbx
           value={includePast}
-          onChange={setIncludePast}
+          onChange={updateIncludePast}
           label={t('calendar.show-past-events')}
           name="show-past-events"
         />
