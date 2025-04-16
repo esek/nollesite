@@ -48,4 +48,4 @@ services:
       - default
     restart: unless-stopped
     labels:
-      - 'traefik.http.routers.$COMPOSE_PROJECT_NAME-web.rule=HostRegexp(`$DEPLOY_URL`, `{subdomain:[\d]{4}}.$DEPLOY_URL`)'
+      - 'traefik.http.routers.$COMPOSE_PROJECT_NAME-web.rule=Host(`$DEPLOY_URL`) || HostRegexp(`[\d]{4}.$DEPLOY_URL`)'
