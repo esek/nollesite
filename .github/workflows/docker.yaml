@@ -1,6 +1,7 @@
 name: Docker Image CI
 
 ## DO NOT COPY THIS. IT HAS LIMITED FUNCTIONALITY!
+# TODO: make use of esek/workflows
 
 # To run this locally use act (https://github.com/nektos/act)
 
