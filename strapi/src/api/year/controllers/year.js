@@ -104,6 +104,9 @@ module.exports = createCoreController('api::year.year', ({ strapi }) => ({
         },
         content: {
           populate: {
+            image: {
+              select: imagePopulate,
+            },
             images: {
               populate: {
                 image: {

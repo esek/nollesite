@@ -471,6 +471,7 @@ export interface ApiYearYear extends Schema.CollectionType {
       [
         'content.calendar',
         'content.contact',
+        'content.image-with-text',
         'content.images',
         'content.nolleguide',
         'content.nollekamp',
