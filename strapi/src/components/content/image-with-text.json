@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_content_image_with_texts",
+  "info": {
+    "displayName": "ImageWithText",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "description": {
+      "type": "text"
+    },
+    "reverse": {
+      "type": "boolean"
+    },
+    "showInMenu": {
+      "type": "boolean"
+    }
+  }
+}

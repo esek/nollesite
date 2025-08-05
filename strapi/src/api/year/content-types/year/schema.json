@@ -43,9 +43,7 @@
       "type": "media",
       "multiple": false,
       "required": true,
-      "allowedTypes": [
-        "images"
-      ],
+      "allowedTypes": ["images"],
       "pluginOptions": {
         "i18n": {
           "localized": false
@@ -103,6 +101,7 @@
       "components": [
         "content.calendar",
         "content.contact",
+        "content.image-with-text",
         "content.images",
         "content.nolleguide",
         "content.nollekamp",
@@ -122,9 +121,7 @@
       "required": true
     },
     "font": {
-      "allowedTypes": [
-        "files"
-      ],
+      "allowedTypes": ["files"],
       "type": "media",
       "multiple": false,
       "pluginOptions": {

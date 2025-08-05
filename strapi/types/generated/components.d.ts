@@ -50,6 +50,21 @@ export interface ContentGroup extends Schema.Component {
   };
 }
 
+export interface ContentImageWithText extends Schema.Component {
+  collectionName: 'components_content_image_with_texts';
+  info: {
+    displayName: 'ImageWithText';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    image: Attribute.Media;
+    description: Attribute.Text;
+    reverse: Attribute.Boolean;
+    showInMenu: Attribute.Boolean;
+  };
+}
+
 export interface ContentImage extends Schema.Component {
   collectionName: 'components_content_image';
   info: {
@@ -236,6 +251,7 @@ declare module '@strapi/types' {
       'content.calendar': ContentCalendar;
       'content.contact': ContentContact;
       'content.group': ContentGroup;
+      'content.image-with-text': ContentImageWithText;
       'content.image': ContentImage;
       'content.images': ContentImages;
       'content.mission': ContentMission;

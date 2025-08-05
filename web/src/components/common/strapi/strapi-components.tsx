@@ -7,6 +7,7 @@ import dynamic from 'next/dynamic';
 /* load all components dynamically, reduces bundle size */
 
 const DynamicText = dynamic(() => import('../components/text'));
+const DynamicImageWithText = dynamic(() => import('../components/image-with-text'));
 const DynamicNolleguide = dynamic(() => import('../components/nolleguide'));
 const DynamicContact = dynamic(() => import('../components/contact/contact'));
 // prettier-ignore
@@ -34,6 +35,11 @@ const StrapiComponents: React.FC<Props> = ({ content }) => {
       case 'content.text':
         if (c.body || c.header) {
           return [slugify(c.header), DynamicText];
+        }
+        break;
+      case 'content.image-with-text':
+        if (c.image?.url) {
+          return [slugify(c.title), DynamicImageWithText];
         }
         break;
       case 'content.images':

@@ -51,7 +51,7 @@ export const slugify = (str?: string): string => {
  */
 export const buildNavLinks = (
   content: Content[],
-  locale: string
+  locale: string,
 ): NavLink[] => {
   const isSwe = locale === 'sv';
 
@@ -73,6 +73,12 @@ export const buildNavLinks = (
           title: c.header,
           href: `#${slugify(c.header)}`,
         });
+        break;
+      case 'content.image-with-text':
+        if (!c.title) {
+          return;
+        }
+        links.push({ title: c.title, href: `#${slugify(c.title)}` });
         break;
       case 'content.calendar':
         if (!c.calendarUrl) {

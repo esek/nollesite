@@ -7,6 +7,7 @@ export type Content<T extends string = string> = {
 } & (
   | TextContent
   | ImagesContent
+  | ImageWithTextContent
   | PhosetContent
   | NollekampContent
   | SponsorsContent
@@ -34,6 +35,15 @@ type ContentImage = {
   image: StrapiFile;
   imageText: string;
   id: number;
+};
+
+/** IMAGE WITH TEXT */
+type ImageWithTextContent = {
+  __component: 'content.image-with-text';
+  title?: string;
+  image: StrapiFile;
+  description?: string;
+  reverse?: boolean;
 };
 
 /** PHØSET */
