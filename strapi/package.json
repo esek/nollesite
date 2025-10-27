@@ -1,16 +1,20 @@
 {
   "name": "e-nollning-cms",
-  "private": true,
   "version": "0.1.0",
+  "private": true,
   "description": "CMS System för att hantera nollningshemsidor",
+  "license": "MIT",
+  "author": {
+    "name": "Axel Froborg <axel.froborg@gmail.com>"
+  },
   "scripts": {
+    "admin:create": "strapi admin:create",
+    "build": "strapi build",
+    "deploy": "yarn build; yarn start",
     "dev": "strapi develop --watch-admin",
     "start": "strapi start",
-    "build": "strapi build",
-    "strapi": "strapi",
-    "deploy": "yarn build; yarn start"
+    "strapi": "strapi"
   },
-  "devDependencies": {},
   "dependencies": {
     "@strapi/plugin-i18n": "4.15.0",
     "@strapi/plugin-users-permissions": "4.15.0",
@@ -23,15 +27,12 @@
     "strapi-plugin-placeholder": "^4.4.0",
     "strapi-tiptap-editor": "^0.9.12"
   },
-  "author": {
-    "name": "Axel Froborg <axel.froborg@gmail.com>"
-  },
-  "strapi": {
-    "uuid": "2b21965a-d3d8-4588-bcd3-082662f16553"
-  },
+  "devDependencies": {},
   "engines": {
     "node": ">=12.x.x <=18.x.x",
     "npm": ">=6.0.0"
   },
-  "license": "MIT"
+  "strapi": {
+    "uuid": "2b21965a-d3d8-4588-bcd3-082662f16553"
+  }
 }
