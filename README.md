@@ -58,8 +58,10 @@ docker compose up
 
 En lokal strapi instans kommer startas på <http://localhost:8000>
 
-3. Skapa ett lokalt konto
-4. Ett [nollningsår kan nu skapas](https://ddgwiki.esek.se/index.php/Nollningshemsidan)!
+4. Skapa ett lokalt konto
+   Du kan i strapi-mappen köra `yarn admin:create` för att få ett lokalt adminkonto till adminsidan.
+
+5. Ett [nollningsår kan nu skapas](https://ddgwiki.esek.se/index.php/Nollningshemsidan)!
 
 ### 🚀 Web
 
