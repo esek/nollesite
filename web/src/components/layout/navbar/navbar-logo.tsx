@@ -42,18 +42,17 @@ const NavbarLogo: React.FC<StrapiFile> = ({ url, alternativeText }) => {
         }
       });
 
-      // Calculate center position for WebKit compatibility
-      const centerX = windowWidth / 2;
       const finalLeft = windowWidth < 1024 ? 32 : 0;
 
       // Set initial state immediately when component mounts
-      gsap.set(ref.current,{
-          position: 'absolute',
-          scale: 4.5,
-          top: '30vh',
-          left: '50%',
-          translateX: '-50%',
-        });
+      gsap.set(ref.current, {
+        position: 'absolute',
+        scale: 4.5,
+        top: '30vh',
+        left: '50%',
+        translateX: '-50%',
+        force3D: false,
+      });
 
       // we initialize the animation only once the component is mounted
       gsap.to(
@@ -65,6 +64,7 @@ const NavbarLogo: React.FC<StrapiFile> = ({ url, alternativeText }) => {
           left: finalLeft,
           x: 0,
           transformOrigin: 'center center',
+          force3D: false,
           scrollTrigger: {
             start: 'top top',
             end: () => window.innerHeight * 0.8, // Use function for dynamic calculation
@@ -85,12 +85,9 @@ const NavbarLogo: React.FC<StrapiFile> = ({ url, alternativeText }) => {
   }, []);
 
   const imgSize = 64; // the size we want the image to be in the navbar
-  // Calculate required resolution for crisp rendering at max scale (4.5x)
-  // At 4.5x scale, the 64px image becomes ~288px, so we need much higher resolution
-  const maxScaledSize = Math.ceil(imgSize * 4.5 * 2); // 2x for retina displays
   const src = toAssetUrl(
-    `${url}?format=webp&height=${maxScaledSize}&width=${maxScaledSize}`
-  ); // Higher resolution to prevent pixelation when scaled
+    `${url}?format=webp&height=500&width=500`
+  ); // Setting the resolution of the logo to 500x500 px so that it's still clear when scaled
 
   return (
     <div className="h-16 w-16">
@@ -103,20 +100,6 @@ const NavbarLogo: React.FC<StrapiFile> = ({ url, alternativeText }) => {
           height={imgSize}
           style={{ 
             visibility: isMounted ? 'visible' : 'hidden',
-            willChange: 'transform', // Optimize for WebKit transforms
-            backfaceVisibility: 'hidden', // Prevent flickering in WebKit
-            transform: 'translateZ(0)', // Force hardware acceleration
-            // Image rendering optimization for scaling
-            imageRendering: 'auto', // Let browser choose best method
-            // Additional optimizations for smooth scaling
-            objectFit: 'contain',
-            objectPosition: 'center',
-            // CSS custom properties for WebKit prefixes
-            ...({
-              '-webkit-backface-visibility': 'hidden',
-              '-webkit-transform': 'translateZ(0)',
-              '-webkit-font-smoothing': 'antialiased',
-            } as React.CSSProperties),
           }}
         />
       </Link>
