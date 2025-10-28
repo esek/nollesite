@@ -57,13 +57,6 @@ const ImageModal: React.FC<ImageModalProps> = ({ isOpen, onClose, image, imageTe
           alt={imageText || 'Enlarged image'}
           options={{ width: 1200, height: 800 }}
         />
-        
-        {/* Image text */}
-        {imageText && (
-          <div className="bg-white p-4">
-            <p className="text-center text-gray-700">{imageText}</p>
-          </div>
-        )}
       </div>
     </div>
   );
