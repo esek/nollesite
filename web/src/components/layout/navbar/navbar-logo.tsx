@@ -44,16 +44,17 @@ const NavbarLogo: React.FC<StrapiFile> = ({ url, alternativeText }) => {
 
       // Calculate center position for WebKit compatibility
       const centerX = windowWidth / 2;
+      console.log('centerX:', centerX);
       const finalLeft = windowWidth < 1024 ? 32 : 0;
 
       // Set initial state immediately when component mounts
-      gsap.set(ref.current, {
-        position: 'absolute',
-        scale: 4.5,
-        top: '30vh',
-        left: centerX - 64 * 4.5, // Adjust for initial scale
-        transformOrigin: 'center center',
-      });
+      gsap.set(ref.current,{
+          position: 'absolute',
+          scale: 4.5,
+          top: '30vh',
+          left: '50%',
+          translateX: '-50%',
+        });
 
       // we initialize the animation only once the component is mounted
       gsap.to(
