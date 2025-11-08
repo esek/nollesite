@@ -31,7 +31,7 @@ const NavbarLogo: React.FC<StrapiFile> = ({ url, alternativeText }) => {
       const { ScrollTrigger } = await import('gsap/dist/ScrollTrigger');
       gsap.registerPlugin(ScrollTrigger);
 
-      if (!ref.current) {
+      if (!ref.current || !ref.current.parentElement) {
         return;
       }
 
@@ -42,16 +42,17 @@ const NavbarLogo: React.FC<StrapiFile> = ({ url, alternativeText }) => {
         }
       });
 
-      const finalLeft = windowWidth < 1024 ? 32 : 0;
+      const centerX = windowWidth / 2 - ref.current.parentElement.getBoundingClientRect().left;
 
       // Set initial state immediately when component mounts
       gsap.set(ref.current, {
         position: 'absolute',
-        scale: 4.5,
-        top: '30vh',
-        left: '50%',
-        translateX: '-50%',
-        force3D: false,
+        scale: 1,
+        y: '30vh',
+        x: centerX,
+        z: 1,
+        translate: '-50% -50%',
+        WebkitFilter: '',
       });
 
       // we initialize the animation only once the component is mounted
@@ -59,12 +60,10 @@ const NavbarLogo: React.FC<StrapiFile> = ({ url, alternativeText }) => {
         ref.current,
         // TO
         {
-          top: 16,
-          scale: 1,
-          left: finalLeft,
-          x: 0,
-          transformOrigin: 'center center',
-          force3D: false,
+          scale: 1/scale,
+          y: 32,
+          x: 32,
+          WebkitFilter: 'blur(1.1px)', // account for shitty image processing in Webkit
           scrollTrigger: {
             start: 'top top',
             end: () => window.innerHeight * 0.8, // Use function for dynamic calculation
@@ -84,10 +83,11 @@ const NavbarLogo: React.FC<StrapiFile> = ({ url, alternativeText }) => {
     setIsMounted(true);
   }, []);
 
+  const scale = 4.5;
   const imgSize = 64; // the size we want the image to be in the navbar
   const src = toAssetUrl(
-    `${url}?format=webp&height=500&width=500`
-  ); // Setting the resolution of the logo to 500x500 px so that it's still clear when scaled
+    `${url}?format=webp&height=${imgSize*scale}&width=${imgSize*scale}`
+  ); // Setting the resolution of the logo to its maximum size so it's only ever scaled down
 
   return (
     <div className="h-16 w-16">
@@ -96,8 +96,8 @@ const NavbarLogo: React.FC<StrapiFile> = ({ url, alternativeText }) => {
           ref={ref}
           src={src}
           alt={alternativeText}
-          width={imgSize}
-          height={imgSize}
+          width={imgSize*scale}
+          height={imgSize*scale}
           style={{ 
             visibility: isMounted ? 'visible' : 'hidden',
           }}
