@@ -83,10 +83,11 @@ const NavbarLogo: React.FC<StrapiFile> = ({ url, alternativeText }) => {
     setIsMounted(true);
   }, []);
 
-  const scale = 4.5;
+  const resolutionFactor = 2.5; // Factor to increase resolution for better quality
+  const scale =4.5;
   const imgSize = 64; // the size we want the image to be in the navbar
   const src = toAssetUrl(
-    `${url}?format=webp&height=${imgSize*scale}&width=${imgSize*scale}`
+    `${url}?format=webp&height=${imgSize*scale*resolutionFactor}&width=${imgSize*scale*resolutionFactor}`
   ); // Setting the resolution of the logo to its maximum size so it's only ever scaled down
 
   return (
