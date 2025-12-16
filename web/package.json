@@ -2,9 +2,9 @@
   "name": "e-nollning-web",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --webpack",
     "build": "next build --webpack",
-    "start": "next start --webpack",
+    "start": "next start",
     "analyze": "ANALYZE=true yarn build"
   },
   "author": {
