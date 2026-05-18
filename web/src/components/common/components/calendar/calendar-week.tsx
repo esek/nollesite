@@ -1,17 +1,20 @@
 import { CalendarEventsGroupedByWeek } from '@/models/calendar';
-import React, { useState } from 'react';
+import React from 'react';
 import CalendarDay from './calendar-day';
 import { FiChevronDown } from 'react-icons/fi';
 import { useToggle } from '@/hooks/toggle.hook';
 import { useLocale } from '@/hooks/locale.hook';
-import { weekNumber as getWeekNumber } from 'weeknumber';
 import { motion } from 'framer-motion';
+import dayjs from 'dayjs';
+import isoWeek from 'dayjs/plugin/isoWeek';
+
+dayjs.extend(isoWeek);
 
 const CalendarWeek: React.FC<CalendarEventsGroupedByWeek> = ({
   weekNumber,
   days,
 }) => {
-  const thisWeek = getWeekNumber(new Date());
+  const thisWeek = dayjs().isoWeek();
 
   // default is opened if this is the current week
   const { isOpen, toggle } = useToggle(weekNumber === thisWeek);

@@ -11,23 +11,21 @@
     "name": "Axel Froborg <axel.froborg@gmail.com>"
   },
   "dependencies": {
-    "@next/bundle-analyzer": "^14.0.1",
-    "axios": "^1.6.0",
+    "@next/bundle-analyzer": "^16.2.6",
+    "axios": "^1.16.1",
     "colortranslator": "^3.0.2",
-    "current-week-number": "^1.0.7",
     "dayjs": "^1.11.10",
     "framer-motion": "^10.16.4",
     "googleapis": "^128.0.0",
     "gsap": "^3.12.2",
-    "next": "16.0.10",
+    "next": "16.2.6",
     "next-absolute-url": "^1.2.2",
     "next-pwa": "^5.6.0",
     "react": "18.2.0",
     "react-dom": "^18.2.0",
     "react-gsap": "^3.2.1",
     "react-icons": "^4.11.0",
-    "sass": "^1.69.5",
-    "weeknumber": "^1.2.1"
+    "sass": "^1.69.5"
   },
   "devDependencies": {
     "@types/gsap": "^3.0.0",
@@ -36,7 +34,7 @@
     "@types/react-dom": "^18.2.14",
     "autoprefixer": "^10.4.16",
     "eslint": "8.52.0",
-    "eslint-config-next": "14.0.1",
+    "eslint-config-next": "16.2.6",
     "postcss": "^8.4.31",
     "prettier": "^3.0.3",
     "prettier-plugin-tailwindcss": "^0.5.6",
