@@ -5,11 +5,13 @@ import {
   CalendarEventTag,
 } from '@/models/calendar';
 import dayjs from 'dayjs';
+import isoWeek from 'dayjs/plugin/isoWeek';
 import { calendar_v3, google } from 'googleapis';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { serverConfig } from '@/config.server';
-import { weekNumber } from 'weeknumber';
 import { stripCalendarTags } from '@/utils/style.utils';
+
+dayjs.extend(isoWeek);
 
 const calendar = google.calendar({
   version: 'v3',
@@ -56,7 +58,7 @@ const getCalendarEvents = (
     const startDate = new Date(startDateOrTime ?? '');
 
     // get the week number of the event
-    const week = weekNumber(startDate);
+    const week = dayjs(startDate).isoWeek();
 
     return {
       title,
