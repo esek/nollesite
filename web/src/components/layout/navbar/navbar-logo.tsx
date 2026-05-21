@@ -51,6 +51,7 @@ const NavbarLogo: React.FC<StrapiFile> = ({ url, alternativeText }) => {
         y: '30vh',
         x: centerX,
         z: 1,
+        opacity: 1,
         translate: '-50% -50%',
         WebkitFilter: '',
       });
@@ -63,6 +64,7 @@ const NavbarLogo: React.FC<StrapiFile> = ({ url, alternativeText }) => {
           scale: 1/scale,
           y: 32,
           x: 32,
+          opacity: 0.5,
           WebkitFilter: 'blur(1.1px)', // account for shitty image processing in Webkit
           scrollTrigger: {
             start: 'top top',

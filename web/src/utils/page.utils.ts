@@ -117,7 +117,7 @@ export const buildNavLinks = (
         break;
       case 'content.phoset':
         links.push({
-          title: 'Phøs',
+          title: 'Phøset',
           href: `#phos`,
         });
         break;

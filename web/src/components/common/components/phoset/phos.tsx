@@ -27,7 +27,7 @@ const Phos: React.FC<Props> = ({
           options={{ height: 320, width: 320 }}
         />
       </div>
-      <h3 className="font-nolle text-lg font-bold">{name}</h3>
+      <h3 className="font-nolle text-lg">{name}</h3>
       <div
         className="text-sm"
         dangerouslySetInnerHTML={{ __html: description }}
