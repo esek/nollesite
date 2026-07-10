@@ -26,7 +26,7 @@ const PageLayout: React.FC<Props> = ({ cssColors, navLinks, ...props }) => {
     >
       <Navbar links={navLinks} year={props.year} logo={props.logo} />
 
-      <main className="flex-1">
+      <main className="flex-1 overflow-x-hidden">
         <Hero {...props} />
         <StrapiComponents content={props.content} />
       </main>
